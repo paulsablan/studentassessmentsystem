@@ -1,0 +1,12 @@
+1.) famsize
+2.) Pstatus
+3.) Medu
+4.) Fedu
+5.) Mjob
+6.) Fjob
+7.) failures
+8.) famsup
+9.) activities
+10.) internet
+11.) health
+12.) absences

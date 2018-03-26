@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css')}}">
+        
+    <title>Login - Incorporating Predictive Analysis on Student Assessment System</title>
+</head>
+<body class="login-body">
+  <nav class="navbar navbar-default"><center><h2>Incorporating Predictive Analysis on Student Assessment System</h2></center></nav>
+  <div class="container-fluid">
+    
+    <form method="POST" action="/home" class="login-form">
+      <div class="form-group">
+        <label>User ID:</label>
+          <input type="text" name="userId" id="userId" placeholder="User ID" class="form-control">
+      </div>
+      <div class="form-group">
+        <label>Password:</label>
+          <input type="password" name="password" id="password" placeholder="Password" class="form-control">
+      </div>
+      <input type="submit" name="login" value="Login" id="btnlogin" class="btn btn-primary btn-login">
+      <br><br>
+      <a href="#">Forgot Password?</a>
+    </form>
+  </div>
+  <script src="{{ url_for('static', filename='js/custom.js') }}"></script> 
+</body>

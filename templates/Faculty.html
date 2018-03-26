@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/papaparse.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.js/dist/Chart.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css')}}">
+        
+    <title>Faculty - Incorporating Predictive Analysis on Student Assessment System</title>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-admin"><span class="navbar-title">Incorporating Predictive Analysis on Student Assessment System</span><a href="/" class="logout-link">Logout <i class="glyphicon glyphicon-log-in log-icon"></i></a></nav>
+	<div class="sidenav">
+		<div class="profile-image">
+			<center><img src="{{ url_for('static', filename='images/profile.png')}}"></center>
+		</div>
+		<div class="profile-info">
+			<h4>Christine Dela Cruz</h4>
+			<h5>Faculty</h5>
+		</div>
+		<button class="dropdown-btn">STEM 		    
+			<i class="glyphicon glyphicon-menu-down" style="font-size: 10px; padding: 2px; "></i>
+		</button>
+		<div class="dropdown-container">
+		    <a href="#">Section 1</a>
+		    <a href="#">Section 2</a>
+		    <a href="#">Section 3</a>
+		</div>
+		<button class="dropdown-btn">GAS 		    
+			<i class="glyphicon glyphicon-menu-down" style="font-size: 10px; padding: 2px; "></i>
+		</button>
+		<div class="dropdown-container">
+		    <a href="#">Section 1</a>
+		    <a href="#">Section 2</a>
+		    <a href="#">Section 3</a>
+		</div>
+	</div>
+	<div class="row content-user">
+		<div class="col-md-offset-2 col-md-4">
+			<center><h3>INTERNAL ASSESSMENT</h3></center>
+			<input type="file" name="openFile" id="openFile" class="form-control" accept=".csv"><br>
+			<div class="list-table-internal" >
+				<table id="inputTable"></table>
+			</div>
+				<br>
+				<button class="btn btn-primary btn-predict" id="predict">Predict</button>
+		</div>
+		<div class="col-md-6">
+			<center>
+				<h3>LIST OF STUDENTS</h3>
+				<div class="list-table">
+					<table id="resultstable">
+					</table>
+				</div>
+			</center>
+		</div>
+	</div>
+	<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
+</body>

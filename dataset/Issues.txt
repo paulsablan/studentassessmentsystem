@@ -1,0 +1,68 @@
+#Financial problem
+-- Famsize, Mjob, Fjob
+--- Mjob[low] & Fjob[low] = severe
+--- Mjob[low] & Fjob[low] = severe
+--- Mjob[low] & Fjob[med] & famsize[many] = severe
+--- Mjob[low] & Fjob[med] & famsize[many] = severe
+--- Mjob[med] & Fjob[low] & famsize[many] = severe
+--- Mjob[med] & Fjob[low] & famsize[many] = severe
+--- Mjob[low] & Fjob[med] & famsize[few] = med
+--- Mjob[low] & Fjob[med] & famsize[few] = med
+--- Mjob[med] & Fjob[low] & famsize[few] = med
+--- Mjob[med] & Fjob[low] & famsize[few] = med
+--- Mjob[high] & famsize[many] = med
+--- Mjob[high] & famsize[many] = med
+--- Fjob[high] & famsize[many] = med
+--- Mjob[high] & famsize[few] = low
+--- Fjob[high] & famsize[few] = low
+--- Mjob[high] & Fjob[few] & famsize[few] = low
+--- Mjob[few] & Fjob[high] & famsize[few] = low
+
+#Broken Family
+-- Pstatus, famsup
+---pstatus_f['apart'] & famsup_f['no'] = broken_family_f['high']
+---pstatus_f['apart'] & famsup_f['yes'] = broken_family_f['low']
+---pstatus_f['together'] & famsup_f['no'] = broken_family_f['high']
+---pstatus_f['together'] & famsup_f['yes'] = broken_family_f['low']
+#Living with Relatives
+-- Pstatus, famsup
+---pstatus_f['apart'] & famsup_f['no'] = living_with_rel['high']
+---pstatus_f['apart'] & famsup_f['yes'] = living_with_rel['low']
+---pstatus_f['together'] & famsup_f['no'] = living_with_rel['high']
+---pstatus_f['together'] & famsup_f['yes'] = living_with_rel['low']
+#Health Conditions
+-- health, activities, absences
+---health['bad'] & (absences['moderate'] | absences['frequent']) = health_conditions_f['severe']
+---health['bad'] & absences['few'] & activities_f['yes'] = health_conditions_f['severe']
+---health['neutral'] & (absences['moderate'] | absences['frequent']) & activities_f['yes'] = health_conditions_f['severe']
+---health['neutral'] & absences['few'] a= health_conditions_f['low']
+---health['neutral'] & absences['moderate'] = health_conditions_f['med']
+---health['neutral'] & absences['frequent'] = health_conditions_f['med']
+---health['good'] & (absences['moderate'] | absences['frequent']) = health_conditions_f['med']
+---health['good'] & absences['few'] = health_conditions_f['med']
+#Insufficient Learning Resources
+-- internet, Mjob, Fjob
+---internet['yes'] & (mjob['low'] + mjob['med'] + mjob['high']) & (fjob['low'] + fjob['med'] + fjob['high']) = learning_material['low']
+---internet['no'] & mjob['low'] & fjob['low'] = learning_material['low']
+---internet['no'] & mjob['med'] & fjob['low'] = learning_material['med']
+---internet['no'] & mjob['low'] & fjob['med'] = learning_material['med']
+---internet['no'] & mjob['med'] & fjob['med'] = learning_material['med']
+---internet['no'] & (mjob['high'] + fjob['high']) = learning_material['med']
+#Parenting issues
+-- Pstatus, Medu, Fedu
+---Medu['low'] & Fedu['low'] & (Pstatus['apart'] | Pstatus['together'])  = parenting_issues['severe']
+---Medu['low'] | Fedu['low'] & Pstatus['apart'] = parenting_issues['severe']
+---(Medu['low'] | Fedu['med']) & (Fedu['low'] | Medu['med']) & Pstatus['together'] = parenting_issues['severe']
+---(Medu['low'] | Fedu['med']) & (Fedu['low'] | Medu['med']) & Pstatus['together'] = parenting_issues['severe']
+---Medu['med'] & Fedu['med'] & Pstatus['together'] = parenting_issues['med']
+---Medu['low'] & Fedu['high'] & Pstatus['together'] = parenting_issues['med']
+---Medu['high'] & Fedu['low'] & Pstatus['together'] = parenting_issues['low']
+---Medu['high'] & Fedu['high'] & Pstatus['together'] = parenting_issues['low']
+#Study Habit
+-- activities, absences, failures
+---activities['no'] & (absences['moderate'] + absences['frequent']) & failures[high] = study_habit['severe']
+---activities['yes'] & absences['frequent'] & failures[high] = study_habit['severe']
+---activities['yes'] & absences['moderate'] & failures[high] = study_habit['med']
+---activities['yes'] & absences['moderate'] & failures[low] = study_habit['med']
+---(activities['yes'] + activities['no']) & absences['low'] & failures[low] = study_habit['low']
+#Others
