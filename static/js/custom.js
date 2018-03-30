@@ -103,13 +103,7 @@ function predict(file, dataset){
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
                   }
-                }
-                for (rowIndex = 1; rowIndex < (rows.length - 1); rowIndex++) {
-                  if(rowIndex > 10){
-                    console.log(rowIndex);
-                    toptentable.deleteRow(rowIndex);
-                  }
-                }    
+                }   
               }
             });
 }
@@ -222,17 +216,7 @@ function predictadmin(file, dataset){
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
                   }
-                }
-                rows = toptentable.rows;
-                for (rowIndex = 0; rowIndex < (rows.length - 1); rowIndex++) {
-                  var newCell = rows[rowIndex].insertCell(rowIndex);
-                  if(rowIndex == 0){
-                    newCell.innerHTML = "Ranking";
-                  }
-                  else if(rowIndex > 0){
-                    newCell.innerHTML = rowIndex;
-                  }
-                }                    
+                }                   
                 // Learning Percentage
                 new Chart(document.getElementById("learningChart"), {
                     type: 'doughnut',
