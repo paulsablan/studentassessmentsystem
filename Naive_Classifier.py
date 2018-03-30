@@ -98,13 +98,14 @@ def get_summaries(filename, split_ratio):
 
 	return summaries_second_half, summaries_final
 
-def predict_grades(filename, summaries_second_half, summaries_final, data=None):
+def predict_grades(filename, summaries_second_half, summaries_final, data):
 	test_second_half = []
 	test_final_grade = []
 	passed = False
+	
 	if data is None:
 		pass_by = False
-		labels, data, test = load_csv_section(filename, 100)
+		labels, data, test = load_csv_section(filename, 100)	
 		passed = True
 
 	for i in data:

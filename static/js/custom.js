@@ -72,7 +72,44 @@ function predict(file, dataset){
                 document.getElementById("resultstable").innerHTML = table;
                 toptable = table; 
                 document.getElementById("toptable").innerHTML = toptable;  
-                $("#toptable").tablesorter();       
+                var toptentable, rows, switching, rowIndex, rowX, rowY, shouldSwitch;
+                toptentable = document.getElementById('toptable');
+                switching = true;
+                /* Make a loop that will continue until
+                no switching has been done: */
+                while (switching) {
+                  // Start by saying: no switching is done:
+                  switching = false;
+                  rows = toptentable.rows;
+                  /* Loop through all table rows (except the
+                  first, which contains table headers): */
+                  for (rowIndex = 1; rowIndex < (rows.length - 1); rowIndex++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /* Get the two elements you want to compare,
+                    one from current row and one from the next: */
+                    rowX = rows[rowIndex].getElementsByTagName("TD")[2];
+                    rowY = rows[rowIndex + 1].getElementsByTagName("TD")[2];
+                    // Check if the two rows should switch place:
+                    if (rowX.innerHTML < rowY.innerHTML) {
+                      // I so, mark as a switch and break the loop:
+                      shouldSwitch= true;
+                      break;
+                    }
+                  }
+                  if (shouldSwitch) {
+                    /* If a switch has been marked, make the switch
+                    and mark that a switch has been done: */
+                    rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
+                    switching = true;
+                  }
+                }
+                for (rowIndex = 1; rowIndex < (rows.length - 1); rowIndex++) {
+                  if(rowIndex > 10){
+                    console.log(rowIndex);
+                    toptentable.deleteRow(rowIndex);
+                  }
+                }    
               }
             });
 }
@@ -127,6 +164,7 @@ function predictadmin(file, dataset){
                 var failedCounter = 0;
                 var failingCounter = 0;
                 var passedCounter = 0;
+                var toptable = "";
                 table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
                 for (x = 0; x < data.predict_finalgrade.length; x++){
                   number = x+1;
@@ -151,6 +189,50 @@ function predictadmin(file, dataset){
                 }
                 table = table + tablerow;
                 document.getElementById("resultstable").innerHTML = table;
+                toptable = table; 
+                document.getElementById("toptable").innerHTML = toptable;  
+                var toptentable, rows, switching, rowIndex, rowX, rowY, shouldSwitch;
+                toptentable = document.getElementById('toptable');
+                switching = true;
+                /* Make a loop that will continue until
+                no switching has been done: */
+                while (switching) {
+                  // Start by saying: no switching is done:
+                  switching = false;
+                  rows = toptentable.rows;
+                  /* Loop through all table rows (except the
+                  first, which contains table headers): */
+                  for (rowIndex = 1; rowIndex < (rows.length - 1); rowIndex++) {
+                    // Start by saying there should be no switching:
+                    shouldSwitch = false;
+                    /* Get the two elements you want to compare,
+                    one from current row and one from the next: */
+                    rowX = rows[rowIndex].getElementsByTagName("TD")[2];
+                    rowY = rows[rowIndex + 1].getElementsByTagName("TD")[2];
+                    // Check if the two rows should switch place:
+                    if (rowX.innerHTML < rowY.innerHTML) {
+                      // I so, mark as a switch and break the loop:
+                      shouldSwitch= true;
+                      break;
+                    }
+                  }
+                  if (shouldSwitch) {
+                    /* If a switch has been marked, make the switch
+                    and mark that a switch has been done: */
+                    rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
+                    switching = true;
+                  }
+                }
+                rows = toptentable.rows;
+                for (rowIndex = 0; rowIndex < (rows.length - 1); rowIndex++) {
+                  var newCell = rows[rowIndex].insertCell(rowIndex);
+                  if(rowIndex == 0){
+                    newCell.innerHTML = "Ranking";
+                  }
+                  else if(rowIndex > 0){
+                    newCell.innerHTML = rowIndex;
+                  }
+                }                    
                 // Learning Percentage
                 new Chart(document.getElementById("learningChart"), {
                     type: 'doughnut',
@@ -207,6 +289,7 @@ console.log(dataset);
 });
 function opencsv(file){
   var theFile = file;
+
  if (theFile) {
  var table = document.getElementById("inputTable");
  var headerLine = "";

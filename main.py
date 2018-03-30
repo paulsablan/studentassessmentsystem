@@ -51,11 +51,17 @@ def sendemail(receive,filename,dataset):
 	receiver = receive
 	status = ""
 	studentdata = dataset
-	print(studentdata)
+	if studentdata == "None":
+		studentdata = None
+	else:
+		j = studentdata.split(',')
+		studentdata = []
+		for i in range(2,len(j)):
+			studentdata.append(int(j[i]))
 	#second_half,final_grade,fuzzy_results = train_naive(file,98)
 	second_half, final_grade =  get_summaries(get_summaries_file,100)
-	predict_secondhalf, predict_finalgrade = predict_grades(file,second_half, final_grade,None)
-	fuzzy_results =  get_fuzzy_results(file)
+	predict_secondhalf, predict_finalgrade = predict_grades(file,second_half, final_grade, studentdata)
+	fuzzy_results =  get_fuzzy_results(file, studentdata)
 	print(second_half)
 	print(final_grade)
 	print(predict_secondhalf)
@@ -77,11 +83,11 @@ def sendemail(receive,filename,dataset):
 	#     body=textmsg)
 	# Send the message via our own SMTP server, but don't include the
 	# envelope header.
-	s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-	s.starttls()
-	s.login(sender,password)
-	s.sendmail(sender, receiver, msg.as_string())
-	s.quit()
+	# s = smtplib.SMTP(host='smtp.gmail.com', port=587)
+	# s.starttls()
+	# s.login(sender,password)
+	# s.sendmail(sender, receiver, msg.as_string())
+	# s.quit()
 	status = "sent"
 	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results)
 
