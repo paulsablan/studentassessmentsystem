@@ -11,28 +11,45 @@ for (i = 0; i < dropdown.length; i++) {
       dropdownContent.style.display = "block";
     }
   });
-} 
-//predict - faculty
-$('#predict').click(function(e){
-var receiver = "vincentpaul.012@gmail.com";
-var file = document.getElementById("openFile").files[0].name;          
-            $.getJSON('/', {
+}
+var section = document.getElementsByClassName("dropdown-content");
+var z;
+var count = 0;
+for (z = 0; z < section.length; z++) {
+  section[z].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var dropdownContent = this.nextElementSibling;
+    for (var i = 0; i < section.length; i++) {
+      if(section[i].hasClass()){
+        count++;
+        if(count > 1){
+          section[i].removeClass();
+        }
+      }
+    }
+  });
+}
+function predict(file, dataset){
+  var receiver = "vincentpaul.012@gmail.com";
+              $.getJSON('/', {
               receive: receiver,
-              filename: file
+              filename: file,
+              dataset: JSON.stringify(dataset)
             });
             
-            e.preventDefault();
 
             $.ajax ({
-              url: "/sendemail/" + receiver + "/" + file,
+              url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
               success: function(data) {
                 console.log(data);
                 var table = "";
                 var tablerow = "";
                 var number = "";
                 var remarks = "";
+                var toptable = "";
+                var toptablerow = "";
                 table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
-                for (x = 0; x < 395; x++){
+                for (x = 0; x < data.predict_finalgrade.length; x++){
                   number = x+1;
                   if(data.predict_finalgrade[x] <= "75"){
                     remarks = "FAILED";
@@ -43,31 +60,64 @@ var file = document.getElementById("openFile").files[0].name;
                   else if(data.predict_finalgrade[x] >= "81"){
                     remarks = "PASSED";
                   }
-                  tablerow = tablerow + "<tr>"
+                  tablerow = tablerow + "<tr>";
+                  toptablerow = toptablerow + "<tr>"
                   tablerow = tablerow + "<td>Student " + number + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>"; 
                   for (y = 0; y < 7; y++){
-                        tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>"            
+                        tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>";          
                   }
                   tablerow = tablerow + "</tr>"; 
                 }
                 table = table + tablerow;
                 document.getElementById("resultstable").innerHTML = table;
+                toptable = table; 
+                document.getElementById("toptable").innerHTML = toptable;  
+                $("#toptable").tablesorter();       
               }
             });
+}
+
+//predict - faculty
+$('#predict').click(function(e){
+var file = ""
+if(document.getElementById("openFile").files.length == 0){
+  file = "None";
+}
+else{
+  file = document.getElementById("openFile").files[0].name;
+}
+var name = document.getElementById("studName").value;  
+var grade = document.getElementById("grade").value;         
+var famSize = document.getElementById("famSize").value; 
+var parentStatus = document.getElementById("parentStatus").value; 
+var mEdu = document.getElementById("mEdu").value; 
+var fEdu = document.getElementById("fEdu").value; 
+var mJob = document.getElementById("mJob").value; 
+var fJob = document.getElementById("fJob").value; 
+var failures = document.getElementById("failures").value; 
+var famSup = document.getElementById("famSup").value; 
+var activities = document.getElementById("activities").value; 
+var internet = document.getElementById("internet").value; 
+var health = document.getElementById("health").value; 
+var absences = document.getElementById("absences").value; 
+var g1 = document.getElementById("g1").value; 
+var dataset = [name, grade, famSize, parentStatus, mEdu, fEdu, mJob, fJob, failures, famSup, activities, internet, health, absences, g1];
+predict(file, dataset);  
 });
-//predict - admin
-$('#predictadmin').click(function(e){
-var receiver = "vincentpaul.012@gmail.com";
-var file = document.getElementById("openFile").files[0].name;          
+
+function predictadmin(file, dataset){
+  console.log(dataset);
+
+  var receiver = "vincentpaul.012@gmail.com";        
             $.getJSON('/', {
               receive: receiver,
-              filename: file
+              filename: file,
+              dataset: dataset
             });
             
-            e.preventDefault();
 
             $.ajax ({
-              url: "/sendemail/" + receiver + "/" + file,
+              url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
               success: function(data) {
                 console.log(data);
                 var table = "";
@@ -78,7 +128,7 @@ var file = document.getElementById("openFile").files[0].name;
                 var failingCounter = 0;
                 var passedCounter = 0;
                 table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
-                for (x = 0; x < 395; x++){
+                for (x = 0; x < data.predict_finalgrade.length; x++){
                   number = x+1;
                   if(data.predict_finalgrade[x] <= "75"){
                     remarks = "FAILED";
@@ -126,11 +176,37 @@ var file = document.getElementById("openFile").files[0].name;
                 });
               }
             });
+}
+//predict - admin
+$('#predictadmin').click(function(e){
+var file = ""
+if(document.getElementById("openFileadmin").files.length == 0){
+  file = "None";
+}
+else{
+  file = document.getElementById("openFileadmin").files[0].name;
+}          
+var name = document.getElementById("studName").value;  
+var grade = document.getElementById("grade").value;         
+var famSize = document.getElementById("famSize").value; 
+var parentStatus = document.getElementById("parentStatus").value; 
+var mEdu = document.getElementById("mEdu").value; 
+var fEdu = document.getElementById("fEdu").value; 
+var mJob = document.getElementById("mJob").value; 
+var fJob = document.getElementById("fJob").value; 
+var failures = document.getElementById("failures").value; 
+var famSup = document.getElementById("famSup").value; 
+var activities = document.getElementById("activities").value; 
+var internet = document.getElementById("internet").value; 
+var health = document.getElementById("health").value; 
+var absences = document.getElementById("absences").value; 
+var g1 = document.getElementById("g1").value; 
+var dataset = [name, grade, famSize, parentStatus, mEdu, fEdu, mJob, fJob, failures, famSup, activities, internet, health, absences, g1];
+predictadmin(file, dataset);
+console.log(dataset);
 });
-//Input CSV file
-$('#openFile').change(function(e){
-var fileSize = 0;
- var theFile = document.getElementById("openFile").files[0];
+function opencsv(file){
+  var theFile = file;
  if (theFile) {
  var table = document.getElementById("inputTable");
  var headerLine = "";
@@ -157,6 +233,12 @@ var fileSize = 0;
  myReader.readAsText(theFile);
  }
  return false;
+}
+//Input CSV file
+$('#openFile').change(function(e){
+var fileSize = 0;
+   var file = document.getElementById("openFile").files[0];
+   opencsv(file);
 });
 
 

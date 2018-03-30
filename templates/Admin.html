@@ -9,16 +9,18 @@
     <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/papaparse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-latest.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.tablesorter.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.js/dist/Chart.bundle.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css')}}">
         
-    <title>Admin - Incorporating Predictive Analysis on Student Assessment System</title>
+    <title>Admin - Incorporating Predictive Analytics on Student Assessment System</title>
 </head>
-<body>
-	<nav class="navbar navbar-default navbar-admin"><span class="navbar-title">Incorporating Predictive Analysis on Student Assessment System</span><a href="/" class="logout-link">Logout <i class="glyphicon glyphicon-log-in log-icon"></i></a></nav>
+<body  onload="predictadmin('STEM-12-7.csv','None'); opencsv('/dataset/STEM-12-7.csv');">
+	<nav class="navbar navbar-default navbar-admin"><span class="navbar-title">Incorporating Predictive Analytics on Student Assessment System</span><a href="/" class="logout-link">Logout <i class="glyphicon glyphicon-log-in log-icon"></i></a></nav>
 	<div class="sidenav">
 		<div class="profile-image">
 			<center><img src="{{ url_for('static', filename='images/profile.png')}}"></center>
@@ -27,214 +29,132 @@
 			<h4>Maria Andallo</h4>
 			<h5>Principal</h5>
 		</div>
-		<button class="dropdown-btn">STEM 		    
-			<i class="glyphicon glyphicon-menu-down" style="font-size: 10px; padding: 2px; "></i>
-		</button>
-		<div class="dropdown-container">
-		    <a href="#">Section 1</a>
-		    <a href="#">Section 2</a>
-		    <a href="#">Section 3</a>
-		</div>
-		<button class="dropdown-btn">GAS 		    
-			<i class="glyphicon glyphicon-menu-down" style="font-size: 10px; padding: 2px; "></i>
-		</button>
-		<div class="dropdown-container">
-		    <a href="#">Section 1</a>
-		    <a href="#">Section 2</a>
-		    <a href="#">Section 3</a>
-		</div>
+		<ul class="dropdown-container">
+		    <li class="active clicked"><a data-toggle="tab" href="#home" onclick="predictadmin('STEM-12-7.csv','None'); opencsv('/dataset/STEM-12-7.csv');">STEM 12-7</a></li>
+		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('STEM-12-13.csv','None'); opencsv('/dataset/STEM-12-13.csv');">STEM 12-13</a></li>
+		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('STEM-12-15.csv','None'); opencsv('/dataset/STEM-12-15.csv');">STEM 12-15</a></li>
+		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('GAS-12-3.csv','None'); opencsv('/dataset/GAS-12-3.csv');">GAS 12-3</a></li>
+		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('GAS-12-6.csv','None');opencsv('/dataset/GAS-12-6.csv');">GAS 12-6</a></li>
+		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('GAS-12-8.csv','None'); opencsv('/dataset/GAS-12-8.csv');">GAS 12-8</a></li>
+		</ul>
 	</div>
-	<div class="row content-user">
-		<div class="col-md-offset-2 col-md-7">
-			<input type="file" name="openFile" id="openFile" class="form-control" accept=".csv">
-		</div>
-		<div class="col-md-3">
-			<button class="btn btn-primary btn-predict" id="predictadmin">Predict</button>	
-		</div>
-		<div class="col-md-offset-2 col-md-4">
-			<center>
-				<h3>LEARNING PERFORMANCE</h3>
-				<canvas id="learningChart" height="320px" />
-						
-			</center>
+	<div id="home" class="row content-user">
+		<ul class="col-md-offset-2 nav nav-tabs">
+		    <li class="active"><a data-toggle="tab" href="#results">Results</a></li>
+		    <li><a data-toggle="tab" href="#menu1">Input</a></li>
+		    <li><a data-toggle="tab" href="#menu2">Input Table</a></li>
+		    <li><a data-toggle="tab" href="#menu3">Chart</a></li>
+		</ul>
+
+		<div class="col-md-offset-2 tab-content" >
+			<div id="menu3" class="tab-pane fade">
+				<center>
+						<br>
+						<canvas id="learningChart" height="130px" />
+				</center>
+		    </div>	
+		    <div id="menu1" class="tab-pane fade">					
+					<div class="col-md-12">
+						<div class="form-group">
+						    <br>
+							<input type="file" name="openFile" id="openFileadmin" class="form-control" accept=".csv,.xlsx">		
+						</div>
+					</div>
+					<form method="get">
+						  <div class="col-md-4">
+						  	  <div class="form-group">
+						        <label>Student Name:</label>
+						          <input type="text" name="studName" id="studName" placeholder="SURNAME FIRST NAME MIDDLE NAME" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Grade:</label>
+						          <input type="text" name="grade" id="grade" placeholder="GRADE" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Family Size:</label>
+						          <input type="text" name="famSize" id="famSize" placeholder="FAMILY SIZE" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Parent Status:</label>
+						          <input type="text" name="parentStatus" id="parentStatus" placeholder="PARENT STATUS" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Mother's Education:</label>
+						          <input type="text" name="mEdu" id="mEdu" placeholder="MOTHER'S EDUCATION" class="form-control">
+						      </div>
+						  </div>
+					      <div class="col-md-4">
+						  	  <div class="form-group">
+						        <label>Father's Education:</label>
+						          <input type="text" name="fEdu" id="fEdu" placeholder="FATHER'S EDUCATION" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Mother's Job:</label>
+						          <input type="text" name="mJob" id="mJob" placeholder="MOTHER'S JOB" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Father's Job:</label>
+						          <input type="text" name="fJob" id="fJob" placeholder="FATHER'S JOB" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Failures:</label>
+						          <input type="text" name="failures" id="failures" placeholder="FAILURES" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Family Supplies:</label>
+						          <input type="text" name="famSup" id="famSup" placeholder="FAMILY SUPPLIES" class="form-control">
+						      </div>
+						  </div>
+						  <div class="col-md-4">
+						  	  <div class="form-group">
+						        <label>Activities:</label>
+						          <input type="text" name="activities" id="activities" placeholder="ACTIVITIES" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Internet:</label>
+						          <input type="text" name="internet" id="internet" placeholder="Internet" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Health:</label>
+						          <input type="text" name="health" id="health" placeholder="HEALTH" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Absences:</label>
+						          <input type="text" name="absences" id="absences" placeholder="ABSENCES" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>G1:</label>
+						          <input type="text" name="g1" id="g1" placeholder="G1" class="form-control">
+						      </div>
+						  </div>
+					</form>
+					<div class="col-md-12">
+						<button class="btn btn-primary btn-predict" id="predictadmin">Predict</button>
+					</div>
+					
+		    </div>
+		    <div id="menu2" class="tab-pane fade">
+		      <div>
+					<center>
+						<br><br>
+						<div class="list-table" >
+							<table id="inputTable"></table>
+						</div>
+					</center>
+				</div>
+		    </div>
+		    <div id="results" class="tab-pane fade in active">
+		      <center>
+						<br><br>
+						<div class="list-table">
+							<table id="resultstable">
+							</table>
+						</div>
+			  </center>
+		    </div>
 		</div>
 		
-		<div class="col-md-offset-1 col-md-5">
-			<center>
-				<h3>LIST OF STUDENTS</h3>
-				<div class="list-table-admin">
-					<table id="resultstable">
-					</table>
-				</div>
-				
-			</center>
-		</div>
 	</div>
-	<!-- Modal -->
-	<div id="detailsModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title"><center><h4>ANALYSIS OF FAILING AND PASSING STUDENTS</h4></center></h4>
-	      </div>
-	      <div class="modal-body">
-	        <center>
-				<canvas id="lineChart" height="200px" width=400px"></canvas>
-			</center>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>
-	<!-- Modal -->
-	<div id="tableModal" class="modal fade" role="dialog">
-	  <div class="modal-dialog">
-
-	    <!-- Modal content-->
-	    <div class="modal-content">
-	      <div class="modal-header">
-	        <button type="button" class="close" data-dismiss="modal">&times;</button>
-	        <h4 class="modal-title"><center><h4>STATUS OF STUDENTS</h4></center></h4>
-	      </div>
-	      <div class="modal-body">
-	        	<center>
-				<div class="list-table list-table-admin">
-					<table>
-					  <tr>
-					    <th>Name</th>
-					    <th>Gender</th>
-					    <th>First Quarter</th>
-					    <th>Second Quarter</th>
-					    <th>First Semester Grade</th>
-					    <th>Remark</th>
-					  </tr>
-					  <tr>
-					    <td>Libuna Jr., Samuel Gasendo</td>
-					    <td>Male</td>
-					    <td>85</td>
-					    <td>92</td>
-					    <td>89</td>
-					    <td>Passed</td>
-					  </tr>
-					  <tr>
-					    <td>Estigoy, Angelica Melendez</td>
-					    <td>Female</td>
-					    <td>88</td>
-					    <td>90</td>
-					    <td>89</td>
-					    <td>Passed</td>
-					  </tr>
-					  <tr>
-					    <td>Galpao, Jessiele Blancada</td>
-					    <td>Female</td>
-					    <td>89</td>	
-					    <td>88</td>
-					    <td>89</td>
-					    <td>Passed</td>
-					  </tr>
-					  <tr>
-					    <td>Hipolito, Shaira Mae Magugat</td>
-					    <td>Female</td>
-					    <td>88</td>
-					    <td>89</td>
-					    <td>89</td>
-					    <td>Passed</td>
-					  </tr>
-					  <tr>
-					    <td>Lemoncito, Jenese Messiah Granada</td>
-					    <td>Female</td>
-					    <td>89</td>
-					    <td>88</td>
-					    <td>89</td>
-					    <td>Passed</td>
-					  </tr>
-					  <tr>
-					    <td>Crisol, Katrina Paula Grajo</td>
-					    <td>Female</td>
-					    <td>86</td>
-					    <td>89</td>
-					    <td>88</td>
-					    <td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Emia, Margie Navales</td>
-					  	<td>Female</td>
-					  	<td>87</td>
-					  	<td>88</td>
-					  	<td>88</td>
-					  	<td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Lacambra, Erica Olayon</td>
-					  	<td>Female</td>
-					  	<td>88</td>
-					  	<td>88</td>
-					  	<td>88</td>
-					  	<td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Ibarbia. Celina Yvonne</td>
-					  	<td>Female</td>
-					  	<td>87</td>
-					  	<td>86</td>
-					  	<td>87</td>
-					  	<td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Baquero, Stephanie Rhey Malto</td>
-					  	<td>Male</td>
-					  	<td>85</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td></td>
-					  </tr>
-					  <tr>
-					  	<td>Franco, Patrick Eugene Benipayo</td>
-					  	<td>Male</td>
-					  	<td>87</td>
-					  	<td>84</td>
-					  	<td>86</td>
-					  	<td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Abalos, Buen Jocel Del Campo</td>
-					  	<td>Female</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Breis, Danilyn Neira</td>
-					  	<td>Female</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td>Passed</td>
-					  </tr>
-					  <tr>
-					  	<td>Cairo, Jane Rizzlyn Vargas</td>
-					  	<td>Female</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td>86</td>
-					  	<td>Passed</td>
-					  </tr>
-					</table>
-			</center>
-	      </div>
-	      <div class="modal-footer">
-	        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-	      </div>
-	    </div>
-
-	  </div>
-	</div>	
-	<script src="{{ url_for('static', filename='js/custom.js') }}"></script> 
+	<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
 </body>

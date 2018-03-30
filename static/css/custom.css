@@ -85,7 +85,7 @@
 }
 .list-table{
 	overflow: auto;
-	height: 450px;
+	height: 400px;
 }
 .list-table-internal{
 	overflow: auto;
@@ -120,14 +120,30 @@ th{
     cursor: pointer;
     outline: none;
 }
+.sidenav a, .dropdown-content {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    outline: none;
+}
 
 /* On mouse-over */
 .sidenav a:hover, .dropdown-btn:hover {
     color: #f1f1f1;
 }
+.sidenav a:hover, .dropdown-content:hover {
+    color: #f1f1f1;
+}
 
 /* Add an active class to the active dropdown button */
-.active {
+.sidenav .active {
     background-color: green;
     color: white;
 }

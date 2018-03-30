@@ -2,312 +2,330 @@ import skfuzzy as fuzz
 from skfuzzy import control as ctrl
 import numpy as np
 
-def financial_fuzzy(famsize, mjob, fjob):
-    # Create universe fucntion
-    mjob_f = ctrl.Antecedent(np.arange(1, 4, 1), 'mjob_f')
-    fjob_f = ctrl.Antecedent(np.arange(1, 4, 1), 'fjob_f')
-    famsize_f = ctrl.Antecedent(np.arange(0, 5, 1), 'famsize_f')
-    financial_f = ctrl.Consequent(np.arange(0, 5, 1), 'financial_f')
+class fis(object):
+    def __init__(self):
+        #FINANCIAL
+        # Create universe fucntion
+        mjob_financial = ctrl.Antecedent(np.arange(1, 4, 1), 'mjob_financial')
+        fjob_financial = ctrl.Antecedent(np.arange(1, 4, 1), 'fjob_financial')
+        famsize_financial = ctrl.Antecedent(np.arange(0, 5, 1), 'famsize_financial')
+        financial_financial = ctrl.Consequent(np.arange(0, 5, 1), 'financial_financial')
 
-    # Membership function for mjob
-    mjob_f['low'] = fuzz.trimf(mjob_f.universe, [1, 1, 2])
-    mjob_f['med'] = fuzz.trimf(mjob_f.universe, [1, 2, 3])
-    mjob_f['high'] = fuzz.trimf(mjob_f.universe, [1, 4, 4])
-    # Membership function for fjob
-    fjob_f['low'] = fuzz.trimf(fjob_f.universe, [1, 1, 2])
-    fjob_f['med'] = fuzz.trimf(fjob_f.universe, [1, 2, 3])
-    fjob_f['high'] = fuzz.trimf(fjob_f.universe, [1, 4, 4])
-    # Membership function for famsize
-    famsize_f['few'] = fuzz.trimf(famsize_f.universe, [0, 1, 2])
-    famsize_f['many'] = fuzz.trimf(famsize_f.universe, [1, 2, 3])
-    # Membership function for financial
-    financial_f['low'] = fuzz.trapmf(financial_f.universe, [0, 0, 1, 2])
-    financial_f['med'] = fuzz.trapmf(financial_f.universe, [1, 2, 3, 4])
-    financial_f['severe'] = fuzz.trapmf(financial_f.universe, [3, 4, 5, 5])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule(mjob_f['low'] & fjob_f['low'] & famsize_f['many'], financial_f['severe']))
-    rules.append(ctrl.Rule(mjob_f['low'] & fjob_f['med'] & famsize_f['many'], financial_f['severe']))
-    rules.append(ctrl.Rule(mjob_f['med'] & fjob_f['low'] & famsize_f['many'], financial_f['severe']))
-    rules.append(ctrl.Rule(mjob_f['low'] & fjob_f['med'] & famsize_f['few'], financial_f['med']))
-    rules.append(ctrl.Rule(mjob_f['med'] & fjob_f['low'] & famsize_f['few'], financial_f['med']))
-    rules.append(ctrl.Rule(mjob_f['low'] & fjob_f['low'] & famsize_f['few'], financial_f['med']))
-    rules.append(ctrl.Rule(mjob_f['high'] & famsize_f['many'], financial_f['med']))
-    rules.append(ctrl.Rule(fjob_f['high'] & famsize_f['many'], financial_f['med']))
-    rules.append(ctrl.Rule(mjob_f['high'] & famsize_f['few'], financial_f['low']))
-    rules.append(ctrl.Rule(fjob_f['high'] & famsize_f['few'], financial_f['low']))
-    rules.append(ctrl.Rule(mjob_f['high'] & fjob_f['low'] & famsize_f['few'], financial_f['low']))
-    rules.append(ctrl.Rule(mjob_f['low'] & fjob_f['high'] & famsize_f['few'], financial_f['low']))
-    # Control
-    financial_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(financial_ctrl)
+        # Membership function for mjob
+        mjob_financial['low'] = fuzz.trimf(mjob_financial.universe, [1, 1, 2])
+        mjob_financial['med'] = fuzz.trimf(mjob_financial.universe, [1, 2, 3])
+        mjob_financial['high'] = fuzz.trimf(mjob_financial.universe, [1, 4, 4])
+        # Membership function for fjob
+        fjob_financial['low'] = fuzz.trimf(fjob_financial.universe, [1, 1, 2])
+        fjob_financial['med'] = fuzz.trimf(fjob_financial.universe, [1, 2, 3])
+        fjob_financial['high'] = fuzz.trimf(fjob_financial.universe, [1, 4, 4])
+        # Membership function for famsize
+        famsize_financial['few'] = fuzz.trimf(famsize_financial.universe, [0, 1, 2])
+        famsize_financial['many'] = fuzz.trimf(famsize_financial.universe, [1, 2, 3])
+        # Membership function for financial
+        financial_financial['low'] = fuzz.trapmf(financial_financial.universe, [0, 0, 1, 2])
+        financial_financial['med'] = fuzz.trapmf(financial_financial.universe, [1, 2, 3, 4])
+        financial_financial['severe'] = fuzz.trapmf(financial_financial.universe, [3, 4, 5, 5])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule(mjob_financial['low'] & fjob_financial['low'] & famsize_financial['many'], financial_financial['severe']))
+        rules.append(ctrl.Rule(mjob_financial['low'] & fjob_financial['med'] & famsize_financial['many'], financial_financial['severe']))
+        rules.append(ctrl.Rule(mjob_financial['med'] & fjob_financial['low'] & famsize_financial['many'], financial_financial['severe']))
+        rules.append(ctrl.Rule(mjob_financial['low'] & fjob_financial['med'] & famsize_financial['few'], financial_financial['med']))
+        rules.append(ctrl.Rule(mjob_financial['med'] & fjob_financial['low'] & famsize_financial['few'], financial_financial['med']))
+        rules.append(ctrl.Rule(mjob_financial['low'] & fjob_financial['low'] & famsize_financial['few'], financial_financial['med']))
+        rules.append(ctrl.Rule(mjob_financial['high'] & famsize_financial['many'], financial_financial['med']))
+        rules.append(ctrl.Rule(fjob_financial['high'] & famsize_financial['many'], financial_financial['med']))
+        rules.append(ctrl.Rule(mjob_financial['high'] & famsize_financial['few'], financial_financial['low']))
+        rules.append(ctrl.Rule(fjob_financial['high'] & famsize_financial['few'], financial_financial['low']))
+        rules.append(ctrl.Rule(mjob_financial['high'] & fjob_financial['low'] & famsize_financial['few'], financial_financial['low']))
+        rules.append(ctrl.Rule(mjob_financial['low'] & fjob_financial['high'] & famsize_financial['few'], financial_financial['low']))
+        # Control
+        financial_ctrl = ctrl.ControlSystem(rules)
+        self.rating_financial = ctrl.ControlSystemSimulation(financial_ctrl)
 
-    rating.input['mjob_f'] = mjob
-    rating.input['fjob_f'] = fjob
-    rating.input['famsize_f'] = famsize
-    # Crunch the numbers
-    rating.compute()
-    rate = rating.output['financial_f']
-    if rate <= 2.49:
-        label = 'mild'
-    elif rate >= 2.5 and rate <= 3.49:
-        label = 'moderate'
-    else:
-        label = 'severe'
-    return rate, label
+        # BROKEN FAMILY
+        pstatus_broken_family = ctrl.Antecedent(np.arange(1, 3, 1), 'pstatus_broken_family')
+        famsup_broken_family = ctrl.Antecedent(np.arange(1, 3, 1), 'famsup_broken_family')
+        broken_family = ctrl.Consequent(np.arange(1, 3, 1), 'broken_family')
+        # Memberships
+        pstatus_broken_family['together'] = fuzz.trimf(pstatus_broken_family.universe, [1, 1, 2])
+        pstatus_broken_family['apart'] = fuzz.trimf(pstatus_broken_family.universe, [1, 2, 3])
+        famsup_broken_family['yes'] = fuzz.trimf(famsup_broken_family.universe, [1, 1, 2])
+        famsup_broken_family['no'] = fuzz.trimf(famsup_broken_family.universe, [1, 2, 3])
+        broken_family['low'] = fuzz.trimf(broken_family.universe, [1, 1, 2])
+        broken_family['high'] = fuzz.trapmf(broken_family.universe, [1, 2, 3, 3])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule(pstatus_broken_family['apart'] & famsup_broken_family['no'] , broken_family['high']))
+        rules.append(ctrl.Rule(pstatus_broken_family['apart'] & famsup_broken_family['yes'],  broken_family['low']))
+        rules.append(ctrl.Rule(pstatus_broken_family['together'] & famsup_broken_family['no'] , broken_family['high']))
+        rules.append(ctrl.Rule(pstatus_broken_family['together'] & famsup_broken_family['yes'],  broken_family['low']))
+        # Control
+        broken_family_ctrl = ctrl.ControlSystem(rules)
+        self.rating_broken_family = ctrl.ControlSystemSimulation(broken_family_ctrl)
 
-def broken_family(pstatus, famsup):
-    pstatus_f = ctrl.Antecedent(np.arange(1, 3, 1), 'pstatus_f')
-    famsup_f = ctrl.Antecedent(np.arange(1, 3, 1), 'famsup_f')
-    broken_family_f = ctrl.Consequent(np.arange(1, 3, 1), 'broken_family_f')
-    # Memberships
-    pstatus_f['together'] = fuzz.trimf(pstatus_f.universe, [1, 1, 2])
-    pstatus_f['apart'] = fuzz.trimf(pstatus_f.universe, [1, 2, 3])
-    famsup_f['yes'] = fuzz.trimf(famsup_f.universe, [1, 1, 2])
-    famsup_f['no'] = fuzz.trimf(famsup_f.universe, [1, 2, 3])
-    broken_family_f['low'] = fuzz.trimf(broken_family_f.universe, [1, 1, 2])
-    broken_family_f['high'] = fuzz.trapmf(broken_family_f.universe, [1, 2, 3, 3])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule(pstatus_f['apart'] & famsup_f['no'] , broken_family_f['high']))
-    rules.append(ctrl.Rule(pstatus_f['apart'] & famsup_f['yes'],  broken_family_f['low']))
-    rules.append(ctrl.Rule(pstatus_f['together'] & famsup_f['no'] , broken_family_f['high']))
-    rules.append(ctrl.Rule(pstatus_f['together'] & famsup_f['yes'],  broken_family_f['low']))
-    # Control
-    broken_family_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(broken_family_ctrl)
+        # LIVING WITH RELATIVES
+        pstatus_relatives = ctrl.Antecedent(np.arange(1, 3, 1), 'pstatus_relatives')
+        famsup_relatives = ctrl.Antecedent(np.arange(1, 3, 1), 'famsup_relatives')
+        living_with_rel_relatives = ctrl.Consequent(np.arange(1, 3, 1), 'living_with_rel_relatives')
+        # Memberships
+        pstatus_relatives['together'] = fuzz.trimf(pstatus_relatives.universe, [1, 1, 2])
+        pstatus_relatives['apart'] = fuzz.trimf(pstatus_relatives.universe, [1, 2, 3])
+        pstatus_relatives['together'] = fuzz.trimf(pstatus_relatives.universe, [1, 1, 2])
+        pstatus_relatives['apart'] = fuzz.trimf(pstatus_relatives.universe, [1, 2, 3])
+        famsup_relatives['yes'] = fuzz.trimf(famsup_relatives.universe, [1, 1, 2])
+        famsup_relatives['no'] = fuzz.trimf(famsup_relatives.universe, [1, 2, 3])
+        living_with_rel_relatives['low'] = fuzz.trimf(famsup_relatives.universe, [1, 1, 2])
+        living_with_rel_relatives['high'] = fuzz.trapmf(living_with_rel_relatives.universe, [1, 2, 3, 3])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule(pstatus_relatives['apart'] & famsup_relatives['no'] , living_with_rel_relatives['high']))
+        rules.append(ctrl.Rule(pstatus_relatives['apart'] & famsup_relatives['yes'],  living_with_rel_relatives['low']))
+        rules.append(ctrl.Rule(pstatus_relatives['together'] & famsup_relatives['no'] , living_with_rel_relatives['high']))
+        rules.append(ctrl.Rule(pstatus_relatives['together'] & famsup_relatives['yes'],  living_with_rel_relatives['low']))
+        # Control
+        relatives_ctrl = ctrl.ControlSystem(rules)
+        self.rating_relatives = ctrl.ControlSystemSimulation(relatives_ctrl)
 
-    rating.input['pstatus_f'] = pstatus
-    rating.input['famsup_f'] = famsup
-    # Crunch the numbers
-    rating.compute()
-    rate = rating.output['broken_family_f']
-    if rate <= 1.49:
-        label = 'mild'
-    else:
-        label = 'severe'
-    return rate, label
+        # HEALTH CONDITION
+        # Create universe fucntion
+        health_health = ctrl.Antecedent(np.arange(1, 5, 1), 'health_health')
+        activities_health = ctrl.Antecedent(np.arange(1, 3, 1), 'activities_health')
+        absences_health = ctrl.Antecedent(np.arange(0, 100, 1), 'absences_health')
+        health_conditions_health = ctrl.Consequent(np.arange(1, 5, 1), 'health_conditions_health')
+        # Membership
+        health_health['good'] = fuzz.trimf(health_health.universe, [3, 5, 5])
+        health_health['neutral'] = fuzz.trimf(health_health.universe, [2, 3, 4])
+        health_health['bad'] = fuzz.trimf(health_health.universe, [1, 1, 3])
+        activities_health['yes'] = fuzz.trimf(activities_health.universe, [1, 1, 2])
+        activities_health['no'] = fuzz.trimf(activities_health.universe, [1, 2, 3])
+        absences_health['few'] = fuzz.trimf(absences_health.universe, [0, 0, 4])
+        absences_health['moderate'] = fuzz.trimf(absences_health.universe, [2, 10, 15])
+        absences_health['frequent'] = fuzz.trapmf(absences_health.universe, [10, 25, 100, 100])
+        health_conditions_health['low'] = fuzz.trimf(health_conditions_health.universe, [1, 1, 3])
+        health_conditions_health['med'] = fuzz.trimf(health_conditions_health.universe, [2, 3, 4])
+        health_conditions_health['severe'] = fuzz.trimf(health_conditions_health.universe, [3, 5, 5])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule(health_health['bad'] & (absences_health['moderate'] | absences_health['frequent']) & (activities_health['yes'] | activities_health['no']), health_conditions_health['severe']))
+        rules.append(ctrl.Rule(health_health['bad'] & absences_health['few'] & (activities_health['yes'] | activities_health['no']), health_conditions_health['severe']))
+        rules.append(ctrl.Rule(health_health['neutral'] & (absences_health['moderate'] | absences_health['frequent']) & activities_health['yes'], health_conditions_health['severe']))
+        rules.append(ctrl.Rule(health_health['neutral'] & absences_health['few'], health_conditions_health['low']))
+        rules.append(ctrl.Rule(health_health['neutral'] & absences_health['moderate'], health_conditions_health['med']))
+        rules.append(ctrl.Rule(health_health['neutral'] & absences_health['frequent'], health_conditions_health['med']))
+        rules.append(ctrl.Rule(health_health['good'] & (activities_health['yes'] | activities_health['no']) & (absences_health['moderate'] | absences_health['frequent']), health_conditions_health['low']))
+        rules.append(ctrl.Rule(health_health['good'] & (activities_health['yes'] | activities_health['no']) & absences_health['few'], health_conditions_health['low']))
+        # Control
+        health_condition_ctrl = ctrl.ControlSystem(rules)
+        self.rating_health = ctrl.ControlSystemSimulation(health_condition_ctrl)
 
-def living_with_rel(pstatus, famsup):
-    pstatus_f = ctrl.Antecedent(np.arange(1, 3, 1), 'pstatus_f')
-    famsup_f = ctrl.Antecedent(np.arange(1, 3, 1), 'famsup_f')
-    living_with_rel_f = ctrl.Consequent(np.arange(1, 3, 1), 'living_with_rel_f')
-    # Memberships
-    pstatus_f['together'] = fuzz.trimf(pstatus_f.universe, [1, 1, 2])
-    pstatus_f['apart'] = fuzz.trimf(pstatus_f.universe, [1, 2, 3])
-    pstatus_f['together'] = fuzz.trimf(pstatus_f.universe, [1, 1, 2])
-    pstatus_f['apart'] = fuzz.trimf(pstatus_f.universe, [1, 2, 3])
-    famsup_f['yes'] = fuzz.trimf(famsup_f.universe, [1, 1, 2])
-    famsup_f['no'] = fuzz.trimf(famsup_f.universe, [1, 2, 3])
-    living_with_rel_f['low'] = fuzz.trimf(famsup_f.universe, [1, 1, 2])
-    living_with_rel_f['high'] = fuzz.trapmf(living_with_rel_f.universe, [1, 2, 3, 3])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule(pstatus_f['apart'] & famsup_f['no'] , living_with_rel_f['high']))
-    rules.append(ctrl.Rule(pstatus_f['apart'] & famsup_f['yes'],  living_with_rel_f['low']))
-    rules.append(ctrl.Rule(pstatus_f['together'] & famsup_f['no'] , living_with_rel_f['high']))
-    rules.append(ctrl.Rule(pstatus_f['together'] & famsup_f['yes'],  living_with_rel_f['low']))
-    # Control
-    broken_family_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(broken_family_ctrl)
-    rating.input['pstatus_f'] = pstatus
-    rating.input['famsup_f'] = famsup
-    # Crunch the numbers
-    rating.compute()
-    rate = rating.output['living_with_rel_f']
-    if rate <= 1.49:
-        label = 'mild'
-    else:
-        label = 'severe'
-    return rate, label
+        #LEARNING MATERIALS
+        # Create universe fucntion
+        internet_materials = ctrl.Antecedent(np.arange(1, 3, 1), 'internet_materials')
+        mjob_materials = ctrl.Antecedent(np.arange(1, 4, 1), 'mjob_materials')
+        fjob_materials = ctrl.Antecedent(np.arange(1, 4, 1), 'fjob_materials')
+        learning_materials_materials = ctrl.Consequent(np.arange(0, 5, 1), 'learning_materials_materials')
+        # Membership
+        internet_materials['yes'] = fuzz.trimf(internet_materials.universe, [1, 1, 2])
+        internet_materials['no'] = fuzz.trimf(internet_materials.universe, [1, 2, 3])
+        mjob_materials['low'] = fuzz.trimf(mjob_materials.universe, [1, 1, 2])
+        mjob_materials['med'] = fuzz.trapmf(mjob_materials.universe, [1, 2, 3, 4])
+        mjob_materials['high'] = fuzz.trapmf(mjob_materials.universe, [1, 3, 4, 4])
+        fjob_materials['low'] = fuzz.trimf(fjob_materials.universe, [1, 1, 2])
+        fjob_materials['med'] = fuzz.trapmf(fjob_materials.universe, [1, 2, 3, 4])
+        fjob_materials['high'] = fuzz.trapmf(fjob_materials.universe, [1, 3, 4, 4])
+        learning_materials_materials['low'] = fuzz.trapmf(learning_materials_materials.universe, [0, 0, 1, 2])
+        learning_materials_materials['med'] = fuzz.trapmf(learning_materials_materials.universe, [1, 2, 3, 4])
+        learning_materials_materials['severe'] = fuzz.trapmf(learning_materials_materials.universe, [3, 5, 5, 5])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule(internet_materials['yes'] & (mjob_materials['low'] | mjob_materials['med'] | mjob_materials['high']) & (fjob_materials['low'] | fjob_materials['med'] | fjob_materials['high']), learning_materials_materials['low']))
+        rules.append(ctrl.Rule(internet_materials['no'] & mjob_materials['low'] & fjob_materials['low'], learning_materials_materials['severe']))
+        rules.append(ctrl.Rule(internet_materials['no'] & mjob_materials['med'] & fjob_materials['low'], learning_materials_materials['severe']))
+        rules.append(ctrl.Rule(internet_materials['no'] & mjob_materials['low'] & fjob_materials['med'], learning_materials_materials['severe']))
+        rules.append(ctrl.Rule(internet_materials['no'] & mjob_materials['med'] & fjob_materials['med'], learning_materials_materials['med']))
+        rules.append(ctrl.Rule(internet_materials['no'] & (mjob_materials['high'] | fjob_materials['high']), learning_materials_materials['med']))
+        # Control
+        learning_materials_ctrl = ctrl.ControlSystem(rules)
+        self.rating_material = ctrl.ControlSystemSimulation(learning_materials_ctrl)
 
-def health_conditions(health, activities, absences):
-    # Create universe fucntion
-    health_f = ctrl.Antecedent(np.arange(1, 5, 1), 'health_f')
-    activities_f = ctrl.Antecedent(np.arange(1, 3, 1), 'activities_f')
-    absences_f = ctrl.Antecedent(np.arange(0, 100, 1), 'absences_f')
-    health_conditions_f = ctrl.Consequent(np.arange(1, 5, 1), 'health_conditions_f')
-    # Membership
-    health_f['good'] = fuzz.trimf(health_f.universe, [3, 5, 5])
-    health_f['neutral'] = fuzz.trimf(health_f.universe, [2, 3, 4])
-    health_f['bad'] = fuzz.trimf(health_f.universe, [1, 1, 3])
-    activities_f['yes'] = fuzz.trimf(activities_f.universe, [1, 1, 2])
-    activities_f['no'] = fuzz.trimf(activities_f.universe, [1, 2, 3])
-    absences_f['few'] = fuzz.trimf(absences_f.universe, [0, 0, 4])
-    absences_f['moderate'] = fuzz.trimf(absences_f.universe, [2, 10, 15])
-    absences_f['frequent'] = fuzz.trapmf(absences_f.universe, [10, 25, 100, 100])
-    health_conditions_f['low'] = fuzz.trimf(health_conditions_f.universe, [1, 1, 3])
-    health_conditions_f['med'] = fuzz.trimf(health_conditions_f.universe, [2, 3, 4])
-    health_conditions_f['severe'] = fuzz.trimf(health_conditions_f.universe, [3, 5, 5])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule(health_f['bad'] & (absences_f['moderate'] | absences_f['frequent']) & (activities_f['yes'] | activities_f['no']), health_conditions_f['severe']))
-    rules.append(ctrl.Rule(health_f['bad'] & absences_f['few'] & (activities_f['yes'] | activities_f['no']), health_conditions_f['severe']))
-    rules.append(ctrl.Rule(health_f['neutral'] & (absences_f['moderate'] | absences_f['frequent']) & activities_f['yes'], health_conditions_f['severe']))
-    rules.append(ctrl.Rule(health_f['neutral'] & absences_f['few'], health_conditions_f['low']))
-    rules.append(ctrl.Rule(health_f['neutral'] & absences_f['moderate'], health_conditions_f['med']))
-    rules.append(ctrl.Rule(health_f['neutral'] & absences_f['frequent'], health_conditions_f['med']))
-    rules.append(ctrl.Rule(health_f['good'] & (activities_f['yes'] | activities_f['no']) & (absences_f['moderate'] | absences_f['frequent']), health_conditions_f['low']))
-    rules.append(ctrl.Rule(health_f['good'] & (activities_f['yes'] | activities_f['no']) & absences_f['few'], health_conditions_f['low']))
-    # Control
-    health_condition_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(health_condition_ctrl)
-    rating.input['health_f'] = health
-    rating.input['activities_f'] = activities
-    rating.input['absences_f'] = absences
-    # Crunch the 10umbers
-    rating.compute()
-    rate = rating.output['health_conditions_f']
-    if rate <= 2.49:
-        label = 'mild'
-    elif rate >= 2.5 and rate <= 3.49:
-        label = 'moderate'
-    else:
-        label = 'severe'
-    return rate, label
+        # PARENTING ISSUES
+        # Create universe fucntion
+        pstatus_parent = ctrl.Antecedent(np.arange(1, 3, 1), 'pstatus_parent')
+        medu_parent = ctrl.Antecedent(np.arange(0, 4, 1), 'medu_parent')
+        fedu_parent = ctrl.Antecedent(np.arange(0, 4, 1), 'fedu_parent')
+        parenting_issues_parent = ctrl.Consequent(np.arange(1, 4, 1), 'parenting_issues_parent')
+        # Membership
+        medu_parent['low'] = fuzz.trapmf(medu_parent.universe, [0, 0, 1, 3])
+        medu_parent['med'] = fuzz.trimf(medu_parent.universe, [1, 2, 4])
+        medu_parent['high'] = fuzz.trimf(medu_parent.universe, [3, 4, 4])
+        fedu_parent['low'] = fuzz.trapmf(fedu_parent.universe, [0, 0, 1, 3])
+        fedu_parent['med'] = fuzz.trimf(fedu_parent.universe, [1, 2, 4])
+        fedu_parent['high'] = fuzz.trimf(fedu_parent.universe, [3, 4, 4])
+        pstatus_parent['together'] = fuzz.trimf(pstatus_parent.universe, [1, 1, 2])
+        pstatus_parent['apart'] = fuzz.trimf(pstatus_parent.universe, [1, 2, 3])
+        parenting_issues_parent['low'] = fuzz.trimf(parenting_issues_parent.universe, [1, 1, 2])
+        parenting_issues_parent['med'] = fuzz.trimf(parenting_issues_parent.universe, [1, 2, 3])
+        parenting_issues_parent['severe'] = fuzz.trimf(parenting_issues_parent.universe, [2, 3, 4])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['high'] & fedu_parent['low'], parenting_issues_parent['severe']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['high'] & fedu_parent['med'], parenting_issues_parent['med']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['high'] & fedu_parent['high'], parenting_issues_parent['low']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['med'] & fedu_parent['low'], parenting_issues_parent['severe']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['med'] & fedu_parent['med'], parenting_issues_parent['med']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['med'] & fedu_parent['high'], parenting_issues_parent['med']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['low'] & fedu_parent['low'], parenting_issues_parent['severe']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['low'] & fedu_parent['med'], parenting_issues_parent['severe']))
+        rules.append(ctrl.Rule( pstatus_parent['apart'] & medu_parent['low'] & fedu_parent['high'], parenting_issues_parent['severe']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['high'] & fedu_parent['low'], parenting_issues_parent['low']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['high'] & fedu_parent['med'], parenting_issues_parent['low']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['high'] & fedu_parent['high'], parenting_issues_parent['low']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['med'] & fedu_parent['low'], parenting_issues_parent['med']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['med'] & fedu_parent['med'], parenting_issues_parent['low']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['med'] & fedu_parent['high'], parenting_issues_parent['low']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['low'] & fedu_parent['low'], parenting_issues_parent['severe']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['low'] & fedu_parent['med'], parenting_issues_parent['med']))
+        rules.append(ctrl.Rule( pstatus_parent['together'] & medu_parent['low'] & fedu_parent['high'], parenting_issues_parent['low']))
+        # Control
+        parenting_issues_ctrl = ctrl.ControlSystem(rules)
+        self.rating_parent = ctrl.ControlSystemSimulation(parenting_issues_ctrl)
 
-def insufficient_learning_materials(internet, mjob, fjob):
-    # Create universe fucntion
-    internet_f = ctrl.Antecedent(np.arange(1, 3, 1), 'internet_f')
-    mjob_f = ctrl.Antecedent(np.arange(1, 4, 1), 'mjob_f')
-    fjob_f = ctrl.Antecedent(np.arange(1, 4, 1), 'fjob_f')
-    learning_materials_f = ctrl.Consequent(np.arange(0, 5, 1), 'learning_materials_f')
-    # Membership
-    internet_f['yes'] = fuzz.trimf(internet_f.universe, [1, 1, 2])
-    internet_f['no'] = fuzz.trimf(internet_f.universe, [1, 2, 3])
-    mjob_f['low'] = fuzz.trimf(mjob_f.universe, [1, 1, 2])
-    mjob_f['med'] = fuzz.trapmf(mjob_f.universe, [1, 2, 3, 4])
-    mjob_f['high'] = fuzz.trapmf(mjob_f.universe, [1, 3, 4, 4])
-    fjob_f['low'] = fuzz.trimf(fjob_f.universe, [1, 1, 2])
-    fjob_f['med'] = fuzz.trapmf(fjob_f.universe, [1, 2, 3, 4])
-    fjob_f['high'] = fuzz.trapmf(fjob_f.universe, [1, 3, 4, 4])
-    learning_materials_f['low'] = fuzz.trapmf(learning_materials_f.universe, [0, 0, 1, 2])
-    learning_materials_f['med'] = fuzz.trapmf(learning_materials_f.universe, [1, 2, 3, 4])
-    learning_materials_f['severe'] = fuzz.trapmf(learning_materials_f.universe, [3, 5, 5, 5])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule(internet_f['yes'] & (mjob_f['low'] | mjob_f['med'] | mjob_f['high']) & (fjob_f['low'] | fjob_f['med'] | fjob_f['high']), learning_materials_f['low']))
-    rules.append(ctrl.Rule(internet_f['no'] & mjob_f['low'] & fjob_f['low'], learning_materials_f['severe']))
-    rules.append(ctrl.Rule(internet_f['no'] & mjob_f['med'] & fjob_f['low'], learning_materials_f['severe']))
-    rules.append(ctrl.Rule(internet_f['no'] & mjob_f['low'] & fjob_f['med'], learning_materials_f['severe']))
-    rules.append(ctrl.Rule(internet_f['no'] & mjob_f['med'] & fjob_f['med'], learning_materials_f['med']))
-    rules.append(ctrl.Rule(internet_f['no'] & (mjob_f['high'] | fjob_f['high']), learning_materials_f['med']))
-    # Control
-    learning_materials_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(learning_materials_ctrl)
-    rating.input['internet_f'] = internet
-    rating.input['mjob_f'] = mjob
-    rating.input['fjob_f'] = fjob
-    # Crunch the numbers
-    rating.compute()
-    rate = rating.output['learning_materials_f']
-    if rate <= 2.49:
-        label = 'mild'
-    elif rate >= 2.5 and rate <= 3.49:
-        label = 'moderate'
-    else:
-        label = 'severe'
-    return rate, label
+        # STUDY HABIT
+        # Create universe fucntion
+        activities_study = ctrl.Antecedent(np.arange(1, 3, 1), 'activities_study')
+        absences_study = ctrl.Antecedent(np.arange(0, 100, 1), 'absences_study')
+        failures_study = ctrl.Antecedent(np.arange(0, 4, 1), 'failures_study')
+        study_habits_study = ctrl.Consequent(np.arange(0, 5, 1), 'study_habits_study')
+        # Membership
+        absences_study['few'] = fuzz.trimf(absences_study.universe, [0, 0, 4])
+        absences_study['moderate'] = fuzz.trimf(absences_study.universe, [2, 10, 15])
+        absences_study['frequent'] = fuzz.trapmf(absences_study.universe, [10, 25, 100, 100])
+        activities_study['yes'] = fuzz.trimf(activities_study.universe, [1, 1, 2])
+        activities_study['no'] = fuzz.trimf(activities_study.universe, [1, 2, 3])
+        failures_study['low'] = fuzz.trimf(failures_study.universe, [0, 0, 2])
+        failures_study['high'] = fuzz.trapmf(failures_study.universe, [1, 2, 4, 4])
+        study_habits_study['low'] = fuzz.trapmf(study_habits_study.universe, [0, 0, 1, 2])
+        study_habits_study['med'] = fuzz.trapmf(study_habits_study.universe, [1, 2, 3, 4])
+        study_habits_study['severe'] = fuzz.trapmf(study_habits_study.universe, [3, 5, 5, 5])
+        # Fuzzy rules
+        rules = []
+        rules.append(ctrl.Rule(activities_study['no'] & absences_study['frequent'] & failures_study['low'], study_habits_study['med']))
+        rules.append(ctrl.Rule(activities_study['no'] & absences_study['frequent'] & failures_study['high'], study_habits_study['severe']))
+        rules.append(ctrl.Rule(activities_study['no'] & absences_study['moderate'] & failures_study['low'], study_habits_study['med']))
+        rules.append(ctrl.Rule(activities_study['no'] & absences_study['moderate'] & failures_study['high'], study_habits_study['severe']))
+        rules.append(ctrl.Rule(activities_study['no'] & absences_study['few'] & failures_study['low'], study_habits_study['low']))
+        rules.append(ctrl.Rule(activities_study['no'] & absences_study['few'] & failures_study['high'], study_habits_study['severe']))
+        rules.append(ctrl.Rule(activities_study['yes'] & absences_study['frequent'] & failures_study['low'], study_habits_study['low']))
+        rules.append(ctrl.Rule(activities_study['yes'] & absences_study['frequent'] & failures_study['high'], study_habits_study['severe']))
+        rules.append(ctrl.Rule(activities_study['yes'] & absences_study['moderate'] & failures_study['low'], study_habits_study['low']))
+        rules.append(ctrl.Rule(activities_study['yes'] & absences_study['moderate'] & failures_study['high'], study_habits_study['severe']))
+        rules.append(ctrl.Rule(activities_study['yes'] & absences_study['few'] & failures_study['low'], study_habits_study['low']))
+        rules.append(ctrl.Rule(activities_study['yes'] & absences_study['few'] & failures_study['high'], study_habits_study['severe']))
+        # Control
+        study_habits_ctrl = ctrl.ControlSystem(rules)
+        self.rating_study = ctrl.ControlSystemSimulation(study_habits_ctrl)
 
-def parenting_issues(pstatus, medu, fedu):
-    # Create universe fucntion
-    pstatus_f = ctrl.Antecedent(np.arange(1, 3, 1), 'pstatus_f')
-    medu_f = ctrl.Antecedent(np.arange(0, 4, 1), 'medu_f')
-    fedu_f = ctrl.Antecedent(np.arange(0, 4, 1), 'fedu_f')
-    parenting_issues_f = ctrl.Consequent(np.arange(1, 4, 1), 'parenting_issues_f')
-    # Membership
-    medu_f['low'] = fuzz.trapmf(medu_f.universe, [0, 0, 1, 3])
-    medu_f['med'] = fuzz.trimf(medu_f.universe, [1, 2, 4])
-    medu_f['high'] = fuzz.trimf(medu_f.universe, [3, 4, 4])
-    fedu_f['low'] = fuzz.trapmf(fedu_f.universe, [0, 0, 1, 3])
-    fedu_f['med'] = fuzz.trimf(fedu_f.universe, [1, 2, 4])
-    fedu_f['high'] = fuzz.trimf(fedu_f.universe, [3, 4, 4])
-    pstatus_f['together'] = fuzz.trimf(pstatus_f.universe, [1, 1, 2])
-    pstatus_f['apart'] = fuzz.trimf(pstatus_f.universe, [1, 2, 3])
-    parenting_issues_f['low'] = fuzz.trimf(parenting_issues_f.universe, [1, 1, 2])
-    parenting_issues_f['med'] = fuzz.trimf(parenting_issues_f.universe, [1, 2, 3])
-    parenting_issues_f['severe'] = fuzz.trimf(parenting_issues_f.universe, [2, 3, 4])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['high'] & fedu_f['low'], parenting_issues_f['severe']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['high'] & fedu_f['med'], parenting_issues_f['med']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['high'] & fedu_f['high'], parenting_issues_f['low']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['med'] & fedu_f['low'], parenting_issues_f['severe']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['med'] & fedu_f['med'], parenting_issues_f['med']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['med'] & fedu_f['high'], parenting_issues_f['med']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['low'] & fedu_f['low'], parenting_issues_f['severe']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['low'] & fedu_f['med'], parenting_issues_f['severe']))
-    rules.append(ctrl.Rule( pstatus_f['apart'] & medu_f['low'] & fedu_f['high'], parenting_issues_f['severe']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['high'] & fedu_f['low'], parenting_issues_f['low']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['high'] & fedu_f['med'], parenting_issues_f['low']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['high'] & fedu_f['high'], parenting_issues_f['low']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['med'] & fedu_f['low'], parenting_issues_f['med']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['med'] & fedu_f['med'], parenting_issues_f['low']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['med'] & fedu_f['high'], parenting_issues_f['low']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['low'] & fedu_f['low'], parenting_issues_f['severe']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['low'] & fedu_f['med'], parenting_issues_f['med']))
-    rules.append(ctrl.Rule( pstatus_f['together'] & medu_f['low'] & fedu_f['high'], parenting_issues_f['low']))
-    # Control
-    parenting_issues_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(parenting_issues_ctrl)
-    rating.input['pstatus_f'] = pstatus
-    rating.input['medu_f'] = medu
-    rating.input['fedu_f'] = fedu
-    # Crunch the numbers
-    rating.compute()
-    rate = rating.output['parenting_issues_f']
-    if rate <= 1.49:
-        label = 'mild'
-    elif rate >= 1.5 and rate <= 2.49:
-        label = 'moderate'
-    else:
-        label = 'severe'
-    return rate, label
+    def financial_fuzzy(self, famsize, mjob, fjob):
+        self.rating_financial.input['mjob_financial'] = mjob
+        self.rating_financial.input['fjob_financial'] = fjob
+        self.rating_financial.input['famsize_financial'] = famsize
+        # Crunch the numbers
+        self.rating_financial.compute()
+        rate = self.rating_financial.output['financial_financial']
+        if rate <= 2.49:
+            label = 'mild'
+        elif rate >= 2.5 and rate <= 3.49:
+            label = 'moderate'
+        else:
+            label = 'severe'
+        return rate, label
 
-def study_habit(activities, absences, failures):
-    # Create universe fucntion
-    activities_f = ctrl.Antecedent(np.arange(1, 3, 1), 'activities_f')
-    absences_f = ctrl.Antecedent(np.arange(0, 100, 1), 'absences_f')
-    failures_f = ctrl.Antecedent(np.arange(0, 4, 1), 'failures_f')
-    study_habits_f = ctrl.Consequent(np.arange(0, 5, 1), 'study_habits_f')
-    # Membership
-    absences_f['few'] = fuzz.trimf(absences_f.universe, [0, 0, 4])
-    absences_f['moderate'] = fuzz.trimf(absences_f.universe, [2, 10, 15])
-    absences_f['frequent'] = fuzz.trapmf(absences_f.universe, [10, 25, 100, 100])
-    activities_f['yes'] = fuzz.trimf(activities_f.universe, [1, 1, 2])
-    activities_f['no'] = fuzz.trimf(activities_f.universe, [1, 2, 3])
-    failures_f['low'] = fuzz.trimf(failures_f.universe, [0, 0, 2])
-    failures_f['high'] = fuzz.trapmf(failures_f.universe, [1, 2, 4, 4])
-    study_habits_f['low'] = fuzz.trapmf(study_habits_f.universe, [0, 0, 1, 2])
-    study_habits_f['med'] = fuzz.trapmf(study_habits_f.universe, [1, 2, 3, 4])
-    study_habits_f['severe'] = fuzz.trapmf(study_habits_f.universe, [3, 5, 5, 5])
-    # Fuzzy rules
-    rules = []
-    rules.append(ctrl.Rule(activities_f['no'] & absences_f['frequent'] & failures_f['low'], study_habits_f['med']))
-    rules.append(ctrl.Rule(activities_f['no'] & absences_f['frequent'] & failures_f['high'], study_habits_f['severe']))
-    rules.append(ctrl.Rule(activities_f['no'] & absences_f['moderate'] & failures_f['low'], study_habits_f['med']))
-    rules.append(ctrl.Rule(activities_f['no'] & absences_f['moderate'] & failures_f['high'], study_habits_f['severe']))
-    rules.append(ctrl.Rule(activities_f['no'] & absences_f['few'] & failures_f['low'], study_habits_f['low']))
-    rules.append(ctrl.Rule(activities_f['no'] & absences_f['few'] & failures_f['high'], study_habits_f['severe']))
-    rules.append(ctrl.Rule(activities_f['yes'] & absences_f['frequent'] & failures_f['low'], study_habits_f['low']))
-    rules.append(ctrl.Rule(activities_f['yes'] & absences_f['frequent'] & failures_f['high'], study_habits_f['severe']))
-    rules.append(ctrl.Rule(activities_f['yes'] & absences_f['moderate'] & failures_f['low'], study_habits_f['low']))
-    rules.append(ctrl.Rule(activities_f['yes'] & absences_f['moderate'] & failures_f['high'], study_habits_f['severe']))
-    rules.append(ctrl.Rule(activities_f['yes'] & absences_f['few'] & failures_f['low'], study_habits_f['low']))
-    rules.append(ctrl.Rule(activities_f['yes'] & absences_f['few'] & failures_f['high'], study_habits_f['severe']))
-    # Control
-    study_habits_ctrl = ctrl.ControlSystem(rules)
-    rating = ctrl.ControlSystemSimulation(study_habits_ctrl)
-    rating.input['activities_f'] = activities
-    rating.input['failures_f'] = failures
-    rating.input['absences_f'] = absences
-    # Crunch the numbers
-    rating.compute()
-    rate = rating.output['study_habits_f']
-    if rate <= 2.49:
-        label = 'mild'
-    elif rate >= 2.5 and rate <= 3.49:
-        label = 'moderate'
-    else:
-        label = 'severe'
-    return rate, label
+    def broken_family(self, pstatus, famsup):
+        self.rating_broken_family.input['pstatus_broken_family'] = pstatus
+        self.rating_broken_family.input['famsup_broken_family'] = famsup
+        # Crunch the numbers
+        self.rating_broken_family.compute()
+        rate = self.rating_broken_family.output['broken_family']
+        if rate <= 1.49:
+            label = 'mild'
+        else:
+            label = 'severe'
+        return rate, label
+
+    def living_with_rel(self, pstatus, famsup):
+
+        self.rating_relatives.input['pstatus_relatives'] = pstatus
+        self.rating_relatives.input['famsup_relatives'] = famsup
+        # Crunch the numbers
+        self.rating_relatives.compute()
+        rate = self.rating_relatives.output['living_with_rel_relatives']
+        if rate <= 1.49:
+            label = 'mild'
+        else:
+            label = 'severe'
+        return rate, label
+
+    def health_conditions(self, health, activities, absences):
+
+        self.rating_health.input['health_health'] = health
+        self.rating_health.input['activities_health'] = activities
+        self.rating_health.input['absences_health'] = absences
+        # Crunch the 10umbers
+        self.rating_health.compute()
+        rate = self.rating_health.output['health_conditions_health']
+        if rate <= 2.49:
+            label = 'mild'
+        elif rate >= 2.5 and rate <= 3.49:
+            label = 'moderate'
+        else:
+            label = 'severe'
+        return rate, label
+
+    def insufficient_learning_materials(self, internet, mjob, fjob):
+
+        self.rating_material.input['internet_materials'] = internet
+        self.rating_material.input['mjob_materials'] = mjob
+        self.rating_material.input['fjob_materials'] = fjob
+        # Crunch the numbers
+        self.rating_material.compute()
+        rate = self.rating_material.output['learning_materials_materials']
+        if rate <= 2.49:
+            label = 'mild'
+        elif rate >= 2.5 and rate <= 3.49:
+            label = 'moderate'
+        else:
+            label = 'severe'
+        return rate, label
+
+    def parenting_issues(self, pstatus, medu, fedu):
+
+        self.rating_parent.input['pstatus_parent'] = pstatus
+        self.rating_parent.input['medu_parent'] = medu
+        self.rating_parent.input['fedu_parent'] = fedu
+        # Crunch the numbers
+        self.rating_parent.compute()
+        rate = self.rating_parent.output['parenting_issues_parent']
+        if rate <= 1.49:
+            label = 'mild'
+        elif rate >= 1.5 and rate <= 2.49:
+            label = 'moderate'
+        else:
+            label = 'severe'
+        return rate, label
+
+    def study_habit(self, activities, absences, failures):
+        self.rating_study.input['activities_study'] = activities
+        self.rating_study.input['failures_study'] = failures
+        self.rating_study.input['absences_study'] = absences
+        # Crunch the numbers
+        self.rating_study.compute()
+        rate = self.rating_study.output['study_habits_study']
+        if rate <= 2.49:
+            label = 'mild'
+        elif rate >= 2.5 and rate <= 3.49:
+            label = 'moderate'
+        else:
+            label = 'severe'
+        return rate, label

@@ -30,13 +30,14 @@ def login():
   			return render_template("Faculty.html")
 	return jsonify(role = role)
 
-@app.route('/sendemail/<string:receive>/<string:filename>', methods=['GET','POST'])
-def sendemail(receive,filename):
+@app.route('/sendemail/<string:receive>/<string:filename>/<string:dataset>', methods=['GET','POST'])
+def sendemail(receive,filename,dataset):
 
 	comp_path = os.getcwd();
 	new_comp_path = '/'.join(comp_path.split('\\'))
 	filepath = new_comp_path + "/defaultMessage.txt"
 	file = new_comp_path + "/dataset/" + filename
+	get_summaries_file = new_comp_path + "/dataset/dataset_new.csv"
 	# Open a plain text file for reading.  For this example, assume that
 	# the text file contains only ASCII characters.
 	fp = open(filepath, 'r')
@@ -49,9 +50,11 @@ def sendemail(receive,filename):
 	password = 'studentperformancesystem'
 	receiver = receive
 	status = ""
+	studentdata = dataset
+	print(studentdata)
 	#second_half,final_grade,fuzzy_results = train_naive(file,98)
-	second_half, final_grade =  get_summaries(file,90)
-	predict_secondhalf, predict_finalgrade = predict_grades(file,second_half, final_grade)
+	second_half, final_grade =  get_summaries(get_summaries_file,100)
+	predict_secondhalf, predict_finalgrade = predict_grades(file,second_half, final_grade,None)
 	fuzzy_results =  get_fuzzy_results(file)
 	print(second_half)
 	print(final_grade)
@@ -69,7 +72,7 @@ def sendemail(receive,filename):
 	auth_token = "374f6acea8826186eee9ac522afd0764"
 	client = Client(account_sid, auth_token)
 	# client.api.account.messages.create(
-	#     to="+639751764735",
+	#     to="+639162438998",
 	#     from_="+15138135511",
 	#     body=textmsg)
 	# Send the message via our own SMTP server, but don't include the

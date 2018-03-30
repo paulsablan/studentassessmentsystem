@@ -14,7 +14,7 @@ def parse_args(additional_args=[]):
 	#Defaults
 	parser.add_argument('--splitratio', type=int, default=90)
 	parser.add_argument('--datasets', type=str, default='./dataset')
-	parser.add_argument('--filename', type=str, default='dataset.csv')
+	parser.add_argument('--filename', type=str, default='STEM-12-7.csv')
 	# parser.add_argument('--filename', type=str, default='student-mat.csv')
 	parser.add_argument('--retrain', type=int, default=1)
 
@@ -25,6 +25,29 @@ def parse_args(additional_args=[]):
 	args = parser.parse_args()
 
 	return args
+def load_csv_section(filename, splitratio):
+	xs = []
+	ys = []
+	lines = csv.reader(open(filename, "r"))
+	dataset = list(lines)
+	population = len(dataset)
+	limit = int(population - (((100 - splitratio) / 100) * population))
+	for i in range(len(dataset)):
+		for j in dataset[i]:
+			data = j.split(',')
+			if i == 0:
+				ys.append(data)
+			else:
+				xs.append(data[2:])
+				xs[-1] = convert_to_int(xs[-1])
+	# for i in range(len(dataset)):
+	# 	if i == 0:
+	# 		ys = dataset[i]
+	# 	else:
+	# 		j = dataset[i][2:]
+	# 		xs.append(j)
+	# 		xs[-1] = convert_to_int(xs[-1])
+	return ys, xs[0:limit], None
 
 def load_csv_clean(filename, splitratio):
 	ys = []
@@ -143,6 +166,7 @@ def calculate_probability(x, mean, stdev):
 	return (1 / (math.sqrt(2*math.pi) * stdev)) * exponent
 
 def calculate_class_probabilities(summaries, input_vector):
+	# print((input_vector))
 	probabilities = {}
 	for class_value, class_summaries in summaries.items():
 		probabilities[class_value] = 1
