@@ -326,16 +326,19 @@ function opencsv(file, dataset){
 //Input CSV file
 $('#openFile').change(function(e){
 var fileSize = 0;
+   document.getElementById("inputTable").innerHTML = "";
    var file = document.getElementById("openFile").files[0];
    opencsv(file);
 });
 $('#openFileadmin').change(function(e){
 var fileSize = 0;
+   document.getElementById("inputTable").innerHTML = "";
    var file = document.getElementById("openFile").files[0];
    opencsv(file);
 });
 $('#clear').click(function(e){
   document.getElementById("openFile").value = "";
+  document.getElementById("inputTable").innerHTML = "";
 });
 $('#clearindividual').click(function(e){
   document.getElementById("studName").value = "";  
