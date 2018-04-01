@@ -44,13 +44,18 @@ function predict(file, dataset){
                 console.log(data);
                 var table = "";
                 var tablerow = "";
-                var number = "";
+                var studentname = "";
                 var remarks = "";
                 var toptable = "";
                 var toptablerow = "";
+                var inputtable = "";
+                var inputtablerow = "";
+                var counter = 1;
+                inputtable = document.getElementById("inputTable");
+                inputtablerow = inputtable.rows;
                 table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
                 for (x = 0; x < data.predict_finalgrade.length; x++){
-                  number = x+1;
+                  studentname = inputtablerow[counter].cells[0].firstChild.data;
                   if(data.predict_finalgrade[x] <= "75"){
                     remarks = "FAILED";
                   }
@@ -62,11 +67,12 @@ function predict(file, dataset){
                   }
                   tablerow = tablerow + "<tr>";
                   toptablerow = toptablerow + "<tr>"
-                  tablerow = tablerow + "<td>Student " + number + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>"; 
+                  tablerow = tablerow + "<td>" + studentname + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>"; 
                   for (y = 0; y < 7; y++){
                         tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>";          
                   }
                   tablerow = tablerow + "</tr>"; 
+                  counter++;
                 }
                 table = table + tablerow;
                 document.getElementById("resultstable").innerHTML = table;
@@ -110,13 +116,13 @@ function predict(file, dataset){
 
 //predict - faculty
 $('#predict').click(function(e){
-var file = ""
-if(document.getElementById("openFile").files.length == 0){
-  file = "None";
-}
-else{
-  file = document.getElementById("openFile").files[0].name;
-}
+var file = "";
+var dataset = "None";
+file = document.getElementById("openFile").files[0].name;
+predict(file, dataset);  
+});
+$('#predictindividual').click(function(e){
+var file = "None";
 var name = document.getElementById("studName").value;  
 var grade = document.getElementById("grade").value;         
 var famSize = document.getElementById("famSize").value; 
@@ -133,9 +139,9 @@ var health = document.getElementById("health").value;
 var absences = document.getElementById("absences").value; 
 var g1 = document.getElementById("g1").value; 
 var dataset = [name, grade, famSize, parentStatus, mEdu, fEdu, mJob, fJob, failures, famSup, activities, internet, health, absences, g1];
-predict(file, dataset);  
+predict(file, dataset);
+opencsv(file,dataset);  
 });
-
 function predictadmin(file, dataset){
   console.log(dataset);
 
@@ -157,11 +163,17 @@ function predictadmin(file, dataset){
                 var remarks = "";
                 var failedCounter = 0;
                 var failingCounter = 0;
-                var passedCounter = 0;
                 var toptable = "";
+                var toptablerow = "";
+                var passedCounter = 0;
+                var inputtable = "";
+                var inputtablerow = "";
+                var counter = 1;
+                inputtable = document.getElementById("inputTable");
+                inputtablerow = inputtable.rows;
                 table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
                 for (x = 0; x < data.predict_finalgrade.length; x++){
-                  number = x+1;
+                  studentname = inputtablerow[counter].cells[0].firstChild.data;
                   if(data.predict_finalgrade[x] <= "75"){
                     remarks = "FAILED";
                     failedCounter++;
@@ -175,7 +187,7 @@ function predictadmin(file, dataset){
                     passedCounter++;
                   }
                   tablerow = tablerow + "<tr>"
-                  tablerow = tablerow + "<td>Student " + number + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>"; 
+                  tablerow = tablerow + "<td>" + studentname + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>"; 
                   for (y = 0; y < 7; y++){
                         tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>"            
                   }
@@ -243,15 +255,16 @@ function predictadmin(file, dataset){
               }
             });
 }
+
 //predict - admin
 $('#predictadmin').click(function(e){
-var file = ""
-if(document.getElementById("openFileadmin").files.length == 0){
-  file = "None";
-}
-else{
-  file = document.getElementById("openFileadmin").files[0].name;
-}          
+var file = "";
+var dataset = "None";
+file = document.getElementById("openFile").files[0].name;
+predict(file, dataset);  
+});
+$('#predictindividualadmin').click(function(e){
+var file = "None";
 var name = document.getElementById("studName").value;  
 var grade = document.getElementById("grade").value;         
 var famSize = document.getElementById("famSize").value; 
@@ -268,13 +281,22 @@ var health = document.getElementById("health").value;
 var absences = document.getElementById("absences").value; 
 var g1 = document.getElementById("g1").value; 
 var dataset = [name, grade, famSize, parentStatus, mEdu, fEdu, mJob, fJob, failures, famSup, activities, internet, health, absences, g1];
-predictadmin(file, dataset);
-console.log(dataset);
+predict(file, dataset);
+opencsv(file,dataset);  
 });
-function opencsv(file){
+function opencsv(file, dataset){
   var theFile = file;
-
- if (theFile) {
+ if(file == "None"){
+   var table =  document.getElementById("inputTable");
+   var tablerow = "";
+   table = "<tr><th>Student Name</th><th>Grade</th><th>famSize</th><th>parentStatus</th><th>mEdu</th><th>fEdu</th><th>mJob</th><th>fJob</th><th>failures</th><th>famSup</th><th>activities</th><th>internet</th><th>health</th><th>absences</th><th>g1</th></tr>";
+   for(var x = 0; x < dataset.length; x++){
+    tablerow = tablerow + "<td>" + dataset[x] + "</td>";
+   }
+   table = table + "<tr>" + tablerow + "</tr>";
+   document.getElementById("inputTable").innerHTML = table;
+ }
+ else{
  var table = document.getElementById("inputTable");
  var headerLine = "";
  var myReader = new FileReader();
@@ -307,5 +329,33 @@ var fileSize = 0;
    var file = document.getElementById("openFile").files[0];
    opencsv(file);
 });
+$('#openFileadmin').change(function(e){
+var fileSize = 0;
+   var file = document.getElementById("openFile").files[0];
+   opencsv(file);
+});
+$('#clear').click(function(e){
+  document.getElementById("openFile").value = "";
+});
+$('#clearindividual').click(function(e){
+  document.getElementById("studName").value = "";  
+  document.getElementById("grade").value = "";         
+  document.getElementById("famSize").value = ""; 
+  document.getElementById("parentStatus").value = ""; 
+  document.getElementById("mEdu").value = ""; 
+  document.getElementById("fEdu").value = ""; 
+  document.getElementById("mJob").value = ""; 
+  document.getElementById("fJob").value = ""; 
+  document.getElementById("failures").value = ""; 
+  document.getElementById("famSup").value = ""; 
+  document.getElementById("activities").value = ""; 
+  document.getElementById("health").value = ""; 
+  document.getElementById("internet").value = ""; 
+  document.getElementById("health").value = ""; 
+  document.getElementById("absences").value = ""; 
+  document.getElementById("g1").value = ""; 
+});
+
+
 
 

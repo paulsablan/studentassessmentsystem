@@ -14,7 +14,7 @@ CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Gmail API Python Send Email'
 @app.route('/', methods=['GET'])
 def index():
-	
+
 	return render_template('login.html')
 
 @app.route('/home', methods=['POST'])
@@ -51,13 +51,16 @@ def sendemail(receive,filename,dataset):
 	receiver = receive
 	status = ""
 	studentdata = dataset
-	if studentdata == "None":
+	print(type(studentdata))
+	print(studentdata)
+	if type(studentdata) is str and (studentdata == "None" or studentdata == ",,,,,,,,,,,,,,"):
 		studentdata = None
 	else:
 		j = studentdata.split(',')
 		studentdata = []
 		for i in range(2,len(j)):
 			studentdata.append(int(j[i]))
+			
 	#second_half,final_grade,fuzzy_results = train_naive(file,98)
 	second_half, final_grade =  get_summaries(get_summaries_file,100)
 	predict_secondhalf, predict_finalgrade = predict_grades(file,second_half, final_grade, studentdata)
@@ -91,6 +94,5 @@ def sendemail(receive,filename,dataset):
 	status = "sent"
 	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results)
 
-if __name__ == "__main__":	
+if __name__ == "__main__":
 	app.run(debug=True,host='0.0.0.0', port=80)
- 

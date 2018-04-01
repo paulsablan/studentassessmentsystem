@@ -19,7 +19,7 @@
         
     <title>Admin - Incorporating Predictive Analytics on Student Assessment System</title>
 </head>
-<body  onload="predictadmin('STEM-12-7.csv','None'); opencsv('/dataset/STEM-12-7.csv');">
+<body>
 	<nav class="navbar navbar-default navbar-admin"><span class="navbar-title">Incorporating Predictive Analytics on Student Assessment System</span><a href="/" class="logout-link">Logout <i class="glyphicon glyphicon-log-in log-icon"></i></a></nav>
 	<div class="sidenav">
 		<div class="profile-image">
@@ -30,32 +30,32 @@
 			<h5>Principal</h5>
 		</div>
 		<ul class="dropdown-container">
-		    <li class="active clicked"><a data-toggle="tab" href="#home" onclick="predictadmin('STEM-12-7.csv','None'); opencsv('/dataset/STEM-12-7.csv');">STEM 12-7</a></li>
-		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('STEM-12-13.csv','None'); opencsv('/dataset/STEM-12-13.csv');">STEM 12-13</a></li>
-		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('STEM-12-15.csv','None'); opencsv('/dataset/STEM-12-15.csv');">STEM 12-15</a></li>
-		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('GAS-12-3.csv','None'); opencsv('/dataset/GAS-12-3.csv');">GAS 12-3</a></li>
-		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('GAS-12-6.csv','None');opencsv('/dataset/GAS-12-6.csv');">GAS 12-6</a></li>
-		    <li><a data-toggle="tab" href="#home" onclick="predictadmin('GAS-12-8.csv','None'); opencsv('/dataset/GAS-12-8.csv');">GAS 12-8</a></li>
+		    <li class="active clicked"><a data-toggle="tab" href="#home">STEM 12-7</a></li>
+		    <li><a data-toggle="tab" href="#home">STEM 12-13</a></li>
+		    <li><a data-toggle="tab" href="#home">STEM 12-15</a></li>
+		    <li><a data-toggle="tab" href="#home">GAS 12-3</a></li>
+		    <li><a data-toggle="tab" href="#home">GAS 12-6</a></li>
+		    <li><a data-toggle="tab" href="#home">GAS 12-8</a></li>
 		</ul>
 	</div>
 	<div id="home" class="row content-user">
 		<ul class="col-md-offset-2 nav nav-tabs">
-		    <li class="active"><a data-toggle="tab" href="#results">Results</a></li>
-		    <li><a data-toggle="tab" href="#menu3">Top Rankings</a></li>
-		    <li><a data-toggle="tab" href="#menu4">Chart</a></li>
-		    <li><a data-toggle="tab" href="#menu1">Input</a></li>
-		    <li><a data-toggle="tab" href="#menu2">Input Table</a></li>
-
+			<li class="active"><a data-toggle="tab" href="#file">Input File</a></li>
+		    <li><a data-toggle="tab" href="#individual">Input Individual</a></li>
+		    <li><a data-toggle="tab" href="#table">Input Table</a></li>
+		    <li><a data-toggle="tab" href="#results">Results</a></li>
+		    <li><a data-toggle="tab" href="#top">Top Rankings</a></li>
+		    <li><a data-toggle="tab" href="#chart">Chart</a></li>
 		</ul>
 
 		<div class="col-md-offset-2 tab-content" >
-			<div id="menu4" class="tab-pane fade">
+			<div id="chart" class="tab-pane fade">
 				<center>
 						<br>
 						<canvas id="learningChart" height="130px" />
 				</center>
 		    </div>
-		    <div id="menu3" class="tab-pane fade">
+		    <div id="top" class="tab-pane fade">
 				<center>
 						<br><br>
 						<div class="list-table">
@@ -64,13 +64,24 @@
 						</div>
 				</center>
 		    </div>	
-		    <div id="menu1" class="tab-pane fade">					
+		    <div id="file" class="tab-pane fade in active">
+				<center>
 					<div class="col-md-12">
 						<div class="form-group">
-						    <br>
-							<input type="file" name="openFile" id="openFileadmin" class="form-control" accept=".csv,.xlsx">		
+						    <br><br>
+							<input type="file" name="openFile" id="openFile" class="form-control" accept=".csv,.xlsx">		
 						</div>
+					<div class="col-md-6">
+						<button class="btn btn-primary btn-predict" id="predictadmin">Predict</button>
 					</div>
+					<div class="col-md-6">
+						<button class="btn btn-danger btn-predict" id="clear">Clear</button>
+					</div>
+					</div>	
+				</center>
+		    </div>					
+		    <div id="individual" class="tab-pane fade">
+		    		<br><br>					
 					<form method="get">
 						  <div class="col-md-4">
 						  	  <div class="form-group">
@@ -139,12 +150,16 @@
 						      </div>
 						  </div>
 					</form>
-					<div class="col-md-12">
-						<button class="btn btn-primary btn-predict" id="predictadmin">Predict</button>
+					<div class="col-md-6">
+						<button class="btn btn-primary btn-predict" id="predictindividualadmin">Predict</button>
+					</div>
+					<div class="col-md-6">
+						<button class="btn btn-danger btn-predict" id="clearindividual">Clear</button>
 					</div>
 					
 		    </div>
-		    <div id="menu2" class="tab-pane fade">
+
+		    <div id="table" class="tab-pane fade">
 		      <div>
 					<center>
 						<br><br>
