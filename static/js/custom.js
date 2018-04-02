@@ -194,6 +194,7 @@ function predictadmin(file, dataset){
                         tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>"
                   }
                   tablerow = tablerow + "</tr>";
+                  counter++;
                 }
                 table = table + tablerow;
                 document.getElementById("resultstable").innerHTML = table;
