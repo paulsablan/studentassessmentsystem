@@ -16,7 +16,7 @@
     <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js') }}"></script>
 	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css')}}">
-        
+
     <title>Admin - Incorporating Predictive Analytics on Student Assessment System</title>
 </head>
 <body>
@@ -63,13 +63,13 @@
 							</table>
 						</div>
 				</center>
-		    </div>	
+		    </div>
 		    <div id="file" class="tab-pane fade in active">
 				<center>
 					<div class="col-md-12">
 						<div class="form-group">
 						    <br><br>
-							<input type="file" name="openFile" id="openFile" class="form-control" accept=".csv,.xlsx">		
+							<input type="file" name="openFile" id="openFile" class="form-control" accept=".csv,.xlsx">
 						</div>
 					<div class="col-md-6">
 						<button class="btn btn-primary btn-predict" id="predictadmin">Predict</button>
@@ -77,14 +77,44 @@
 					<div class="col-md-6">
 						<button class="btn btn-danger btn-predict" id="clear">Clear</button>
 					</div>
-					</div>	
+					</div>
 				</center>
-		    </div>					
+		    </div>
 		    <div id="individual" class="tab-pane fade">
-		    		<br><br>					
+		    		<br><br>
 					<form method="get">
 						  <div class="col-md-4">
 						  	  <div class="form-group">
+
+                  <datalist id="p_status">
+                    <option value="Apart">
+                    <option value="Together">
+                  </datalist>
+
+                  <datalist id="edu_list">
+                    <option value="None">
+                    <option value="Nursery">
+                    <option value="Primary">
+                    <option value="Secondary">
+                    <option value="Tertiary">
+                    <option value="Elementary">
+                    <option value="High School">
+                    <option value="College">
+                  </datalist>
+
+                  <datalist id="job_list">
+                    <option value="None">
+                    <option value="Teacher">
+                    <option value="Education">
+                    <option value="Health">
+                    <option value="Services">
+                  </datalist>
+
+                  <datalist id="yes_no_list">
+                    <option value="No">
+                    <option value="Yes">
+                  </datalist>
+
 						        <label>Student Name:</label>
 						          <input type="text" name="studName" id="studName" placeholder="SURNAME FIRST NAME MIDDLE NAME" class="form-control">
 						      </div>
@@ -98,56 +128,58 @@
 						      </div>
 						      <div class="form-group">
 						        <label>Parent Status:</label>
-						          <input type="text" name="parentStatus" id="parentStatus" placeholder="PARENT STATUS" class="form-control">
+						          <input type="text" list="p_status" name="parentStatus" id="parentStatus" placeholder="PARENT STATUS" class="form-control">
+
 						      </div>
 						      <div class="form-group">
 						        <label>Mother's Education:</label>
-						          <input type="text" name="mEdu" id="mEdu" placeholder="MOTHER'S EDUCATION" class="form-control">
+						          <input type="text" list="edu_list" name="mEdu" id="mEdu" placeholder="MOTHER'S EDUCATION" class="form-control">
+
 						      </div>
 						  </div>
 					      <div class="col-md-4">
 						  	  <div class="form-group">
 						        <label>Father's Education:</label>
-						          <input type="text" name="fEdu" id="fEdu" placeholder="FATHER'S EDUCATION" class="form-control">
+						          <input type="text" list="edu_list" name="fEdu" id="fEdu" placeholder="FATHER'S EDUCATION" class="form-control">
 						      </div>
 						      <div class="form-group">
 						        <label>Mother's Job:</label>
-						          <input type="text" name="mJob" id="mJob" placeholder="MOTHER'S JOB" class="form-control">
+						          <input type="text" list="job_list" name="mJob" id="mJob" placeholder="MOTHER'S JOB" class="form-control">
 						      </div>
 						      <div class="form-group">
 						        <label>Father's Job:</label>
-						          <input type="text" name="fJob" id="fJob" placeholder="FATHER'S JOB" class="form-control">
+						          <input type="text" list="job_list" name="fJob" id="fJob" placeholder="FATHER'S JOB" class="form-control">
 						      </div>
 						      <div class="form-group">
-						        <label>Failures:</label>
+						        <label>Number of Failures:</label>
 						          <input type="text" name="failures" id="failures" placeholder="FAILURES" class="form-control">
 						      </div>
 						      <div class="form-group">
-						        <label>Family Supplies:</label>
-						          <input type="text" name="famSup" id="famSup" placeholder="FAMILY SUPPLIES" class="form-control">
+						        <label>Family Support:</label>
+						          <input type="text" list="yes_no_list" name="famSup" id="famSup" placeholder="FAMILY SUPPORT" class="form-control">
 						      </div>
 						  </div>
 						  <div class="col-md-4">
 						  	  <div class="form-group">
-						        <label>Activities:</label>
-						          <input type="text" name="activities" id="activities" placeholder="ACTIVITIES" class="form-control">
+						        <label>Extra-curricular Activities:</label>
+						          <input type="text" list="yes_no_list" name="activities" id="activities" placeholder="EXTRA-CURRICULAR ACTIVITIES" class="form-control">
 						      </div>
 						      <div class="form-group">
-						        <label>Internet:</label>
-						          <input type="text" name="internet" id="internet" placeholder="Internet" class="form-control">
+						        <label>Internet Access:</label>
+						          <input type="text" list="yes_no_list" name="internet" id="internet" placeholder="INTERNET ACCESS" class="form-control">
 						      </div>
 						      <div class="form-group">
-						        <label>Health:</label>
-						          <input type="text" name="health" id="health" placeholder="HEALTH" class="form-control">
+						        <label>Health Status:</label>
+						          <input type="text" name="health" id="health" placeholder="HEALTH STATUS (1-5)" class="form-control">
 						      </div>
 						      <div class="form-group">
-						        <label>Absences:</label>
+						        <label>Number of Absences:</label>
 						          <input type="text" name="absences" id="absences" placeholder="ABSENCES" class="form-control">
 						      </div>
-						      <div class="form-group">
+						      <!--<div class="form-group">
 						        <label>G1:</label>
 						          <input type="text" name="g1" id="g1" placeholder="G1" class="form-control">
-						      </div>
+						      </div>-->
 						  </div>
 					</form>
 					<div class="col-md-6">
@@ -156,7 +188,7 @@
 					<div class="col-md-6">
 						<button class="btn btn-danger btn-predict" id="clearindividual">Clear</button>
 					</div>
-					
+
 		    </div>
 
 		    <div id="table" class="tab-pane fade">
@@ -179,8 +211,7 @@
 			  </center>
 		    </div>
 		</div>
-		
+
 	</div>
 	<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-	<script src="https://apis.google.com/js/client.js?onload=handleClientLoad"></script> 
 </body>

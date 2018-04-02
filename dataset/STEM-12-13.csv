@@ -1,49 +1,49 @@
-Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1
-ANCHETA IAN JAY GARCIA,81,2,1,3,2,1,1,1,1,2,1,5,10,81
-BAGATNAN BRYAN ALANGAT,85,2,1,4,3,4,1,0,1,1,1,2,4,85
-BALGOSIII ISRAEL CHAVENIA,85,2,1,4,2,1,1,0,1,1,1,1,4,85
-BENOZA CLARENCE JAKE BUENO,89,2,1,4,2,3,1,2,1,2,1,3,4,89
-BERNARDO GLENN BREECH JAPZON,83,1,1,4,3,3,1,0,2,1,1,5,14,83
-CADIZ CLYDE GLENN GEVEN,87,2,1,4,4,1,2,0,1,2,1,5,10,87
-DE CASTRO DOMEL CHRISTIAN HENERA,83,1,1,2,2,4,1,0,1,2,1,5,6,83
-DELEN RALPH ANDRAE DELAS ALAS,87,2,1,4,2,3,4,0,2,2,1,3,0,87
-DIAZ RENZ ANTHONY ELEVADO,83,1,1,4,4,4,1,0,1,2,1,3,13,83
-ISIP MARVIN JEROLD,88,1,1,3,2,1,1,0,2,2,1,1,2,88
-JUANILLAS KEART MAVERICK RAMOS,72,2,1,2,2,1,1,0,1,2,1,3,18,72
-LUMBES KENT PATRICK CONTI,90,1,1,4,2,2,1,0,2,1,1,5,2,90
-MAGDALAGA MARLAN TAMAYO,88,2,1,4,4,3,1,0,1,1,1,5,18,88
-OCO NEO SALEN,90,1,2,3,2,4,1,0,1,2,1,1,0,90
-PAJARILLAGA PATRICK NEIL ESTEBAN,85,1,1,4,3,3,1,0,2,1,1,3,14,85
-SALASALAN JOHN JOSHUA RONQUILLO,84,2,1,1,2,1,4,0,2,2,2,3,0,84
-SALMORIN GERALD SEñADAN,84,1,1,4,4,2,1,0,1,2,1,5,8,84
-SANCHEZ MARK VICENTE ERNAL,87,1,1,4,2,2,4,0,1,1,1,4,6,87
-TORRES MERVIN DELA CRUZ,89,1,2,4,4,2,2,0,1,1,1,2,9,89
-TORRES RUPERTO III NOFUENTE,79,2,2,3,2,1,4,0,2,2,1,5,75,79
-VISORIA KENNETH JOHN BATTAD,82,1,2,3,2,4,1,0,2,2,2,5,2,82
-ALBAO ELLA JOY CORTEZ,78,1,1,4,3,2,1,0,2,1,1,4,4,78
-BARRIENTOS MARY ROCHELLE EMEN,82,2,1,3,2,4,4,1,1,1,2,2,16,82
-BASQUIñAS BLESSIE MADERA,80,2,1,3,3,4,4,2,1,1,1,3,8,80
-BERGONIA VENUS LACAYANGA,83,2,1,4,4,2,4,0,1,1,1,5,4,83
-CALLEJA DHEA ELAINE P.,84,2,1,2,2,1,1,0,1,2,1,4,0,84
-CASTRO MARDIE GREFALDO,86,2,1,2,1,1,1,0,2,2,1,5,20,86
-CONDEZA CHRISTINE MARA,87,2,1,2,4,4,1,1,1,1,1,3,8,87
-CRUZ LEYRA RAZON,90,1,1,4,2,2,1,0,2,1,1,5,2,90
-DACANAY ROBELYN TRIPOLI,88,2,1,3,3,3,1,0,1,2,1,5,4,88
-EUSEBIO JIANNA ERHALLYN L.,91,1,1,4,4,1,1,0,1,1,1,1,0,91
-FERRER MARA JANE DE GUZMAN,88,1,1,4,4,3,3,0,1,1,1,4,4,88
-FLORECE KIMBERLY JOYCE PAGLINAWAN,87,2,1,3,4,1,1,0,1,1,1,5,0,87
-FLORES JOANA MARIE ALERIA,88,1,1,4,3,4,1,0,1,1,1,5,10,88
-FULLERO LOUISE VEANCA BIGAYAN,87,2,1,4,4,1,2,0,1,2,1,5,10,87
-JAPSON LOGEN POSTO,83,2,1,3,4,4,3,0,1,1,1,5,2,83
-JURIA MA. ANGELA BERSABE,85,1,1,4,4,2,4,0,2,2,1,5,0,85
-MAMANGUN JAZMIR MYRENE ALBUTRA,85,1,1,4,3,3,1,0,2,1,1,3,14,85
-MODESTANO JOANA LIPUTANA,88,2,1,4,2,3,4,0,2,2,1,1,4,88
-OLITRES MARIA GRACE APITAN,89,2,1,3,3,1,1,0,2,2,1,1,0,89
-OCON CHERRY MAE TADEO,84,2,1,2,2,1,1,0,1,2,1,4,0,84
-PALLE JANELLE PAULINE ROBLES,87,2,1,4,2,3,4,0,2,2,1,3,0,87
-PATRIARCA ALAIZA EGUSQUISA,86,1,1,2,4,1,3,0,1,1,1,5,2,86
-PERMEJO MARY NICOLE LUBIANO,86,2,1,2,1,1,1,0,2,2,1,5,20,86
-RABULAN MICKA ROSH DIME,86,2,1,1,1,4,2,0,1,2,1,3,6,86
-SANTOS JUSTINE JOY ESPIRITU,88,1,1,3,2,1,1,0,2,2,1,1,2,88
-SONABA ISSA DULA,85,2,1,4,3,4,1,0,1,1,1,2,4,85
-VILLANUEVA GIA,89,1,2,4,4,2,2,0,1,1,1,2,9,89
+"Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1"
+"Ancheta Ian Jay Garcia,81,2,1,3,2,1,1,1,1,2,1,5,10,81"
+"Bagatnan Bryan Alangat,85,2,1,4,3,4,1,0,1,1,1,2,4,85"
+"BalgosIII Israel Chavenia,85,2,1,4,2,1,1,0,1,1,1,1,4,85"
+"Benoza Clarence Jake Bueno,89,2,1,4,2,3,1,2,1,2,1,3,4,89"
+"Bernardo Glenn Breech Japzon,83,1,1,4,3,3,1,0,2,1,1,5,14,83"
+"Cadiz Clyde Glenn Geven,87,2,1,4,4,1,2,0,1,2,1,5,10,87"
+"DeCastro Domel Christian Henera,83,1,1,2,2,4,1,0,1,2,1,5,6,83"
+"Delen Ralph Andrae Delas Alas,87,2,1,4,2,3,4,0,2,2,1,3,0,87"
+"Diaz Renz Anthony Elevado,83,1,1,4,4,4,1,0,1,2,1,3,13,83"
+"Isip Marvin Jerold,88,1,1,3,2,1,1,0,2,2,1,1,2,88"
+"Juanillas Keart Maverick Ramos,72,2,1,2,2,1,1,0,1,2,1,3,18,72"
+"Lumbes Kent Patrick Conti,90,1,1,4,2,2,1,0,2,1,1,5,2,90"
+"Magdalaga Marlan Tamayo,88,2,1,4,4,3,1,0,1,1,1,5,18,88"
+"Oco Neo Salen,90,1,2,3,2,4,1,0,1,2,1,1,0,90"
+"Pajarillaga Patrick Neil Esteban,85,1,1,4,3,3,1,0,2,1,1,3,14,85"
+"Salasalan John Joshua Ronquillo,84,2,1,1,2,1,4,0,2,2,2,3,0,84"
+"Salmorin Gerald Señadan,84,1,1,4,4,2,1,0,1,2,1,5,8,84"
+"Sanchez Mark Vicente Ernal,87,1,1,4,2,2,4,0,1,1,1,4,6,87"
+"Torres Mervin Dela Cruz,89,1,2,4,4,2,2,0,1,1,1,2,9,89"
+"Torres Ruperto III Nofuente,79,2,2,3,2,1,4,0,2,2,1,5,75,79"
+"Visoria Kenneth John Battad,82,1,2,3,2,4,1,0,2,2,2,5,2,82"
+"Albao Ella Joy Cortez,78,1,1,4,3,2,1,0,2,1,1,4,4,78"
+"Barrientos Mary Rochelle Emen,82,2,1,3,2,4,4,1,1,1,2,2,16,82"
+"Basquiñas Blessie Madera,80,2,1,3,3,4,4,2,1,1,1,3,8,80"
+"Bergonia Venus Lacayanga,83,2,1,4,4,2,4,0,1,1,1,5,4,83"
+"Calleja Dhea Elaine P.,84,2,1,2,2,1,1,0,1,2,1,4,0,84"
+"Castro Mardie Grefaldo,86,2,1,2,1,1,1,0,2,2,1,5,20,86"
+"Condeza Christine Mara,87,2,1,2,4,4,1,1,1,1,1,3,8,87"
+"Cruz Leyra Razon,90,1,1,4,2,2,1,0,2,1,1,5,2,90"
+"Dacanay Robelyn Tripoli,88,2,1,3,3,3,1,0,1,2,1,5,4,88"
+"Eusebio Jianna Erhallyn L.,91,1,1,4,4,1,1,0,1,1,1,1,0,91"
+"Ferrer Mara Jane De Guzman,88,1,1,4,4,3,3,0,1,1,1,4,4,88"
+"Florece Kimberly Joyce Paglinawan,87,2,1,3,4,1,1,0,1,1,1,5,0,87"
+"Flores Joana Marie Aleria,88,1,1,4,3,4,1,0,1,1,1,5,10,88"
+"Fullero Louise Veanca Bigayan,87,2,1,4,4,1,2,0,1,2,1,5,10,87"
+"Japson Logen Posto,83,2,1,3,4,4,3,0,1,1,1,5,2,83"
+"Juria Ma. Angela Bersabe,85,1,1,4,4,2,4,0,2,2,1,5,0,85"
+"Mamangun Jazmir Myrene Albutra,85,1,1,4,3,3,1,0,2,1,1,3,14,85"
+"Modestano Joana Liputana,88,2,1,4,2,3,4,0,2,2,1,1,4,88"
+"Olitres Maria Grace Apitan,89,2,1,3,3,1,1,0,2,2,1,1,0,89"
+"Ocon Cherry Mae Tadeo,84,2,1,2,2,1,1,0,1,2,1,4,0,84"
+"Palle Janelle Pauline Robles,87,2,1,4,2,3,4,0,2,2,1,3,0,87"
+"Patriarca Alaiza Egusquisa,86,1,1,2,4,1,3,0,1,1,1,5,2,86"
+"Permejo Mary Nicole Lubiano,86,2,1,2,1,1,1,0,2,2,1,5,20,86"
+"Rabulan Micka Rosh Dime,86,2,1,1,1,4,2,0,1,2,1,3,6,86"
+"Santos Justine Joy Espiritu,88,1,1,3,2,1,1,0,2,2,1,1,2,88"
+"Sonaba Issa Dula,85,2,1,4,3,4,1,0,1,1,1,2,4,85"
+"Villanueva Gia,89,1,2,4,4,2,2,0,1,1,1,2,9,89"

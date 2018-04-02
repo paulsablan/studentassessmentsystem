@@ -1,50 +1,50 @@
-Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1
-BUENAVENTURA GALILEO S,82,2,1,2,4,1,1,0,1,2,1,5,7,82
-MERCADO PAOLO M,79,2,1,2,1,4,1,0,1,1,1,4,4,79
-NADONGA SEBASTIEN ALAIN MARCO R,79,2,2,3,2,1,4,0,2,2,1,5,75,79
-ORTEGA BERNARD JUSTINE G,83,1,1,2,2,4,1,0,1,2,1,5,6,83
-PASCUA GLENN JOHN C,79,2,1,2,1,4,1,0,1,1,1,4,4,79
-PILONGOBRIAN V,84,2,1,3,3,4,1,0,2,1,1,3,2,84
-PINGUE AARON JANBERT M,84,2,1,2,1,1,4,0,2,1,2,3,2,84
-RAMOS SELWYN MIGUEL SM,87,2,1,3,4,1,1,0,1,1,1,5,0,87
-RICABERTE JERICK ,85,1,1,4,4,2,4,0,2,2,1,5,0,85
-SONEJA JUSTINE ANDRE R,84,2,1,2,3,1,1,1,2,2,1,3,40,84
-SOTELO KURT ANDREI M,82,1,1,2,2,1,1,0,2,2,1,3,0,82
-SYKAY FRANCIS ,83,1,1,2,2,4,1,0,1,2,1,5,6,83
-TILOS GHEROME D,84,2,1,2,2,4,1,0,2,1,1,5,2,84
-TINIO MARK ANGELO M,87,2,1,4,4,1,2,0,1,2,1,5,10,87
-TUMAMAK KIM S,81,2,1,2,2,1,1,0,2,2,1,3,0,81
-VELOSO JOHN ARVIN N,79,2,2,3,2,1,4,0,2,2,1,5,75,79
-VENERACION BREN G,80,2,1,3,3,4,4,2,1,1,1,3,8,80
-VILLANUEVA DANIEL M,78,1,1,2,2,1,1,0,1,2,1,5,12,78
-VILLARAMA KRISTIANN GIONNE DM,86,1,1,2,4,4,4,0,2,1,1,5,0,86
-CLARO RACHELLE V,83,2,1,3,3,4,4,0,1,1,1,4,12,83
-GALVE SHEILA MAE A,82,2,1,3,1,4,4,0,1,2,1,5,1,82
-MANCERA AYESSA JURAINE G,84,1,1,2,3,4,4,0,1,2,1,3,2,84
-MARTICIO ANNA SOPHIA A,84,2,2,2,2,1,1,0,1,2,1,4,0,84
-MAURICIO MARY GRACE C,84,1,1,1,1,1,1,0,1,1,2,3,1,84
-MONTEMARIA FATIMA G,81,2,1,4,4,4,1,0,1,1,1,5,0,81
-MUEDEN PATRICIA ANNE C,85,2,1,4,3,2,1,0,2,2,1,1,0,85
-NICDAO LOUELLA JEANNE O,83,1,1,2,2,4,1,0,1,2,1,5,6,83
-OMAMOS JENIEVEVE B,85,1,1,4,4,2,1,0,1,1,1,5,0,85
-POLIQUET AIRA MAE P,84,1,1,1,1,1,1,1,2,1,2,5,2,84
-PRIMACIOJAZMINE ANNE J,82,2,1,1,2,4,4,0,1,1,1,3,2,82
-RANOCO ROMA JOY ES,80,2,1,4,2,1,1,0,2,2,1,3,0,80
-RAPACON MAUREEN SHARI Q,86,1,1,3,1,4,4,0,2,2,1,2,3,86
-RECLUTA SHAIRYN D,83,2,1,1,1,1,1,0,2,2,1,4,2,83
-RIVERA MARY ANN F,82,1,2,3,3,1,4,0,1,2,1,3,12,82
-RODOLFO KIMBERLY NICOLE R,82,1,2,3,3,1,4,0,1,2,1,3,12,82
-ROMERO RENEELYN JEAN S,85,2,1,3,3,1,4,0,2,1,1,5,0,85
-SABINO PRINCESS DIANNE D,85,2,1,4,2,1,1,0,1,1,1,1,4,85
-SAGIAHON KRISTINE NICOLE C,88,1,1,4,4,3,4,0,1,1,1,5,2,88
-SALAR MICHELLE ANN A,77,2,1,4,3,1,1,0,1,1,1,2,4,77
-SAN ANDRES RODALYN A,87,2,1,2,4,4,1,1,1,1,1,3,8,87
-SANTOS PAULA C,85,2,1,3,3,1,4,0,2,1,1,5,0,85
-SATOYA ANGELU L,82,1,1,2,2,4,4,0,1,2,1,4,2,82
-SONZA ANGEL B,82,2,1,4,4,2,1,0,1,2,1,5,2,82
-SUCGANG RAMONA L,80,2,1,4,2,1,1,0,2,2,1,3,0,80
-TENORIO NIKKA KAYE M,82,2,1,2,4,1,1,0,1,2,1,5,7,82
-TRINIDAD JILLHANN RICKIE E,87,1,1,4,2,2,4,0,1,1,1,4,6,87
-TROPICALESJHEZAREEL R,80,2,1,2,3,1,4,0,1,2,1,4,0,80
-VALEROSO JAIMEE M,84,2,1,3,3,4,1,0,2,1,1,3,2,84
-VICEDA GENEVIVE A,80,2,1,2,3,1,4,0,2,1,2,1,2,80
+"Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1"
+"Buenaventura Galileo S,82,2,1,2,4,1,1,0,1,2,1,5,7,82"
+"Mercado Paolo M,79,2,1,2,1,4,1,0,1,1,1,4,4,79"
+"Nadonga Sebastien Alain Marco R,79,2,2,3,2,1,4,0,2,2,1,5,75,79"
+"Ortega Bernard Justine G,83,1,1,2,2,4,1,0,1,2,1,5,6,83"
+"Pascua Glenn John C,79,2,1,2,1,4,1,0,1,1,1,4,4,79"
+"PilongoBrian V,84,2,1,3,3,4,1,0,2,1,1,3,2,84"
+"Pingue Aaron Janbert M,84,2,1,2,1,1,4,0,2,1,2,3,2,84"
+"Ramos Selwyn Miguel SM,87,2,1,3,4,1,1,0,1,1,1,5,0,87"
+"Ricaberte Jerick ,85,1,1,4,4,2,4,0,2,2,1,5,0,85"
+"Soneja Justine Andre R,84,2,1,2,3,1,1,1,2,2,1,3,40,84"
+"Sotelo Kurt Andrei M,82,1,1,2,2,1,1,0,2,2,1,3,0,82"
+"Sykay Francis ,83,1,1,2,2,4,1,0,1,2,1,5,6,83"
+"Tilos Gherome D,84,2,1,2,2,4,1,0,2,1,1,5,2,84"
+"Tinio Mark Angelo M,87,2,1,4,4,1,2,0,1,2,1,5,10,87"
+"Tumamak Kim S,81,2,1,2,2,1,1,0,2,2,1,3,0,81"
+"Veloso John Arvin N,79,2,2,3,2,1,4,0,2,2,1,5,75,79"
+"Veneracion Bren G,80,2,1,3,3,4,4,2,1,1,1,3,8,80"
+"Villanueva Daniel M,78,1,1,2,2,1,1,0,1,2,1,5,12,78"
+"Villarama Kristiann Gionne DM,86,1,1,2,4,4,4,0,2,1,1,5,0,86"
+"Claro Rachelle V,83,2,1,3,3,4,4,0,1,1,1,4,12,83"
+"Galve Sheila Mae A,82,2,1,3,1,4,4,0,1,2,1,5,1,82"
+"Mancera Ayessa Juraine G,84,1,1,2,3,4,4,0,1,2,1,3,2,84"
+"Marticio Anna Sophia A,84,2,2,2,2,1,1,0,1,2,1,4,0,84"
+"Mauricio Mary Grace C,84,1,1,1,1,1,1,0,1,1,2,3,1,84"
+"MonteMaria Fatima G,81,2,1,4,4,4,1,0,1,1,1,5,0,81"
+"Mueden Patricia Anne C,85,2,1,4,3,2,1,0,2,2,1,1,0,85"
+"Nicdao Louella Jeanne O,83,1,1,2,2,4,1,0,1,2,1,5,6,83"
+"Omamos Jenieveve B,85,1,1,4,4,2,1,0,1,1,1,5,0,85"
+"Poliquet Aira Mae P,84,1,1,1,1,1,1,1,2,1,2,5,2,84"
+"PrimacioJazmine Anne J,82,2,1,1,2,4,4,0,1,1,1,3,2,82"
+"Ranoco Roma Joy ES,80,2,1,4,2,1,1,0,2,2,1,3,0,80"
+"Rapacon Maureen Shari Q,86,1,1,3,1,4,4,0,2,2,1,2,3,86"
+"Recluta Shairyn D,83,2,1,1,1,1,1,0,2,2,1,4,2,83"
+"Rivera Mary Ann F,82,1,2,3,3,1,4,0,1,2,1,3,12,82"
+"Rodolfo Kimberly Nicole R,82,1,2,3,3,1,4,0,1,2,1,3,12,82"
+"Romero Reneelyn Jean S,85,2,1,3,3,1,4,0,2,1,1,5,0,85"
+"Sabino Princess Dianne D,85,2,1,4,2,1,1,0,1,1,1,1,4,85"
+"Sagiahon Kristine Nicole C,88,1,1,4,4,3,4,0,1,1,1,5,2,88"
+"Salar Michelle Ann A,77,2,1,4,3,1,1,0,1,1,1,2,4,77"
+"San Andres Rodalyn A,87,2,1,2,4,4,1,1,1,1,1,3,8,87"
+"Santos Paula C,85,2,1,3,3,1,4,0,2,1,1,5,0,85"
+"Satoya Angelu L,82,1,1,2,2,4,4,0,1,2,1,4,2,82"
+"Sonza Angel B,82,2,1,4,4,2,1,0,1,2,1,5,2,82"
+"Sucgang Ramona L,80,2,1,4,2,1,1,0,2,2,1,3,0,80"
+"Tenorio Nikka Kaye M,82,2,1,2,4,1,1,0,1,2,1,5,7,82"
+"Trinidad Jillhann Rickie E,87,1,1,4,2,2,4,0,1,1,1,4,6,87"
+"TropicalesJhezareel R,80,2,1,2,3,1,4,0,1,2,1,4,0,80"
+"Valeroso Jaimee M,84,2,1,3,3,4,1,0,2,1,1,3,2,84"
+"Viceda Genevive A,80,2,1,2,3,1,4,0,2,1,2,1,2,80"

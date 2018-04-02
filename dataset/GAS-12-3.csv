@@ -1,47 +1,47 @@
-Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1
-ANICETO CHEDY CAGAMPAN,83,1,1,2,2,4,1,0,1,2,1,5,6,83
-AYALA JR. ARNEL VALENCIA,83,2,1,4,4,2,1,0,2,1,1,4,8,83
-BALANQUIT JOSHUA ADORA,82,2,1,2,2,1,1,0,1,2,1,5,2,82
-BAQUERO STEPHANIE RHEY MALTO,85,1,1,4,4,2,1,0,1,1,1,5,0,85
-CABANTING ERNESTO MARLON OCHOA,83,1,1,2,1,4,1,1,2,2,1,5,12,83
-CASTRO ANGELO FREINO,79,2,1,2,1,4,1,0,1,1,1,4,4,79
-FRANCO PATRICK EUGENE BENIPAYO,87,2,1,2,4,4,1,1,1,1,1,3,8,87
-GARCIA ALAN NATHANIEL MONTALES,82,2,1,2,2,4,1,0,1,2,1,4,8,82
-GRABADOR LORENZ CHRISTIAN JAVIER,79,2,1,2,1,4,1,0,1,1,1,4,4,79
-LIBUNA JR. SAMUEL GASENDO,85,1,1,4,4,2,1,0,1,1,1,5,0,85
-LIM JR. SONNY JOSE DIONISIO,85,1,1,4,3,3,1,0,2,1,1,3,14,85
-ABALOS BUEN JOCEL DEL CAMPO,86,1,1,3,2,4,1,0,1,1,1,4,8,86
-ABAñO MARJOE OLOJAN,81,2,1,4,2,2,4,0,1,1,1,1,0,81
-ABELLA ANDREA CATRINE PEREZ,84,1,1,3,2,4,1,1,1,2,1,1,22,84
-AGUDILLA ATHENA MARONE,80,2,1,4,0,2,1,0,2,1,1,1,8,80
-ATENDIDO LAIZA JANELLE SARMIENTO,83,2,1,2,3,1,1,0,2,2,1,2,4,83
-BAGAPORO RENA JOYCE ARAñAS,85,1,1,4,4,2,1,0,1,1,1,5,0,85
-BREIS DANILYN NEIRA,86,2,1,2,2,1,1,0,2,1,2,3,8,86
-CABIDES ARLENE MAE,81,2,1,4,3,2,1,0,2,1,1,1,10,81
-CABLAO HAZEL LLEGO,85,2,1,4,2,1,1,0,1,1,1,1,4,85
-CAIRO JANE RIZZLYN VARGAS,86,2,1,4,3,3,1,0,1,1,1,4,0,86
-CALALANG CZARINA AIEL MATEO,83,2,1,3,1,1,1,0,2,1,2,5,2,83
-CINCO AUDREY ALVAREZ,84,2,1,2,3,1,1,1,2,2,1,3,40,84
-CORONADO ANDREA SOPHIA DECENA,85,1,1,4,3,3,1,0,2,1,1,3,14,85
-CRISOL KATRINA PAULA GRAJO,86,2,2,3,1,4,1,1,2,2,2,5,12,86
-CRUZ MARIA ARMINDA ALCANTARA,86,2,1,3,4,1,1,0,2,2,1,4,6,86
-DANAG JOANA MONET VILLEGAS,84,2,1,2,3,1,1,1,2,2,1,3,40,84
-DANIEL ANDREA CAMILLE GARROL,87,2,1,4,2,3,4,0,2,2,1,3,0,87
-DE LEON MARIA VICTORIA DURON,85,2,1,3,3,1,4,0,2,1,1,5,0,85
-DE OCAMPO JERALYN LAUDATO,86,1,1,3,1,4,4,0,2,2,1,2,3,86
-DELINO MARIEL BALAGAT,83,1,1,4,4,4,1,0,1,2,1,3,13,83
-DOMINGO ELAINE MAE CAPA,84,1,1,1,1,1,1,0,1,1,2,3,1,84
-EMIA MARGIE NAVALES,87,1,1,4,2,2,4,0,1,1,1,4,6,87
-ESPIRITU HYACINTH SALCEDO,83,2,1,1,1,1,1,0,2,2,1,4,2,83
-ESTIGOY ANGELICA MELENDEZ,88,2,1,4,4,3,1,0,1,1,1,5,18,88
-GALPAO JESSIELE BLANCADA,89,2,1,3,3,1,1,0,2,2,1,1,0,89
-GAMBA RONIñA JANGELYN MONIQUE,81,2,1,4,4,1,2,0,1,1,2,2,2,81
-GARCIA MA. EMMALAINE DALUPANG,82,2,1,4,4,3,3,0,1,2,1,5,0,82
-GARCIA MARRIANE,82,2,1,4,4,2,1,0,1,2,1,5,2,82
-HIPOLITO SHAIRA MAE MAGUGAT,88,2,1,4,4,2,2,0,1,1,1,5,2,88
-HIRANG MAEDEN MYLLES SANTILLANA,82,1,1,2,2,4,4,0,1,1,1,3,3,82
-IBARBIA. CELINA YVONNE,87,1,1,4,2,2,4,0,1,1,1,4,6,87
-JUAREZ NICOLE DIPLOMA,85,2,1,2,3,1,1,0,2,2,1,3,0,85
-LACAMBRA ERICA OLAYON,88,2,1,4,2,3,4,0,2,2,1,1,4,88
-LEGARDA RINAPEARL VISTA,80,2,1,1,3,1,4,0,2,2,1,2,2,80
-LEMONCITO JENESE MESSIAH GRANADA,89,1,2,4,4,2,2,0,1,1,1,2,9,89
+"Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1"
+"Aniceto Chedy Cagampan,83,1,1,2,2,4,1,0,1,2,1,5,6,83"
+"Ayala Jr. Arnel Valencia,83,2,1,4,4,2,1,0,2,1,1,4,8,83"
+"Balanquit Joshua Adora,82,2,1,2,2,1,1,0,1,2,1,5,2,82"
+"Baquero Stephanie Rhey Malto,85,1,1,4,4,2,1,0,1,1,1,5,0,85"
+"Cabanting Ernesto Marlon Ochoa,83,1,1,2,1,4,1,1,2,2,1,5,12,83"
+"Castro Angelo Freino,79,2,1,2,1,4,1,0,1,1,1,4,4,79"
+"Franco Patrick Eugene Benipayo,87,2,1,2,4,4,1,1,1,1,1,3,8,87"
+"Garcia Alan Nathaniel Montales,82,2,1,2,2,4,1,0,1,2,1,4,8,82"
+"Grabador Lorenz Christian Javier,79,2,1,2,1,4,1,0,1,1,1,4,4,79"
+"Libuna Jr. Samuel Gasendo,85,1,1,4,4,2,1,0,1,1,1,5,0,85"
+"Lim Jr. Sonny Jose Dionisio,85,1,1,4,3,3,1,0,2,1,1,3,14,85"
+"Abalos Buen Jocel Del Campo,86,1,1,3,2,4,1,0,1,1,1,4,8,86"
+"Abaño Marjoe Olojan,81,2,1,4,2,2,4,0,1,1,1,1,0,81"
+"Abella Andrea Catrine Perez,84,1,1,3,2,4,1,1,1,2,1,1,22,84"
+"Agudilla Athena Marone,80,2,1,4,0,2,1,0,2,1,1,1,8,80"
+"Atendido Laiza Janelle Sarmiento,83,2,1,2,3,1,1,0,2,2,1,2,4,83"
+"Bagaporo Rena Joyce Arañas,85,1,1,4,4,2,1,0,1,1,1,5,0,85"
+"Breis Danilyn Neira,86,2,1,2,2,1,1,0,2,1,2,3,8,86"
+"Cabides Arlene Mae,81,2,1,4,3,2,1,0,2,1,1,1,10,81"
+"Cablao Hazel Llego,85,2,1,4,2,1,1,0,1,1,1,1,4,85"
+"Cairo Jane Rizzlyn Vargas,86,2,1,4,3,3,1,0,1,1,1,4,0,86"
+"Calalang Czarina Aiel Mateo,83,2,1,3,1,1,1,0,2,1,2,5,2,83"
+"Cinco Audrey Alvarez,84,2,1,2,3,1,1,1,2,2,1,3,40,84"
+"Coronado Andrea Sophia Decena,85,1,1,4,3,3,1,0,2,1,1,3,14,85"
+"Crisol Katrina Paula Grajo,86,2,2,3,1,4,1,1,2,2,2,5,12,86"
+"Cruz Maria Arminda Alcantara,86,2,1,3,4,1,1,0,2,2,1,4,6,86"
+"Danag Joana Monet Villegas,84,2,1,2,3,1,1,1,2,2,1,3,40,84"
+"Daniel Andrea Camille Garrol,87,2,1,4,2,3,4,0,2,2,1,3,0,87"
+"De Leon Maria Victoria Duron,85,2,1,3,3,1,4,0,2,1,1,5,0,85"
+"De Ocampo Jeralyn Laudato,86,1,1,3,1,4,4,0,2,2,1,2,3,86"
+"Delino Mariel Balagat,83,1,1,4,4,4,1,0,1,2,1,3,13,83"
+"Domingo Elaine Mae Capa,84,1,1,1,1,1,1,0,1,1,2,3,1,84"
+"Emia Margie Navales,87,1,1,4,2,2,4,0,1,1,1,4,6,87"
+"Espiritu Hyacinth Salcedo,83,2,1,1,1,1,1,0,2,2,1,4,2,83"
+"Estigoy Angelica Melendez,88,2,1,4,4,3,1,0,1,1,1,5,18,88"
+"Galpao Jessiele Blancada,89,2,1,3,3,1,1,0,2,2,1,1,0,89"
+"Gamba Roniña Jangelyn Monique,81,2,1,4,4,1,2,0,1,1,2,2,2,81"
+"Garcia Ma. Emmalaine Dalupang,82,2,1,4,4,3,3,0,1,2,1,5,0,82"
+"Garcia Marriane,82,2,1,4,4,2,1,0,1,2,1,5,2,82"
+"Hipolito Shaira Mae Magugat,88,2,1,4,4,2,2,0,1,1,1,5,2,88"
+"Hirang Maeden Mylles Santillana,82,1,1,2,2,4,4,0,1,1,1,3,3,82"
+"Ibarbia. Celina Yvonne,87,1,1,4,2,2,4,0,1,1,1,4,6,87"
+"Juarez Nicole Diploma,85,2,1,2,3,1,1,0,2,2,1,3,0,85"
+"Lacambra Erica Olayon,88,2,1,4,2,3,4,0,2,2,1,1,4,88"
+"Legarda Rinapearl Vista,80,2,1,1,3,1,4,0,2,2,1,2,2,80"
+"Lemoncito Jenese Messiah Granada,89,1,2,4,4,2,2,0,1,1,1,2,9,89"

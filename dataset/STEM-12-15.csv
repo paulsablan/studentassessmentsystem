@@ -1,45 +1,45 @@
-Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1
-BANAGAN MADEL MAGLUNOB,84,1,1,2,3,4,4,0,1,2,1,3,2,84
-BUNDALIAN QUEENIE RAMIREZ,86,2,1,2,2,1,1,0,2,1,2,3,8,86
-CADAYONG ERIN REIZL SANTOS,81,2,1,2,2,1,1,0,1,2,2,3,12,81
-CORPUS JANEL GAPOY,86,2,1,2,2,1,1,0,2,1,2,3,8,86
-DENIEGA MICHELLE ,87,2,1,4,3,1,1,0,1,2,1,3,0,87
-DINO ANN JASMINE DELGADO,82,1,1,2,2,4,4,0,1,2,1,4,2,82
-DOMINGO ABIGAIL DIONISIO,88,2,1,4,4,3,1,0,1,1,1,5,18,88
-JALOS FRANCHES RIGEL BERNALES,90,1,1,4,2,2,1,0,2,1,1,5,2,90
-MATIENZO SOPHIA ROSE,88,2,1,4,4,2,2,0,1,1,1,5,2,88
-OBORRO ERIELLE VALERIO,88,1,1,4,4,3,3,0,1,1,1,4,4,88
-PALISOC JUDY ANNE PANINGBATAN,90,1,1,2,1,1,1,0,2,1,1,5,0,90
-SOLLORANO MARJORIE GUZMAN,88,1,1,4,4,3,4,0,1,1,1,5,2,88
-SUMILANG MHIRA RAMILO,92,2,1,4,3,4,1,0,1,2,1,2,21,92
-URETA RAZENBELLE YECYECAN,90,2,1,4,4,4,2,0,1,1,1,4,0,90
-ALCANTARA NOEL JR.  ABELLON,84,1,1,1,1,1,1,0,1,1,2,3,1,84
-ARIAS JOHN KING ALLELUYA,86,1,1,3,1,4,4,0,2,2,1,2,3,86
-ASINAS VON CARLO QUINDOZA,88,2,1,3,3,1,4,1,2,1,2,5,0,88
-ASTROLAVIO MARK DAVE SOLINAP,87,2,1,2,4,4,1,1,1,1,1,3,8,87
-ATENDIDO LORENZO UMBAC,86,2,1,2,2,1,1,0,1,1,2,2,8,86
-BULUSAN AARON VINCE SUGUITAN,89,2,1,4,2,3,1,2,1,2,1,3,4,89
-CONSUELO RHOVIC PATACSIL,90,2,1,4,4,2,2,0,2,1,1,2,4,90
-DAVID ALFREDO III SAN PEDRO,86,2,1,3,2,1,1,0,2,1,2,3,1,86
-DE GUZMAN AISIA DAVID PACAYRA,90,2,1,3,2,1,1,0,2,1,1,3,10,90
-DELGADO RONNIE JOHN SUNGA,86,2,1,1,2,1,4,1,2,2,1,4,3,86
-DOMINGUEZ GERARD DE VERA,88,2,1,4,4,2,2,0,1,1,1,5,2,88
-ESPALTO JERALD VARGAS,85,2,1,3,3,3,1,0,1,2,1,3,2,85
-FLORENDO KENNETH OLORES,87,2,1,2,4,4,1,1,1,1,1,3,8,87
-GALLER MARK REYLAHN DALUMPIMES,90,1,2,3,2,4,1,0,1,2,1,1,0,90
-IDLISAN MARK THEVES ASUNCION,85,2,1,3,2,1,4,0,2,2,1,1,7,85
-JACINTOJOHN BRIGGS BAGALACSA,89,1,2,4,4,2,2,0,1,1,1,2,9,89
-LAGAR JOHN MICHAEL AQUINO,86,2,1,3,2,1,1,0,2,1,2,3,1,86
-LOPEZ JACKY PORTUGAL,81,2,1,2,2,1,1,0,2,2,1,3,0,81
-LOPEZ JAN ACE ALFONSO,91,2,1,4,3,4,1,0,2,1,1,1,4,91
-MILAG JED ANDREW STEPHEN YAP,91,1,1,4,4,1,1,0,1,1,1,1,0,91
-MINA JEANARD TAMONDONG,87,2,1,4,2,3,4,0,2,2,1,3,0,87
-MOHAMAD RAFAEL JOHN CABIGAO,88,1,1,1,2,1,4,0,1,1,1,3,3,88
-MOLINA ALFRED LOCABO,90,2,1,4,4,2,2,0,2,1,1,2,4,90
-PABLO CHARLONE AYM ABARA,85,1,1,4,3,3,1,0,2,1,1,3,14,85
-PADILLA REY GREGORY BOMBITA,80,1,2,4,3,4,1,0,1,2,1,1,12,80
-PEREZ ROBETHSON FAJARDO,91,1,1,3,3,4,4,0,1,2,1,1,7,91
-PINEDA JOSEPH BRIAN LINGAT,91,1,1,4,4,1,1,0,1,1,1,1,0,91
-VASIG MARJ JOSEPH TADLIP,84,1,1,1,1,1,1,0,1,1,2,3,1,84
-VILLAS BRUCE JARED BOBIS,86,1,1,2,4,1,3,0,1,1,1,5,2,86
-ZIPAGAN KYRIOS RENN CALUYA,91,2,1,4,3,4,1,0,2,1,1,1,4,91
+"Student,Grade,famsize,Pstatus,Medu,Fedu,Mjob,Fjob,failures,famsup,activities,internet,health,absences,G1"
+"Banagan Madel Maglunob,84,1,1,2,3,4,4,0,1,2,1,3,2,84"
+"Bundalian Queenie Ramirez,86,2,1,2,2,1,1,0,2,1,2,3,8,86"
+"Cadayong Erin Reizl Santos,81,2,1,2,2,1,1,0,1,2,2,3,12,81"
+"Corpus Janel Gapoy,86,2,1,2,2,1,1,0,2,1,2,3,8,86"
+"Deniega Michelle ,87,2,1,4,3,1,1,0,1,2,1,3,0,87"
+"Dino Ann Jasmine Delgado,82,1,1,2,2,4,4,0,1,2,1,4,2,82"
+"Domingo Abigail Dionisio,88,2,1,4,4,3,1,0,1,1,1,5,18,88"
+"Jalos Franches Rigel Bernales,90,1,1,4,2,2,1,0,2,1,1,5,2,90"
+"Matienzo Sophia Rose,88,2,1,4,4,2,2,0,1,1,1,5,2,88"
+"Oborro Erielle Valerio,88,1,1,4,4,3,3,0,1,1,1,4,4,88"
+"Palisoc Judy Anne Paningbatan,90,1,1,2,1,1,1,0,2,1,1,5,0,90"
+"Sollorano Marjorie Guzman,88,1,1,4,4,3,4,0,1,1,1,5,2,88"
+"Sumilang Mhira Ramilo,92,2,1,4,3,4,1,0,1,2,1,2,21,92"
+"Ureta Razenbelle Yecyecan,90,2,1,4,4,4,2,0,1,1,1,4,0,90"
+"Alcantara Noel Jr.  Abellon,84,1,1,1,1,1,1,0,1,1,2,3,1,84"
+"Arias John King Alleluya,86,1,1,3,1,4,4,0,2,2,1,2,3,86"
+"Asinas Von Carlo Quindoza,88,2,1,3,3,1,4,1,2,1,2,5,0,88"
+"Astrolavio Mark Dave Solinap,87,2,1,2,4,4,1,1,1,1,1,3,8,87"
+"Atendido Lorenzo Umbac,86,2,1,2,2,1,1,0,1,1,2,2,8,86"
+"Bulusan Aaron Vince Suguitan,89,2,1,4,2,3,1,2,1,2,1,3,4,89"
+"Consuelo Rhovic Patacsil,90,2,1,4,4,2,2,0,2,1,1,2,4,90"
+"David Alfredo III San Pedro,86,2,1,3,2,1,1,0,2,1,2,3,1,86"
+"de Guzman Aisia David Pacayra,90,2,1,3,2,1,1,0,2,1,1,3,10,90"
+"Delgado Ronnie John Sunga,86,2,1,1,2,1,4,1,2,2,1,4,3,86"
+"Dominguez Gerard de Vera,88,2,1,4,4,2,2,0,1,1,1,5,2,88"
+"Espalto Jerald Vargas,85,2,1,3,3,3,1,0,1,2,1,3,2,85"
+"Florendo Kenneth Olores,87,2,1,2,4,4,1,1,1,1,1,3,8,87"
+"Galler Mark Reylahn Dalumpimes,90,1,2,3,2,4,1,0,1,2,1,1,0,90"
+"Idlisan Mark Theves Asuncion,85,2,1,3,2,1,4,0,2,2,1,1,7,85"
+"JacintoJohn Briggs Bagalacsa,89,1,2,4,4,2,2,0,1,1,1,2,9,89"
+"Lagar John Michael Aquino,86,2,1,3,2,1,1,0,2,1,2,3,1,86"
+"Lopez Jacky Portugal,81,2,1,2,2,1,1,0,2,2,1,3,0,81"
+"Lopez Jan Ace Alfonso,91,2,1,4,3,4,1,0,2,1,1,1,4,91"
+"Milag Jed Andrew Stephen Yap,91,1,1,4,4,1,1,0,1,1,1,1,0,91"
+"Mina Jeanard Tamondong,87,2,1,4,2,3,4,0,2,2,1,3,0,87"
+"Mohamad Rafael John Cabigao,88,1,1,1,2,1,4,0,1,1,1,3,3,88"
+"Molina Alfred Locabo,90,2,1,4,4,2,2,0,2,1,1,2,4,90"
+"Pablo Charlone Aym Abara,85,1,1,4,3,3,1,0,2,1,1,3,14,85"
+"Padilla Rey Gregory Bombita,80,1,2,4,3,4,1,0,1,2,1,1,12,80"
+"Perez Robethson Fajardo,91,1,1,3,3,4,4,0,1,2,1,1,7,91"
+"Pineda Joseph Brian Lingat,91,1,1,4,4,1,1,0,1,1,1,1,0,91"
+"Vasig Marj Joseph Tadlip,84,1,1,1,1,1,1,0,1,1,2,3,1,84"
+"Villas Bruce Jared Bobis,86,1,1,2,4,1,3,0,1,1,1,5,2,86"
+"Zipagan Kyrios Renn Caluya,91,2,1,4,3,4,1,0,2,1,1,1,4,91"
