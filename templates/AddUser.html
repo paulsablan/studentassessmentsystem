@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/papaparse.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery-latest.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.tablesorter.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.js/dist/Chart.bundle.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.js/dist/Chart.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/node_modules/chart.piecelabel.js/build/Chart.PieceLabel.min.js') }}"></script>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/custom.css')}}">
+
+    <title>Create Profile - Incorporating Predictive Analytics on Student Assessment System</title>
+</head>
+<body class="login-body">
+	<nav class="navbar navbar-default"><center><h2>Incorporating Predictive Analysis on Student Assessment System</h2></center></nav>
+
+	<div id="home" class="row content-user">
+
+		    		<br><br>
+					<form method="post" action="/add" autocomplete="off" enctype="multipart/form-data">
+						  <div class="col-md-offset-3 col-md-6">
+						  	  <div class="form-group">
+
+			                  <datalist id="role">
+			                    <option value="Faculty">
+			                    <option value="Admin">
+			                  </datalist>
+								<input type="file" name="uploadProfile" id="uploadProfile" class="form-control" accept=".png,.jpeg,.jpg">
+
+						       <label>First Name:</label>
+						          <input type="text" name="fName" id="fName" placeholder="First Name" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Last Name:</label>
+						          <input type="text" name="lName" id="lName" placeholder="Last Name" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Username:</label>
+						          <input type="text" name="uName" id="uName" placeholder="Username" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Password:</label>
+						          <input type="password" name="pWord" id="pWord" placeholder="Password" class="form-control">
+						      </div>
+						      <div class="form-group">
+						        <label>Role:</label>
+						          <input type="text" list="role" name="role" id="role" placeholder="Choose Role" class="form-control">
+						      </div>
+						      <button type="submit" class="btn btn-primary btn-predict" id="create">Create</button>
+						  </div>
+					</form>
+		    </div>
+
+		</div>
+
+	</div>
+	<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
+</body>

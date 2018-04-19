@@ -55,7 +55,9 @@
     overflow-x: hidden;
     padding-top: 20px;
 }
-
+.name{
+    padding-right: 5px;
+}
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;

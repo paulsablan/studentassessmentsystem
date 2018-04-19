@@ -3,8 +3,7 @@ import fuzzy_logic
 
 def train_naive(filename, split_ratio):
 	labels, data, test = load_csv_section(filename, split_ratio)
-	print(data)
-	exit()
+
 	# Data for Second Half Grade
 	data_second_half = []
 	test_second_half = []
@@ -14,9 +13,6 @@ def train_naive(filename, split_ratio):
 	for i in test:
 		j = i[0:-1]
 		test_second_half.append(j)
-
-	# Top 10 Pupils
-	test_top_top = data[:]
 
 	## prepare model
 	# Summaries for second half
@@ -92,21 +88,25 @@ def get_summaries(filename, split_ratio):
 	for i in data:
 		j = i[0:-1]
 		data_second_half.append(j)
+
 	data_final_grade = data[:]
+
 	summaries_second_half = class_summarize(data_second_half)
 	summaries_final = class_summarize(data_final_grade)
 
 	return summaries_second_half, summaries_final
 
-def predict_grades(filename, summaries_second_half, summaries_final, data):
+def predict_grades(filename, summaries_second_half, summaries_final, data=None):
 	test_second_half = []
 	test_final_grade = []
 	passed = False
-	
+
 	if data is None:
 		pass_by = False
-		labels, data, test = load_csv_section(filename, 100)	
+		labels, data, test = load_csv_section(filename, 100)
 		passed = True
+
+	export_to_csv(data)
 
 	for i in data:
 		test_second_half.append(i)
@@ -118,13 +118,12 @@ def predict_grades(filename, summaries_second_half, summaries_final, data):
 		test_final_grade = [test_final_grade]
 
 	predictions_second_half = get_predictions(summaries_second_half, test_second_half)
-
 	predictions = predictions_second_half[:]
+
 	for i in range(len(predictions)):
 		test_final_grade[i].append(predictions[i])
 
 	predictions_final = get_predictions(summaries_final, test_final_grade)
-
 	return predictions_second_half, predictions_final
 
 def get_fuzzy_results(filename, data=None):
@@ -138,22 +137,11 @@ def get_fuzzy_results(filename, data=None):
 	fis = fuzzy_logic.fis()
 	fuzzy_results = []
 	for d in data:
-		fuzzy_financial = fis.financial_fuzzy(d[0], d[4], d[5])
-
-		fuzzy_family = fis.broken_family(d[1], d[7])
-
-		fuzzy_relatives = fis.living_with_rel(d[1], d[7])
-
-		fuzzy_health = fis.health_conditions(d[10], d[8], d[11])
-
-		fuzzy_materials = fis.insufficient_learning_materials(d[9], d[4], d[5])
-
-		fuzzy_parenting = fis.parenting_issues(d[1], d[2], d[3])
-
-		fuzzy_study_habit = fis.study_habit(d[8], d[11], d[6])
-
-		fuzzy_results.append([fuzzy_financial, fuzzy_family, fuzzy_relatives, fuzzy_health,
-							fuzzy_materials, fuzzy_parenting, fuzzy_study_habit])
+		fuzzy_family = fis.broken_family(d[0], d[3])
+		fuzzy_financial = fis.financial_fuzzy(d[1], d[3])
+		fuzzy_study_habit = fis.study_habit(d[2], d[3])
+		print(fuzzy_family, fuzzy_financial, fuzzy_study_habit)
+		fuzzy_results.append([fuzzy_financial, fuzzy_family, fuzzy_study_habit])
 	return fuzzy_results
 
 if __name__ == "__main__":
@@ -161,7 +149,10 @@ if __name__ == "__main__":
 	# if args.retrain == 1:
 	# 	filename = args.datasets+'/'+args.filename
 	# 	train_naive(filename, args.splitratio)
-	sum1, sum2 = get_summaries('./dataset/dataset_new.csv', 100)
-	predictions = predict_grades('./dataset/STEM-12-7.csv', sum1, sum2, None)
-	print(predictions)
-	fuzzy_results = get_fuzzy_results('./dataset/STEM-12-7.csv', [2,1,2,3,1,1,0,2,2,1,2,4,83])
+	sum1, sum2 = get_summaries('./dataset/dataset_new_v2.csv', 100)
+	predictions = predict_grades('./dataset/testing_set_v2.csv', sum1, sum2, None)
+	# print(predictions)
+	# write_results(predictions)
+	fuzzy_results = get_fuzzy_results('./dataset/testing_set_v2.csv', None)
+	# print(fuzzy_results)
+	# write_results(fuzzy_results)

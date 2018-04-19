@@ -2,13 +2,13 @@ def convert_values(data):
     new_data = []
     for i in data:
         print(i)
-        i[0] = family_size(i[0])
-        i[1] = parent_status(i[1])
-        i[4] = parent_job(i[4])
-        i[5] = parent_job(i[5])
-        i[7] = yes_no_question(i[7])
-        i[8] = yes_no_question(i[8])
-        i[9] = yes_no_question(i[9])
+        # i[0] = family_size(i[0])
+        # i[1] = parent_status(i[1])
+        # i[4] = parent_job(i[4])
+        # i[5] = parent_job(i[5])
+        # i[7] = yes_no_question(i[7])
+        # i[8] = yes_no_question(i[8])
+        # i[9] = yes_no_question(i[9])
         i = convert_to_int(i)
         new_data.append(i)
     return new_data

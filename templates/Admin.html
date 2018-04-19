@@ -26,7 +26,10 @@
 			<center><img src="{{ url_for('static', filename='images/profile.png')}}"></center>
 		</div>
 		<div class="profile-info">
-			<h4>Maria Andallo</h4>
+			<h4>
+				<span id="firstname" class="name">{{ fname }}</span>
+				<span id="lastname">{{ lname }}</span>
+			</h4>
 			<h5>Principal</h5>
 		</div>
 		<ul class="dropdown-container">
@@ -81,111 +84,35 @@
 				</center>
 		    </div>
 		    <div id="individual" class="tab-pane fade">
-		    		<br><br>
+		    		<br>
 					<form method="get">
-						  <div class="col-md-4">
+						  <div class="col-md-offset-3 col-md-6">
 						  	  <div class="form-group">
-
-                  <datalist id="p_status">
-                    <option value="Apart">
-                    <option value="Together">
-                  </datalist>
-
-                  <datalist id="edu_list">
-                    <option value="None">
-                    <option value="Nursery">
-                    <option value="Primary">
-                    <option value="Secondary">
-                    <option value="Tertiary">
-                    <option value="Elementary">
-                    <option value="High School">
-                    <option value="College">
-                  </datalist>
-
-                  <datalist id="job_list">
-                    <option value="None">
-                    <option value="Teacher">
-                    <option value="Education">
-                    <option value="Health">
-                    <option value="Services">
-                  </datalist>
-
-                  <datalist id="yes_no_list">
-                    <option value="No">
-                    <option value="Yes">
-                  </datalist>
-
-						        <label>Student Name:</label>
+						       <label>Student Name:</label>
 						          <input type="text" name="studName" id="studName" placeholder="SURNAME FIRST NAME MIDDLE NAME" class="form-control">
 						      </div>
 						      <div class="form-group">
 						        <label>Grade:</label>
 						          <input type="text" name="grade" id="grade" placeholder="GRADE" class="form-control">
 						      </div>
-						      <div class="form-group">
-						        <label>Family Size:</label>
-						          <input type="text" name="famSize" id="famSize" placeholder="FAMILY SIZE" class="form-control">
-						      </div>
-						      <div class="form-group">
-						        <label>Parent Status:</label>
-						          <input type="text" list="p_status" name="parentStatus" id="parentStatus" placeholder="PARENT STATUS" class="form-control">
-
-						      </div>
-						      <div class="form-group">
-						        <label>Mother's Education:</label>
-						          <input type="text" list="edu_list" name="mEdu" id="mEdu" placeholder="MOTHER'S EDUCATION" class="form-control">
-
-						      </div>
-						  </div>
-					      <div class="col-md-4">
 						  	  <div class="form-group">
-						        <label>Father's Education:</label>
-						          <input type="text" list="edu_list" name="fEdu" id="fEdu" placeholder="FATHER'S EDUCATION" class="form-control">
+						        <label>Broken Family:</label>
+						          <input type="number" name="brokenFam" id="brokenFam" min="0" max="5" class="form-control" placeholder="0">
 						      </div>
 						      <div class="form-group">
-						        <label>Mother's Job:</label>
-						          <input type="text" list="job_list" name="mJob" id="mJob" placeholder="MOTHER'S JOB" class="form-control">
+						        <label>Financial Difficulty:</label>
+						          <input type="number" name="finDiff" id="finDiff" min="1" max="6" class="form-control" placeholder="0">
 						      </div>
 						      <div class="form-group">
-						        <label>Father's Job:</label>
-						          <input type="text" list="job_list" name="fJob" id="fJob" placeholder="FATHER'S JOB" class="form-control">
+						        <label>Study Habit:</label>
+						          <input type="number" name="studyHabit" id="studyHabit" min="18" max="54" class="form-control" placeholder="0">
 						      </div>
-						      <div class="form-group">
-						        <label>Number of Failures:</label>
-						          <input type="text" name="failures" id="failures" placeholder="FAILURES" class="form-control">
-						      </div>
-						      <div class="form-group">
-						        <label>Family Support:</label>
-						          <input type="text" list="yes_no_list" name="famSup" id="famSup" placeholder="FAMILY SUPPORT" class="form-control">
-						      </div>
-						  </div>
-						  <div class="col-md-4">
-						  	  <div class="form-group">
-						        <label>Extra-curricular Activities:</label>
-						          <input type="text" list="yes_no_list" name="activities" id="activities" placeholder="EXTRA-CURRICULAR ACTIVITIES" class="form-control">
-						      </div>
-						      <div class="form-group">
-						        <label>Internet Access:</label>
-						          <input type="text" list="yes_no_list" name="internet" id="internet" placeholder="INTERNET ACCESS" class="form-control">
-						      </div>
-						      <div class="form-group">
-						        <label>Health Status:</label>
-						          <input type="text" name="health" id="health" placeholder="HEALTH STATUS (1-5)" class="form-control">
-						      </div>
-						      <div class="form-group">
-						        <label>Number of Absences:</label>
-						          <input type="text" name="absences" id="absences" placeholder="ABSENCES" class="form-control">
-						      </div>
-						      <!--<div class="form-group">
-						        <label>G1:</label>
-						          <input type="text" name="g1" id="g1" placeholder="G1" class="form-control">
-						      </div>-->
 						  </div>
 					</form>
-					<div class="col-md-6">
+					<div class="col-md-offset-3 col-md-6 form-group">
 						<button class="btn btn-primary btn-predict" id="predictindividualadmin">Predict</button>
 					</div>
-					<div class="col-md-6">
+					<div class="col-md-offset-3 col-md-6">
 						<button class="btn btn-danger btn-predict" id="clearindividual">Clear</button>
 					</div>
 

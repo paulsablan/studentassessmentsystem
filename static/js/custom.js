@@ -29,9 +29,10 @@ for (z = 0; z < section.length; z++) {
     }
   });
 }
+
 function predict(file, dataset){
   var receiver = "vincentpaul.012@gmail.com";
-              $.getJSON('/', {
+            $.getJSON('/', {
               receive: receiver,
               filename: file,
               dataset: JSON.stringify(dataset)
@@ -125,19 +126,13 @@ $('#predictindividual').click(function(e){
 var file = "None";
 var name = document.getElementById("studName").value;
 var grade = document.getElementById("grade").value;
-var famSize = document.getElementById("famSize").value;
-var parentStatus = document.getElementById("parentStatus").value;
-var mEdu = document.getElementById("mEdu").value;
-var fEdu = document.getElementById("fEdu").value;
-var mJob = document.getElementById("mJob").value;
-var fJob = document.getElementById("fJob").value;
-var failures = document.getElementById("failures").value;
-var famSup = document.getElementById("famSup").value;
-var activities = document.getElementById("activities").value;
-var internet = document.getElementById("internet").value;
-var health = document.getElementById("health").value;
-var absences = document.getElementById("absences").value;
-var dataset = [name, grade, famSize, parentStatus, mEdu, fEdu, mJob, fJob, failures, famSup, activities, internet, health, absences, grade];
+var name = document.getElementById("studName").value;
+var grade = document.getElementById("grade").value;
+var brokenFam = document.getElementById("brokenFam").value;
+var financialDiff = document.getElementById("finDiff").value;
+var studyHabit = document.getElementById("studyHabit").value;
+
+var dataset = [name, grade, brokenFam, financialDiff, studyHabit];
 for(i=0;i<dataset.length;i++)
 	dataset[i] = convertIndividual(dataset[i],i);
 predict(file, dataset);
@@ -270,195 +265,25 @@ $('#predictindividualadmin').click(function(e){
 var file = "None";
 var name = document.getElementById("studName").value;
 var grade = document.getElementById("grade").value;
-var famSize = document.getElementById("famSize").value;
-var parentStatus = document.getElementById("parentStatus").value;
-var mEdu = document.getElementById("mEdu").value;
-var fEdu = document.getElementById("fEdu").value;
-var mJob = document.getElementById("mJob").value;
-var fJob = document.getElementById("fJob").value;
-var failures = document.getElementById("failures").value;
-var famSup = document.getElementById("famSup").value;
-var activities = document.getElementById("activities").value;
-var internet = document.getElementById("internet").value;
-var health = document.getElementById("health").value;
-var absences = document.getElementById("absences").value;
-var dataset = [name, grade, famSize, parentStatus, mEdu, fEdu, mJob, fJob, failures, famSup, activities, internet, health, absences, grade];
+var brokenFam = document.getElementById("brokenFam").value;
+var financialDiff = document.getElementById("finDiff").value;
+var studyHabit = document.getElementById("studyHabit").value;
+
+var dataset = [name, grade, brokenFam, financialDiff, studyHabit];
 for(i=0;i<dataset.length;i++)
 	dataset[i] = convertIndividual(dataset[i],i);
 predictadmin(file, dataset);
 dataset = dataset.splice(0,14);
 opencsv(file,dataset);
 });
-function convertIndividual(value,i)
-{
-	if(i == 3)
-	{
-		if(value >= 3)
-			return 1;
-		else
-			return 2;
-	}
-	else if(i == 3)
-	{
-    var strval = value.toUpperCase();
-		if(strval.includes("TOGETHER"))
-			return 1;
-		else
-			return 2;
-	}
-	else if(i == 6 || i == 7)
-	{
-    var strval = value.toUpperCase();
-		if(strval.includes("NONE") || value==1)
-			return 1;
-		else  if(strval.includes("TEACHER") || strval.includes("EDUCATION") || value==2)
-			return 2;
-		else  if(strval.includes("HEALTH") || strval.includes("DOCTOR") || value==3)
-			return 3;
-		else  if(strval.includes("SERVICE") || value==4)
-			return 4;
-		else
-			2;
-	}
-	else if(i == 4 || i == 5)
-	{
-    var strval = value.toUpperCase();
-		if(strval.includes("NONE") || value==0)
-			return 0;
-		else if(strval.includes("NURSERY") || value==1)
-			return 1;
-		else  if(strval.includes("PRIMARY") || strval.includes("ELEMENTARY") || value==2)
-			return 2;
-		else  if(strval.includes("SECONDARY") || strval.includes("HIGH SCHOOL") || strval.includes("HS") || value==3)
-			return 3;
-		else  if(strval.includes("TERTIARY") || strval.includes("COLLEGE") || value==4)
-			return 4;
-		else
-			2;
-	}
-	else if(i == 8)
-	{
-		if(value >= 3)
-			return value;
-		else
-			return 4;
-	}
-	else if(i == 9 || i == 10 || i == 11)
-	{
-    var strval = value.toUpperCase();
-    if(strval.includes("NO") || strval.includes("NONE") || value==0)
-			return 2;
-    else if(strval.includes("YES") || strval.includes("HAVE") || value==1)
-			return 1;
-    else
-      return 1;
-	}
-	else
-		return value;
-
-}
-function convertValue(value, i){
-	if (i == 2)
-	{
-		if (value == 1)
-			return "Less than 3";
-		else
-			return "More than 3";
-	}
-	else if (i == 3)
-	{
-		if (value == 1)
-			return "Together";
-		else
-			return "Apart";
-	}
-	else if (i == 4 || i == 5)
-	{
-		if (value == 0)
-			return "None";
-		else if (value == 1)
-			return "Nursery";
-		else if (value == 2)
-			return "Primary";
-		else if (value == 3)
-			return "Secondary";
-		else if (value == 4)
-			return "Tertiary";
-	}
-	else if (i == 6 || i == 7)
-	{
-		if (value == 1)
-			return "None";
-		else if (value == 2)
-			return "Teacher";
-		else if (value == 3)
-			return "Health";
-		else if (value == 4)
-			return "Service";
-	}
-	else if (i == 9)
-	{
-		if (value == 2)
-			return "Not Supported";
-		else if (value == 1)
-			return "Supported";
-	}
-	else if (i == 10)
-	{
-		if (value == 2)
-			return "No";
-		else if (value == 1)
-			return "Yes";
-	}
-	else if (i == 11)
-	{
-		if (value == 2)
-			return "No";
-		else if (value == 1)
-			return "Yes";
-	}
-	else
-		return value;
-}
-function interpretValue(value, i){
-	if (i == 1)
-		return "Midterm Grade";
-	else if (i == 2)
-		return "Family size";
-	else if (i == 3)
-		return "Parent Status";
-	else if (i == 4)
-		return "Mother's Education";
-	else if (i == 5)
-		return "Father's Education";
-	else if (i == 6)
-		return "Mother's Job";
-	else if (i == 7)
-		return "Fathers's Job";
-	else if (i == 8)
-		return "Number of Failures";
-	else if (i == 9)
-		return "Family Support";
-	else if (i == 10)
-		return "Extra-curicular Activiites";
-	else if (i == 11)
-		return "Internet Connection";
-	else if (i == 12)
-		return "Heatlh Status";
-	else if (i == 13)
-		return "Absences";
-	else
-		return value;
-}
 
 function opencsv(file, dataset){
   var theFile = file;
  if(file == "None"){
    var table =  document.getElementById("inputTable");
    var tablerow = "";
-   table = "<tr><th>Student Name</th><th>Grade</th><th>Family Size</th><th>Parent Status</th><th>Mother's Education</th><th>Father's Education</th><th>Mohter's Job</th><th>Father's Job</th><th>Failures</th><th>Family Support</th><th>Exra-Curiccular Activities</th><th>Internet Access</th><th>Health Status</th><th>Absences</th></tr>";
+   table = "<tr><th>Student Name</th><th>Grade</th><th>Broken Family</th><th>Financial Difficulty</th><th>Study Habit</th></tr>";
    for(var x = 0; x < dataset.length; x++){
-		dataset[x] = convertValue(dataset[x],x);
 		tablerow = tablerow + "<td>" + dataset[x] + "</td>";
    }
    table = table + "<tr>" + tablerow + "</tr>";
@@ -469,29 +294,31 @@ function opencsv(file, dataset){
  var headerLine = "";
  var myReader = new FileReader();
  myReader.onload = function(e) {
-	 var content = myReader.result;
-	 var lines = content.split("\"");
-	 for (var count = 1; count < lines.length; count+=2) {
-		 var row = document.createElement("tr");
-		 var rowContent = lines[count].split(",");
-		 for (var i = 0; i < rowContent.length-1; i++) {
-			 if(count!=1)
-				rowContent[i] = convertValue(rowContent[i],i);
-			else
-				rowContent[i] = interpretValue(rowContent[i],i);
+ var content = myReader.result;
+ var lines = content.split("\r");
+ for (var count = 0; count < lines.length; count++) {
+ var row = document.createElement("tr");
+ var rowContent = lines[count].split(",");
+ var x = 0;
 
-			 if (count == 0) {
-				var cellElement = document.createElement("th");
-			 }
-			 else {
-				var cellElement = document.createElement("td");
-			 }
-			 var cellContent = document.createTextNode(rowContent[i]);
-			 cellElement.appendChild(cellContent);
-			 row.appendChild(cellElement);
-		 }
-		 inputTable.appendChild(row);
-	 }
+ for (var i = 0; i < 6; i++) {
+ if (count == 0) {
+  var header = ["Student Name","Midterm Grade", "Broken Family", "Financial Difficulty", "Study Habit", "Grade"]
+     var cellElement = document.createElement("th");
+    var cellContent = document.createTextNode(header[x]);
+    cellElement.appendChild(cellContent);
+    x++;
+ } 
+ else {
+  var cellElement = document.createElement("td");
+  var cellContent = document.createTextNode(rowContent[i]);
+  cellElement.appendChild(cellContent);
+ 
+ }
+  row.appendChild(cellElement);
+ }
+ table.appendChild(row);
+ }
  }
  myReader.readAsText(theFile);
  }
@@ -517,18 +344,9 @@ $('#clear').click(function(e){
 $('#clearindividual').click(function(e){
   document.getElementById("studName").value = "";
   document.getElementById("grade").value = "";
-  document.getElementById("famSize").value = "";
-  document.getElementById("parentStatus").value = "";
-  document.getElementById("mEdu").value = "";
-  document.getElementById("fEdu").value = "";
-  document.getElementById("mJob").value = "";
-  document.getElementById("fJob").value = "";
-  document.getElementById("failures").value = "";
-  document.getElementById("famSup").value = "";
-  document.getElementById("activities").value = "";
-  document.getElementById("health").value = "";
-  document.getElementById("internet").value = "";
-  document.getElementById("health").value = "";
-  document.getElementById("absences").value = "";
-  document.getElementById("g1").value = "";
+  document.getElementById("brokenFam").value = "";
+  document.getElementById("finDiff").value = "";
+  document.getElementById("studyHabit").value = "";
+    document.getElementById("inputTable").innerHTML = "";
+
 });

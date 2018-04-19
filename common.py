@@ -40,13 +40,7 @@ def load_csv_section(filename, splitratio):
 			else:
 				xs.append(data[2:])
 				xs[-1] = convert_to_int(xs[-1])
-	# for i in range(len(dataset)):
-	# 	if i == 0:
-	# 		ys = dataset[i]
-	# 	else:
-	# 		j = dataset[i][2:]
-	# 		xs.append(j)
-	# 		xs[-1] = convert_to_int(xs[-1])
+
 	return ys, xs[0:limit], None
 
 def load_csv_clean(filename, splitratio):
@@ -208,3 +202,33 @@ def get_accuracy(test_set, predictions):
 		error_analysis.append(er)
 	er = 100 - (sum(error_analysis)/len(error_analysis))
 	return (correct/float(len(test_set))) * 100.0, correct, er
+
+def export_to_csv(data):
+	new_data = []
+	rows = len(data[0])
+	cols = len(data)
+	for i in range(rows):
+		temp_data = []
+		for j in range(cols):
+			temp_data.append(data[j][i])
+		new_data.append(temp_data[:])
+
+	myFile = open('./dataset/ATTRIBUTES.csv', 'w', newline='')
+	with myFile:
+		writer = csv.writer(myFile)
+		writer.writerows(new_data)
+
+def write_results(data):
+	new_data = []
+	rows = len(data[0])
+	cols = len(data)
+	for i in range(rows):
+		temp_data = []
+		for j in range(cols):
+			temp_data.append(data[j][i][1])
+		new_data.append(temp_data[:])
+
+	myFile = open('./dataset/RESULTS.csv', 'w', newline='')
+	with myFile:
+		writer = csv.writer(myFile)
+		writer.writerows(new_data)
