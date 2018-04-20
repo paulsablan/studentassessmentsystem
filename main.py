@@ -63,6 +63,10 @@ def addrec():
 				print(rows)				
 				msg = "Record successfully added"
 				print(msg)
+				if role == "Faculty":
+					return render_template("Faculty.html",fname = fname,lname = lname)
+				elif role == "Admin":
+					return render_template("Admin.html",fname = fname,lname = lname)
 		except:
 			con.rollback()
 			msg = "error in insert operation"
@@ -75,7 +79,6 @@ def addrec():
 	# extension = image.rsplit('.', 1)[1].lower()
 	# cv2.imwrite(os.path.join("/static/images/profiles/" , username + extension),img)
 	# cv2.waitKey(0)
-	return render_template("list.html",msg = msg,rows =rows)
 
 @app.route('/home', methods=['POST'])
 def login():
@@ -113,17 +116,24 @@ def sendemail(receive,filename,dataset):
 
 	comp_path = os.getcwd();
 	new_comp_path = '/'.join(comp_path.split('\\'))
-	filepath = new_comp_path + "/defaultMessage.txt"
+	parentNotif = new_comp_path + "/ParentNotification.txt"
+	teacherNotif = new_comp_path + "/TeacherNotification.txt"
 	file = new_comp_path + "/dataset/" + filename
-	get_summaries_file = new_comp_path + "/dataset/dataset_new.csv"
+	get_summaries_file = new_comp_path + "/dataset/dataset_new_v2.csv"
 	# Open a plain text file for reading.  For this example, assume that
 	# the text file contains only ASCII characters.
-	fp = open(filepath, 'r')
+	parent = open(parentNotif, 'r')
 	# Create a text/plain message
-	msg = MIMEText(fp.read())
-	fp.close()
-	textmsg = msg.as_string()
-	print(textmsg)
+	parentmsg = MIMEText(parent.read())
+	parent.close()
+	teacher = open(teacherNotif, 'r')
+	# Create a text/plain message
+	teachermsg = MIMEText(teacher.read())
+	teacher.close()
+	ptextmsg = parentmsg.as_string()
+	print(ptextmsg)
+	ttextmsg = teachermsg.as_string()
+	print(ttextmsg)
 	sender = 'studentassessmentsystem@gmail.com'
 	password = 'studentperformancesystem'
 	receiver = receive
@@ -151,9 +161,16 @@ def sendemail(receive,filename,dataset):
 
 	# me == the sender's email address
 	# you == the recipient's email address
-	msg['Subject'] = 'This message is about the status of your child for this school year'
-	msg['From'] = sender
-	msg['To'] = receiver
+	
+	#Parent
+	parentmsg['Subject'] = 'Parent Notification'
+	parentmsg['From'] = sender
+	parentmsg['To'] = receiver
+
+	# Teacher
+	teachermsg['Subject'] = 'Teacher Notification'
+	teachermsg['From'] = sender
+	teachermsg['To'] = receiver
 	# Find these values at https://twilio.com/user/account
 	account_sid = "AC58613e0ef906d4a1077f2d98df3b0a9a"
 	auth_token = "374f6acea8826186eee9ac522afd0764"
@@ -164,11 +181,12 @@ def sendemail(receive,filename,dataset):
 	#     body=textmsg)
 	# Send the message via our own SMTP server, but don't include the
 	# envelope header.
-	# s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-	# s.starttls()
-	# s.login(sender,password)
-	# s.sendmail(sender, receiver, msg.as_string())
-	# s.quit()
+	s = smtplib.SMTP(host='smtp.gmail.com', port=587)
+	s.starttls()
+	s.login(sender,password)
+	s.sendmail(sender, receiver, parentmsg.as_string())
+	s.sendmail(sender, receiver, teachermsg.as_string())
+	s.quit()
 	status = "sent"
 	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results)
 

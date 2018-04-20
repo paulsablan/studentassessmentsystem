@@ -106,7 +106,7 @@ def predict_grades(filename, summaries_second_half, summaries_final, data=None):
 		labels, data, test = load_csv_section(filename, 100)
 		passed = True
 
-	export_to_csv(data)
+	#export_to_csv(data)
 
 	for i in data:
 		test_second_half.append(i)

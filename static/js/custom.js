@@ -31,13 +31,12 @@ for (z = 0; z < section.length; z++) {
 }
 
 function predict(file, dataset){
-  var receiver = "vincentpaul.012@gmail.com";
+  var receiver = "sherilyn.usero22@gmail.com";
             $.getJSON('/', {
               receive: receiver,
               filename: file,
               dataset: JSON.stringify(dataset)
             });
-
 
             $.ajax ({
               url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
@@ -54,7 +53,7 @@ function predict(file, dataset){
                 var counter = 1;
                 inputtable = document.getElementById("inputTable");
                 inputtablerow = inputtable.rows;
-                table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
+                table = "<tr><th>Student Name</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Broken Family</th><th>Financial Difficulty</th><th>Study Habit</th></tr>";
                 for (x = 0; x < data.predict_finalgrade.length; x++){
                   studentname = inputtablerow[counter].cells[0].firstChild.data;
                   if(data.predict_finalgrade[x] <= "75"){
@@ -69,7 +68,7 @@ function predict(file, dataset){
                   tablerow = tablerow + "<tr>";
                   toptablerow = toptablerow + "<tr>"
                   tablerow = tablerow + "<td>" + studentname + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>";
-                  for (y = 0; y < 7; y++){
+                  for (y = 0; y < 3; y++){
                         tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>";
                   }
                   tablerow = tablerow + "</tr>";
@@ -110,6 +109,10 @@ function predict(file, dataset){
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
                   }
+                  for (rowIndex = 10; rowIndex < (rows.length - 1); rowIndex++) {
+                    rows[rowIndex].parentNode.removeChild(rows[rowIndex]);
+                  }
+
                 }
               }
             });
@@ -117,32 +120,33 @@ function predict(file, dataset){
 
 //predict - faculty
 $('#predict').click(function(e){
-var file = "";
-var dataset = "None";
-file = document.getElementById("openFile").files[0].name;
-predict(file, dataset);
+  var file = "";
+  var dataset = "None";
+  file = document.getElementById("openFile").files[0].name;
+  predict(file, dataset);
 });
-$('#predictindividual').click(function(e){
-var file = "None";
-var name = document.getElementById("studName").value;
-var grade = document.getElementById("grade").value;
-var name = document.getElementById("studName").value;
-var grade = document.getElementById("grade").value;
-var brokenFam = document.getElementById("brokenFam").value;
-var financialDiff = document.getElementById("finDiff").value;
-var studyHabit = document.getElementById("studyHabit").value;
 
-var dataset = [name, grade, brokenFam, financialDiff, studyHabit];
-for(i=0;i<dataset.length;i++)
-	dataset[i] = convertIndividual(dataset[i],i);
-predict(file, dataset);
-dataset = dataset.splice(0,14);
-opencsv(file,dataset);
+$('#predictindividual').click(function(e){
+  var file = "None";
+  var name = document.getElementById("studName").value;
+  var grade = document.getElementById("grade").value;
+  var brokenFam = document.getElementById("brokenFam").value;
+  var financialDiff = document.getElementById("finDiff").value;
+  var studyHabit = document.getElementById("studyHabit").value;
+
+  var dataset = [name, grade, brokenFam, financialDiff, studyHabit, grade];
+  predict(file, dataset);
+  dataset = dataset.splice(0,14);
+
+  var dataset = [name, grade, brokenFam, financialDiff, studyHabit];
+  opencsv(file,dataset);
+
 });
+
 function predictadmin(file, dataset){
   console.log(dataset);
 
-  var receiver = "vincentpaul.012@gmail.com";
+  var receiver = "sherilyn.usero22@gmail.com";
             $.getJSON('/', {
               receive: receiver,
               filename: file,
@@ -168,7 +172,7 @@ function predictadmin(file, dataset){
                 var counter = 1;
                 inputtable = document.getElementById("inputTable");
                 inputtablerow = inputtable.rows;
-                table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial</th><th>Family</th><th>Relatives</th><th>Health</th><th>Materials</th><th>Parenting</th><th>Study Habit</th></tr>";
+                table = "<tr><th>Student</th><th>Second Half Grade</th><th>Final Grade</th><th>Remarks</th><th>Financial Difficulty</th><th>Family</th><th>Study Habit</th></tr>";
                 for (x = 0; x < data.predict_finalgrade.length; x++){
                   studentname = inputtablerow[counter].cells[0].firstChild.data;
                   if(data.predict_finalgrade[x] <= "75"){
@@ -185,7 +189,7 @@ function predictadmin(file, dataset){
                   }
                   tablerow = tablerow + "<tr>"
                   tablerow = tablerow + "<td>" + studentname + "</td><td>" + data.predict_secondhalf[x] + "</td><td>" + data.predict_finalgrade[x] + "</td><td>" + remarks + "</td>";
-                  for (y = 0; y < 7; y++){
+                  for (y = 0; y < 3; y++){
                         tablerow = tablerow + "<td>"+ data.fuzzy_results[x][y][1] + "</td>"
                   }
                   tablerow = tablerow + "</tr>";
@@ -225,6 +229,9 @@ function predictadmin(file, dataset){
                     and mark that a switch has been done: */
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
+                  }
+                  for (rowIndex = 10; rowIndex < (rows.length - 1); rowIndex++) {
+                    rows[rowIndex].parentNode.removeChild(rows[rowIndex]);
                   }
                 }
                 // Learning Percentage
@@ -269,12 +276,13 @@ var brokenFam = document.getElementById("brokenFam").value;
 var financialDiff = document.getElementById("finDiff").value;
 var studyHabit = document.getElementById("studyHabit").value;
 
-var dataset = [name, grade, brokenFam, financialDiff, studyHabit];
-for(i=0;i<dataset.length;i++)
-	dataset[i] = convertIndividual(dataset[i],i);
-predictadmin(file, dataset);
+var dataset =  [name, grade, brokenFam, financialDiff, studyHabit, grade];
+predictadmin(file,dataset);
 dataset = dataset.splice(0,14);
+
+var dataset =  [name, grade, brokenFam, financialDiff, studyHabit];
 opencsv(file,dataset);
+
 });
 
 function opencsv(file, dataset){
@@ -282,7 +290,7 @@ function opencsv(file, dataset){
  if(file == "None"){
    var table =  document.getElementById("inputTable");
    var tablerow = "";
-   table = "<tr><th>Student Name</th><th>Grade</th><th>Broken Family</th><th>Financial Difficulty</th><th>Study Habit</th></tr>";
+   table = "<tr><th>Student Name</th><th>Mid Term Grade</th><th>Broken Family</th><th>Financial Difficulty</th><th>Study Habit</th></tr>";
    for(var x = 0; x < dataset.length; x++){
 		tablerow = tablerow + "<td>" + dataset[x] + "</td>";
    }
@@ -290,37 +298,36 @@ function opencsv(file, dataset){
    document.getElementById("inputTable").innerHTML = table;
  }
  else{
- var table = document.getElementById("inputTable");
- var headerLine = "";
- var myReader = new FileReader();
- myReader.onload = function(e) {
- var content = myReader.result;
- var lines = content.split("\r");
- for (var count = 0; count < lines.length; count++) {
- var row = document.createElement("tr");
- var rowContent = lines[count].split(",");
- var x = 0;
+   var table = document.getElementById("inputTable");
+   var headerLine = "";
+   var myReader = new FileReader();
+   myReader.onload = function(e) {
+     var content = myReader.result;
+     var lines = content.split("\n");
+     for (var count = 0; count < lines.length; count++) {
+       var row = document.createElement("tr");
+       var rowContent = lines[count].split(",");
+       var x = 0;
 
- for (var i = 0; i < 6; i++) {
- if (count == 0) {
-  var header = ["Student Name","Midterm Grade", "Broken Family", "Financial Difficulty", "Study Habit", "Grade"]
-     var cellElement = document.createElement("th");
-    var cellContent = document.createTextNode(header[x]);
-    cellElement.appendChild(cellContent);
-    x++;
- } 
- else {
-  var cellElement = document.createElement("td");
-  var cellContent = document.createTextNode(rowContent[i]);
-  cellElement.appendChild(cellContent);
- 
- }
-  row.appendChild(cellElement);
- }
- table.appendChild(row);
- }
- }
- myReader.readAsText(theFile);
+       for (var i = 0; i < 6; i++) {
+         if (count == 0) {
+            var header = ["Student Name","Midterm Grade", "Broken Family", "Financial Difficulty", "Study Habit", "Grade"]
+            var cellElement = document.createElement("th");
+            var cellContent = document.createTextNode(header[x]);
+            cellElement.appendChild(cellContent);
+            x++;
+         }
+         else {
+            var cellElement = document.createElement("td");
+            var cellContent = document.createTextNode(rowContent[i]);
+            cellElement.appendChild(cellContent);
+         }
+        row.appendChild(cellElement);
+       }
+       table.appendChild(row);
+     }
+   }
+   myReader.readAsText(theFile);
  }
  return false;
 }
@@ -347,6 +354,5 @@ $('#clearindividual').click(function(e){
   document.getElementById("brokenFam").value = "";
   document.getElementById("finDiff").value = "";
   document.getElementById("studyHabit").value = "";
-    document.getElementById("inputTable").innerHTML = "";
-
+  document.getElementById("inputTable").innerHTML = "";
 });
