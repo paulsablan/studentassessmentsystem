@@ -1,4 +1,5 @@
-from flask import Flask, request, render_template, jsonify
+from flask import Flask, request, render_template, jsonify, redirect, session
+from flask_session import Session
 import json
 import os
 import smtplib
@@ -7,18 +8,22 @@ from email.mime.text import MIMEText
 from Naive_Classifier import train_naive, get_summaries, predict_grades, get_fuzzy_results
 from twilio.rest import Client
 import sqlite3 as sql
-import cv2
+
 
 app = Flask(__name__)
 
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SECRET_KEY'] = os.urandom(24)
 SCOPES = 'https://www.googleapis.com/auth/gmail.send'
 CLIENT_SECRET_FILE = 'client_secret.json'
 APPLICATION_NAME = 'Gmail API Python Send Email'
 
+
 @app.route('/', methods=['GET'])
 def index():
-
-	return render_template('login.html')
+	error = session.get('error')
+	print(error)
+	return render_template('login.html', error = error)
 
 @app.route('/create', methods=['GET'])
 def create():
@@ -85,7 +90,7 @@ def login():
 	role = ""
 	user = request.form['userId']
 	pword = request.form['password']
-
+	error = ""
 	try:
 		with sql.connect("database.db") as con:
 			cur = con.cursor()
@@ -105,9 +110,11 @@ def login():
 				elif role == "Admin":
 					return render_template("Admin.html",fname = fname,lname = lname)
 			else:
-				print("Incorrect username or password! If you are not a user, please register here.")
+				error = "Incorrect username or password! If you are not a user, please register here."
+				session['error'] = error
+				return redirect("/")
 	except IOError:
-		print ("Select statement could not execute!")
+		error = "Select statement could not execute!"
 	finally:
 		con.close()
 
@@ -178,7 +185,7 @@ def sendemail(receive,filename,dataset):
 	# client.api.account.messages.create(
 	#     to="+639162438998",
 	#     from_="+15138135511",
-	#     body=textmsg)
+	#     body=ptextmsg)
 	# Send the message via our own SMTP server, but don't include the
 	# envelope header.
 	s = smtplib.SMTP(host='smtp.gmail.com', port=587)
@@ -188,7 +195,8 @@ def sendemail(receive,filename,dataset):
 	s.sendmail(sender, receiver, teachermsg.as_string())
 	s.quit()
 	status = "sent"
-	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results)
+	teacherMessage = "This child needs to be monitored. Talk, motivate, encourage and inspire the child to improve in class. Thank you."
+	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results, teacherMessage = teacherMessage)
 
 if __name__ == "__main__":
 	app.run(debug=True,host='0.0.0.0', port=80)

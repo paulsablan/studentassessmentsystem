@@ -42,6 +42,7 @@ function predict(file, dataset){
               url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
               success: function(data) {
                 console.log(data);
+                alert(data.teacherMessage);
                 var table = "";
                 var tablerow = "";
                 var studentname = "";
@@ -158,6 +159,7 @@ function predictadmin(file, dataset){
               url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
               success: function(data) {
                 console.log(data);
+                alert(data.teacherMessage);
                 var table = "";
                 var tablerow = "";
                 var number = "";

@@ -21,6 +21,10 @@
 .btn-login{
 	width:100%;
 }
+.error{
+    display:none; 
+    color: red;
+}
 .navbar-admin{
 	padding: 10px;
 }
