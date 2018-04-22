@@ -258,7 +258,7 @@ function predictadmin(file, dataset){
                     rows[rowIndex].style.display = "none";
                   }
                   failrows = failedtable.rows
-                  for (rowIndex = 1; rowIndex < failrows.length; rowIndex++) {
+                  for (rowIndex = 1; rowIndex < (failrows.length-1); rowIndex++) {
                     if (failrows[rowIndex].getElementsByTagName("TD")[3].innerHTML == "PASSED") {
                       console.log(failrows[rowIndex]);
                       failrows[rowIndex].style.display = "none";
