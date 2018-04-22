@@ -100,8 +100,17 @@
     overflow: auto;
 	height: 400px;
 }
+.selected{
+    background-color: red; font-weight: bold; color: #fff;
+}
 tr:nth-child(even){
-	background:#e7e7e7;
+    background:#e7e7e7;
+}
+.failtable{
+    height: 350px;
+}
+.teachermessage{
+    font-size: 18px;
 }
 td, th {
     border: 1px solid #dddddd;

@@ -115,18 +115,18 @@ function predict(file, dataset){
                   document.getElementById("failtable").innerHTML = failtable;
                   failedtable = document.getElementById("failtable");
                   toptentable = document.getElementById('toptable');
-                  var failrows;
-                  for (rowIndex = 10; rowIndex < (rows.length - 1); rowIndex++) {
-                    rows = toptentable.rows;
+                  var failrows, temptable;
+                  rows = toptentable.rows;
+                  for (rowIndex = 11; rowIndex < rows.length; rowIndex++) {
                     console.log(rows[rowIndex]);
-                    rows[rowIndex].parentNode.removeChild(rows[rowIndex]);
+                    rows[rowIndex].style.display = "none";
                   }
                   failrows = failedtable.rows
-                  for (rowIndex = 1; rowIndex < failrows.length; rowIndex++) {
+                  for (rowIndex = 1; rowIndex < (failrows.length-1); rowIndex++) {
                     
-                    if (failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILING" || failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILED") {
+                    if (failrows[rowIndex].getElementsByTagName("TD")[3].innerHTML == "PASSED") {
                       console.log(failrows[rowIndex]);
-                      failrows[rowIndex].parentNode.removeChild(failrows[rowIndex]);
+                      failrows[rowIndex].style.display = "none";
                     }
                   }
               }
@@ -247,22 +247,21 @@ function predictadmin(file, dataset){
                     switching = true;
                   }
                 }
-                 failtable = document.getElementById("toptable").innerHTML;
+                  failtable = document.getElementById("toptable").innerHTML;
                   document.getElementById("failtable").innerHTML = failtable;
                   failedtable = document.getElementById("failtable");
                   toptentable = document.getElementById('toptable');
-                  var failrows;
-                  for (rowIndex = 10; rowIndex < (rows.length - 1); rowIndex++) {
-                    rows = toptentable.rows;
+                  var failrows, temptable;
+                  rows = toptentable.rows;
+                  for (rowIndex = 11; rowIndex < rows.length; rowIndex++) {
                     console.log(rows[rowIndex]);
-                    rows[rowIndex].parentNode.removeChild(rows[rowIndex]);
+                    rows[rowIndex].style.display = "none";
                   }
                   failrows = failedtable.rows
                   for (rowIndex = 1; rowIndex < failrows.length; rowIndex++) {
-                    
-                    if (failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILING" || failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILED") {
+                    if (failrows[rowIndex].getElementsByTagName("TD")[3].innerHTML == "PASSED") {
                       console.log(failrows[rowIndex]);
-                      failrows[rowIndex].parentNode.removeChild(failrows[rowIndex]);
+                      failrows[rowIndex].style.display = "none";
                     }
                   }
                 // Learning Percentage
@@ -335,7 +334,7 @@ function opencsv(file, dataset){
    myReader.onload = function(e) {
      var content = myReader.result;
      var lines = content.split("\n");
-     for (var count = 0; count < lines.length; count++) {
+     for (var count = 0; count < (lines.length-1); count++) {
        var row = document.createElement("tr");
        var rowContent = lines[count].split(",");
        var x = 0;
