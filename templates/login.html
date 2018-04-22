@@ -18,7 +18,7 @@
   <nav class="navbar navbar-default"><center><h2>Incorporating Predictive Analysis on Student Assessment System</h2></center></nav>
   <div class="container-fluid">
     
-    <form method="POST" action="/home" class="login-form">
+    <form method="POST" action="/login" class="login-form">
       <div class="form-group">
         <label>User ID:</label>
           <input type="text" name="userId" id="userId" placeholder="User ID" class="form-control">
@@ -27,28 +27,12 @@
         <label>Password:</label>
           <input type="password" name="password" id="password" placeholder="Password" class="form-control">
       </div>
-      <input type="submit" name="login" value="Login" id="btnlogin" class="btn btn-primary btn-login" data-toggle="modal" data-target="#myModal">
+      <input type="submit" name="login" value="Login" id="btnlogin" class="btn btn-primary btn-login">
       <br><br>
       <a href="/create">Create an Account</a>
       <br><br>
+      <span class="error">{{ error }}</span>
     </form>
-     <!-- Modal -->
-    <div class="modal fade" id="myModal" role="dialog">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Log in Error</h4>
-          </div>
-          <div class="modal-body">
-            <p>{{ error }}</p>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
   </div>
   <script src="{{ url_for('static', filename='js/custom.js') }}"></script> 
 </body>

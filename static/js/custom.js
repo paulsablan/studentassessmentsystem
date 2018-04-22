@@ -42,7 +42,6 @@ function predict(file, dataset){
               url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
               success: function(data) {
                 console.log(data);
-                alert(data.teacherMessage);
                 var table = "";
                 var tablerow = "";
                 var studentname = "";
@@ -79,7 +78,7 @@ function predict(file, dataset){
                 document.getElementById("resultstable").innerHTML = table;
                 toptable = table;
                 document.getElementById("toptable").innerHTML = toptable;
-                var toptentable, rows, switching, rowIndex, rowX, rowY, shouldSwitch;
+                var toptentable, rows, switching, rowIndex, rowX, rowY, shouldSwitch,failedtable,failtable;
                 toptentable = document.getElementById('toptable');
                 switching = true;
                 /* Make a loop that will continue until
@@ -110,11 +109,26 @@ function predict(file, dataset){
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
                   }
+                  
+                }
+                  failtable = document.getElementById("toptable").innerHTML;
+                  document.getElementById("failtable").innerHTML = failtable;
+                  failedtable = document.getElementById("failtable");
+                  toptentable = document.getElementById('toptable');
+                  var failrows;
                   for (rowIndex = 10; rowIndex < (rows.length - 1); rowIndex++) {
+                    rows = toptentable.rows;
+                    console.log(rows[rowIndex]);
                     rows[rowIndex].parentNode.removeChild(rows[rowIndex]);
                   }
-
-                }
+                  failrows = failedtable.rows
+                  for (rowIndex = 1; rowIndex < failrows.length; rowIndex++) {
+                    
+                    if (failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILING" || failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILED") {
+                      console.log(failrows[rowIndex]);
+                      failrows[rowIndex].parentNode.removeChild(failrows[rowIndex]);
+                    }
+                  }
               }
             });
 }
@@ -159,7 +173,6 @@ function predictadmin(file, dataset){
               url: "/sendemail/" + receiver + "/" + file + "/" + dataset,
               success: function(data) {
                 console.log(data);
-                alert(data.teacherMessage);
                 var table = "";
                 var tablerow = "";
                 var number = "";
@@ -201,8 +214,9 @@ function predictadmin(file, dataset){
                 document.getElementById("resultstable").innerHTML = table;
                 toptable = table;
                 document.getElementById("toptable").innerHTML = toptable;
-                var toptentable, rows, switching, rowIndex, rowX, rowY, shouldSwitch;
+                var toptentable, rows, switching, rowIndex, rowX, rowY, shouldSwitch, failedtable,failtable;
                 toptentable = document.getElementById('toptable');
+
                 switching = true;
                 /* Make a loop that will continue until
                 no switching has been done: */
@@ -232,10 +246,25 @@ function predictadmin(file, dataset){
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
                   }
+                }
+                 failtable = document.getElementById("toptable").innerHTML;
+                  document.getElementById("failtable").innerHTML = failtable;
+                  failedtable = document.getElementById("failtable");
+                  toptentable = document.getElementById('toptable');
+                  var failrows;
                   for (rowIndex = 10; rowIndex < (rows.length - 1); rowIndex++) {
+                    rows = toptentable.rows;
+                    console.log(rows[rowIndex]);
                     rows[rowIndex].parentNode.removeChild(rows[rowIndex]);
                   }
-                }
+                  failrows = failedtable.rows
+                  for (rowIndex = 1; rowIndex < failrows.length; rowIndex++) {
+                    
+                    if (failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILING" || failrows[rowIndex].getElementsByTagName("TD")[3] != "FAILED") {
+                      console.log(failrows[rowIndex]);
+                      failrows[rowIndex].parentNode.removeChild(failrows[rowIndex]);
+                    }
+                  }
                 // Learning Percentage
                 new Chart(document.getElementById("learningChart"), {
                     type: 'doughnut',

@@ -20,7 +20,7 @@
     <title>Admin - Incorporating Predictive Analytics on Student Assessment System</title>
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-admin"><span class="navbar-title">Incorporating Predictive Analytics on Student Assessment System</span><a href="/" class="logout-link">Logout <i class="glyphicon glyphicon-log-in log-icon"></i></a></nav>
+	<nav class="navbar navbar-default navbar-admin"><span class="navbar-title">Incorporating Predictive Analytics on Student Assessment System</span><a href="/logout" class="logout-link">Logout <i class="glyphicon glyphicon-log-in log-icon"></i></a></nav>
 	<div class="sidenav">
 		<div class="profile-image">
 			<center><img src="{{ url_for('static', filename='images/profile.png')}}"></center>
@@ -48,6 +48,7 @@
 		    <li><a data-toggle="tab" href="#table">Input Table</a></li>
 		    <li><a data-toggle="tab" href="#results">Results</a></li>
 		    <li><a data-toggle="tab" href="#top">Top Rankings</a></li>
+		    <li><a data-toggle="tab" href="#fail">Failed Students</a></li>
 		    <li><a data-toggle="tab" href="#chart">Chart</a></li>
 		</ul>
 
@@ -56,6 +57,15 @@
 				<center>
 						<br>
 						<canvas id="learningChart" height="130px" />
+				</center>
+		    </div>
+		    <div id="fail" class="tab-pane fade">
+				<center>
+						<br><br>
+						<div class="list-table">
+							<table id="failtable" class="tablesorter">
+							</table>
+						</div>
 				</center>
 		    </div>
 		    <div id="top" class="tab-pane fade">

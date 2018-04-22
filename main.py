@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template, jsonify, redirect, session
+from flask import Flask, request, render_template, jsonify, redirect, session, flash
 from flask_session import Session
 import json
 import os
@@ -21,9 +21,7 @@ APPLICATION_NAME = 'Gmail API Python Send Email'
 
 @app.route('/', methods=['GET'])
 def index():
-	error = session.get('error')
-	print(error)
-	return render_template('login.html', error = error)
+	return render_template("login.html")
 
 @app.route('/create', methods=['GET'])
 def create():
@@ -85,7 +83,7 @@ def addrec():
 	# cv2.imwrite(os.path.join("/static/images/profiles/" , username + extension),img)
 	# cv2.waitKey(0)
 
-@app.route('/home', methods=['POST'])
+@app.route('/login', methods=['POST'])
 def login():
 	role = ""
 	user = request.form['userId']
@@ -98,6 +96,8 @@ def login():
 			results = cur.fetchall()
 			print(results)
 			if results:
+				error = "Successfully Logged in"
+				flash(error)
 				role_statement = cur.execute('SELECT role FROM users WHERE username = ? AND password = ?', [(user),(pword)])
 				role = str(cur.fetchone()[0])
 				fname_statement = cur.execute('SELECT fname FROM users WHERE username = ? AND password = ?', [(user),(pword)])
@@ -105,19 +105,29 @@ def login():
 				lname_statement = cur.execute('SELECT lname FROM users WHERE username = ? AND password = ?', [(user),(pword)])
 				lname = str(cur.fetchone()[0])
 				print(fname,lname)
-				if role == "Faculty":
-					return render_template("Faculty.html",fname = fname,lname = lname)
-				elif role == "Admin":
-					return render_template("Admin.html",fname = fname,lname = lname)
+				session['role'] = role
+				session['fname'] = fname
+				session['lname'] = lname
+				return redirect("/home")
 			else:
 				error = "Incorrect username or password! If you are not a user, please register here."
-				session['error'] = error
-				return redirect("/")
+				flash(error)
 	except IOError:
 		error = "Select statement could not execute!"
 	finally:
 		con.close()
+	return render_template('login.html',error = error)
 
+@app.route('/home')
+def home():
+	role = session.get('role')
+	fname = session.get('fname')
+	lname = session.get('lname')
+	
+	if role == "Faculty":
+		return render_template("Faculty.html",fname = fname,lname = lname)
+	elif role == "Admin":
+		return render_template("Admin.html",fname = fname,lname = lname)
 @app.route('/sendemail/<string:receive>/<string:filename>/<string:dataset>', methods=['GET','POST'])
 def sendemail(receive,filename,dataset):
 
@@ -198,5 +208,11 @@ def sendemail(receive,filename,dataset):
 	teacherMessage = "This child needs to be monitored. Talk, motivate, encourage and inspire the child to improve in class. Thank you."
 	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results, teacherMessage = teacherMessage)
 
+@app.route('/logout')
+def logout():
+	session.pop('role',None)
+	session.pop('fname',None)
+	session.pop('lname',None)
+	return redirect("/")
 if __name__ == "__main__":
 	app.run(debug=True,host='0.0.0.0', port=80)
