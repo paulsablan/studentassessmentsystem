@@ -109,7 +109,7 @@ function predict(file, dataset){
                     rows[rowIndex].parentNode.insertBefore(rows[rowIndex + 1], rows[rowIndex]);
                     switching = true;
                   }
-                  
+
                 }
                   failtable = document.getElementById("toptable").innerHTML;
                   document.getElementById("failtable").innerHTML = failtable;
@@ -123,7 +123,7 @@ function predict(file, dataset){
                   }
                   failrows = failedtable.rows
                   for (rowIndex = 1; rowIndex < (failrows.length-1); rowIndex++) {
-                    
+
                     if (failrows[rowIndex].getElementsByTagName("TD")[3].innerHTML == "PASSED") {
                       console.log(failrows[rowIndex]);
                       failrows[rowIndex].style.display = "none";
@@ -317,7 +317,7 @@ opencsv(file,dataset);
 
 function opencsv(file, dataset){
   var theFile = file;
- if(file == "None"){
+  if(file == "None"){
    var table =  document.getElementById("inputTable");
    var tablerow = "";
    table = "<tr><th>Student Name</th><th>Mid Term Grade</th><th>Broken Family</th><th>Financial Difficulty</th><th>Study Habit</th></tr>";
@@ -333,15 +333,17 @@ function opencsv(file, dataset){
    var myReader = new FileReader();
    myReader.onload = function(e) {
      var content = myReader.result;
-     var lines = content.split("\n");
+     var lines = CSVToArray(content);
+     // var lines = content.split("\n");
      for (var count = 0; count < (lines.length-1); count++) {
        var row = document.createElement("tr");
-       var rowContent = lines[count].split(",");
+       // var rowContent = lines[count].split(",");
+       var rowContent = lines[count];
        var x = 0;
 
        for (var i = 0; i < 6; i++) {
          if (count == 0) {
-            var header = ["Student Name","Midterm Grade", "Broken Family", "Financial Difficulty", "Study Habit", "Grade"]
+            var header = ["Student Name","Midterm Grade", "Broken Family", "Financial Difficulty", "Study Habit", "Midterm Grade"]
             var cellElement = document.createElement("th");
             var cellContent = document.createTextNode(header[x]);
             cellElement.appendChild(cellContent);
@@ -361,6 +363,43 @@ function opencsv(file, dataset){
  }
  return false;
 }
+
+function CSVToArray( strData, strDelimiter ){
+    strDelimiter = (strDelimiter || ",");
+    var objPattern = new RegExp(
+        (
+            // Delimiters.
+            "(\\" + strDelimiter + "|\\r?\\n|\\r|^)" +
+            // Quoted fields.
+            "(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|" +
+            // Standard fields.
+            "([^\"\\" + strDelimiter + "\\r\\n]*))"
+        ),
+        "gi"
+    );
+    var arrData = [[]];
+    var arrMatches = null;
+    while (arrMatches = objPattern.exec( strData )){
+        var strMatchedDelimiter = arrMatches[ 1 ];
+        if (strMatchedDelimiter.length && strMatchedDelimiter !== strDelimiter){
+            arrData.push( [] );
+        }
+        var strMatchedValue;
+        if (arrMatches[ 2 ]){
+            strMatchedValue = arrMatches[ 2 ].replace(
+                new RegExp( "\"\"", "g" ),
+                "\""
+            );
+
+        }
+        else {
+            strMatchedValue = arrMatches[ 3 ];
+        }
+        arrData[ arrData.length - 1 ].push( strMatchedValue );
+    }
+    return(arrData);
+}
+
 //Input CSV file
 $('#openFile').change(function(e){
 var fileSize = 0;
