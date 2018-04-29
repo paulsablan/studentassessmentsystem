@@ -33,13 +33,12 @@ def load_csv_section(filename, splitratio):
 	population = len(dataset)
 	limit = int(population - (((100 - splitratio) / 100) * population))
 	for i in range(len(dataset)):
-		for j in dataset[i]:
-			data = j.split(',')
-			if i == 0:
-				ys.append(data)
-			else:
-				xs.append(data[2:])
-				xs[-1] = convert_to_int(xs[-1])
+		data = dataset[i][:]
+		if i == 0:
+			ys.append(data)
+		else:
+			xs.append(data[2:])
+			xs[-1] = convert_to_int(xs[-1])
 
 	return ys, xs[0:limit], None
 

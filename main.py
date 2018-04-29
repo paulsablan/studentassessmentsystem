@@ -5,7 +5,7 @@ import os
 import smtplib
 import base64
 from email.mime.text import MIMEText
-from Naive_Classifier import train_naive, get_summaries, predict_grades, get_fuzzy_results
+from Naive_Classifier import get_summaries, predict_grades, get_fuzzy_results
 from twilio.rest import Client
 import sqlite3 as sql
 
@@ -45,16 +45,16 @@ def addrec():
 			# extension = image_filename.rsplit('.', 1)[1].lower()
 			# # image_hashed_filename = str(uuid.uuid4().hex) + '.' + extension
 			# file_path = os.path.join('/static/images/', file)
-			
+
 			# image.save(file_path)
-			
+
 			# comp_path = os.getcwd();
 			# new_comp_path = '/'.join(comp_path.split('\\'))
 			# print(file)
 			# imagefile = new_comp_path + "/static/images/" + file
 			# print(imagefile)
 			# shutil.copyfile(file, imagefile)
-			
+
 			with sql.connect("database.db") as con:
 				print(fname,lname,username,password,role)
 				cur = con.cursor()
@@ -63,7 +63,7 @@ def addrec():
 				con.commit()
 				cur.execute('SELECT * FROM users')
 				rows = cur.fetchall();
-				print(rows)				
+				print(rows)
 				msg = "Record successfully added"
 				print(msg)
 				if role == "Faculty":
@@ -73,7 +73,7 @@ def addrec():
 		except:
 			con.rollback()
 			msg = "error in insert operation"
-	  
+
 		finally:
 			con.close()
 
@@ -123,7 +123,7 @@ def home():
 	role = session.get('role')
 	fname = session.get('fname')
 	lname = session.get('lname')
-	
+
 	if role == "Faculty":
 		return render_template("Faculty.html",fname = fname,lname = lname)
 	elif role == "Admin":
@@ -165,10 +165,10 @@ def sendemail(receive,filename,dataset):
 		studentdata = []
 		for i in range(2,len(j)):
 			studentdata.append(int(j[i]))
-			
+
 	#second_half,final_grade,fuzzy_results = train_naive(file,98)
 	second_half, final_grade =  get_summaries(get_summaries_file,100)
-	predict_secondhalf, predict_finalgrade = predict_grades(file,second_half, final_grade, studentdata)
+	predict_secondhalf, predict_finalgrade = predict_grades(file, second_half, final_grade, studentdata)
 	fuzzy_results =  get_fuzzy_results(file, studentdata)
 	print(second_half)
 	print(final_grade)
@@ -178,7 +178,7 @@ def sendemail(receive,filename,dataset):
 
 	# me == the sender's email address
 	# you == the recipient's email address
-	
+
 	#Parent
 	parentmsg['Subject'] = 'Parent Notification'
 	parentmsg['From'] = sender
@@ -198,12 +198,12 @@ def sendemail(receive,filename,dataset):
 	#     body=ptextmsg)
 	# Send the message via our own SMTP server, but don't include the
 	# envelope header.
-	s = smtplib.SMTP(host='smtp.gmail.com', port=587)
-	s.starttls()
-	s.login(sender,password)
-	s.sendmail(sender, receiver, parentmsg.as_string())
-	s.sendmail(sender, receiver, teachermsg.as_string())
-	s.quit()
+	# s = smtplib.SMTP(host='smtp.gmail.com', port=587)
+	# s.starttls()
+	# s.login(sender,password)
+	# s.sendmail(sender, receiver, parentmsg.as_string())
+	# s.sendmail(sender, receiver, teachermsg.as_string())
+	# s.quit()
 	status = "sent"
 	teacherMessage = "This child needs to be monitored. Talk, motivate, encourage and inspire the child to improve in class. Thank you."
 	return jsonify(status = status, predict_secondhalf = predict_secondhalf ,predict_finalgrade = predict_finalgrade, fuzzy_results = fuzzy_results, teacherMessage = teacherMessage)
